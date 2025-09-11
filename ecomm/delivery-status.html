@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Delivery Status - Grostore</title>
+      <link rel="icon shortcut" href="https://jaiinfo.tech/logo/logo_only.png">
+      <link rel="stylesheet" href="style.css">
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <!-- Bootstrap Icons CDN -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+      <!-- No Swiper CSS needed for delivery-status.html -->
+   </head>
+   <body>
+      <!-- Overlay for mobile menus -->
+      <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+      <!-- Top Bar -->
+      <div class="top-bar">
+         <div class="container welcome-bar">
+            <p>Welcome to our Organic store</p>
+            <div class="top-bar-info">
+               <span><i class="bi bi-envelope"></i> groshop@support.com</span>
+               <span><i class="bi bi-geo-alt"></i> Washington, New York, USA - 254230</span>
+               <div class="dropdown">
+                  <span><i class="bi bi-globe"></i> English <i class="fas fa-chevron-down"></i></span>
+                  <div class="dropdown-content">
+                     <a href="#">বাংলা</a>
+                     <a href="#">Español</a>
+                  </div>
+               </div>
+               <div class="dropdown">
+                  <span><i class="bi bi-currency-rupee"></i> USD <i class="fas fa-chevron-down"></i></span>
+                  <div class="dropdown-content">
+                     <a href="#">EUR</a>
+                     <a href="#">BDT</a>
+                  </div>
+               </div>
+               <a href="#" class="dark-mode-toggle"><i class="fas fa-moon"></i> Dark</a>
+            </div>
+         </div>
+      </div>
+         <!-- Header Main -->
+      <header class="header-main">
+         <div class="container">
+                <a href="index.html">
+                    <div class="logo">
+                        <img src="https://jaiinfo.tech/logo/logo_only.png" alt="Grostore Logo">
+                        <h1>Grostore</h1>
+                    </div>
+                 </a>
+
+            <nav class="main-nav" id="main-nav">
+               <div class="nav-close-btn desktop-hidden" id="main-nav-close">
+                  <i class="fas fa-times"></i>
+               </div>
+               <div class="mobile-menu-logo">
+                  <img src="https://jaiinfo.tech/logo/logo_only.png" alt="Logo">
+               </div>
+               <a href="order-list.html">Orders</a>
+               <a href="wishlist.html">Wishlist</a>
+               <a href="settings.html">Settings</a>
+               <a href="#">pages</a>
+            </nav>
+            <div class="header-actions">
+               <!-- <a href="#" class="mobile-hidden-icon"><i class="bi bi-search"></i></a> -->
+               <a href="wishlist.html" class="mobile-hidden-icon"><i class="bi bi-heart"></i></a>               
+               <a href="order-list.html"class="mobile-hidden-icon"><i class="bi bi-bag"></i></a>
+               <a href="order-list.html"class="mobile-hidden-icon"><i class="bi bi-gear"></i></a>
+               <!-- <span class="mobile-hidden-icon"><i class="bi bi-telephone"></i> +80 157 058 4567</span> -->
+                <button class="login-btn"><a href="login.html"><i class="bi bi-box-arrow-in-left"></i>Login</a></button>
+               <button class="hamburger-menu desktop-hidden" id="hamburger-menu">
+               <i class="bi bi-list"></i>
+               </button>
+            </div>
+         </div>
+      </header>
+      <!-- Main Content Area for Delivery Status -->
+      <main class="delivery-status-content">
+         <div class="container">
+            <h2>Track Your Order</h2>
+            <div class="track-form-wrapper">
+               <p>Enter your Order ID or Tracking Number below to check its status.</p>
+               <div class="track-form">
+                  <input type="text" id="tracking-id" placeholder="e.g., GRO12345" required>
+                  <button id="track-btn">Track Order</button>
+               </div>
+            </div>
+
+            <div class="order-status-display" id="order-status-display" style="display:none;">
+               <div class="status-summary">
+                  <h3>Order Details <span id="display-order-id"></span></h3>
+                  <div class="summary-details">
+                     <p><strong>Current Status:</strong> <span id="current-status" class="status-badge"></span></p>
+                     <p><strong>Estimated Delivery:</strong> <span id="estimated-delivery"></span></p>
+                     <p><strong>Tracking Link:</strong> <a href="#" id="tracking-link" target="_blank" rel="noopener noreferrer">View Tracking Page</a></p>
+                  </div>
+               </div>
+
+               <div class="status-timeline">
+                  <h3>Delivery Timeline</h3>
+                  <ul id="timeline-list">
+                     <!-- Timeline events will be inserted here by JS -->
+                  </ul>
+               </div>
+
+               <div class="order-items">
+                  <h3>Order Items</h3>
+                  <div class="order-items-grid" id="order-items-grid">
+                     <!-- Order items will be inserted here by JS -->
+                  </div>
+               </div>
+            </div>
+
+            <div class="no-order-found" id="no-order-found" style="display:none;">
+               <p><i class="fas fa-exclamation-circle"></i> No order found with that ID. Please double-check your tracking number and try again.</p>
+            </div>
+         </div>
+      </main>
+      <!-- Footer Newsletter -->
+      <section class="footer-newsletter">
+         <div class="container">
+            <p>Subscribe to the G-Shop <span class="highlight">New Arrivals</span> & Other Information.</p>
+            <div class="newsletter-form">
+               <input type="email" placeholder="Enter Email Address">
+               <button>Subscribe</button>
+            </div>
+         </div>
+      </section>
+      <!-- Footer Links -->
+      <footer class="footer-main">
+         <div class="container footer-links-grid">
+            <div class="footer-column category">
+               <h3>Category</h3>
+               <ul>
+                  <li><a href="#">Testimonials</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Location & Working Hours</a></li>
+                  <li><a href="#">Our Guarantee</a></li>
+                  <li><a href="#">Track Your Order</a></li>
+                  <li><a href="#">Help Page</a></li>
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h3>Quick Links</h3>
+               <ul>
+                  <li><a href="#">Your Account</a></li>
+                  <li><a href="#">Returns & Exchanges</a></li>
+                  <li><a href="#">Return Center</a></li>
+                  <li><a href="#">Purchase History</a></li>
+                  <li><a href="#">Latest News Blog</a></li>
+                  <li><a href="#">Shipping & Delivery</a></li>
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h3>Contact Us</h3>
+               <ul>
+                  <li><a href="#">Testimonials</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Location & Working Hours</a></li>
+                  <li><a href="#">Our Guarantee</a></li>
+                  <li><a href="#">Track Your Order</a></li>
+                  <li><a href="#">Help Page</a></li>
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h3>Customer Support</h3>
+               <ul>
+                  <li><a href="#">Your Account</a></li>
+                  <li><a href="#">Returns & Exchanges</a></li>
+                  <li><a href="#">Return Center</a></li>
+                  <li><a href="#">Purchase History</a></li>
+                  <li><a href="#">Latest News Blog</a></li>
+                  <li><a href="#">Shipping & Delivery</a></li>
+               </ul>
+            </div>
+         </div>
+         <p class="website-link">www.Jaiinfo.com</p>
+      </footer>
+      <!-- Bottom Footer -->
+      <div class="bottom-footer">
+         <div class="container">
+            <p>&copy; All rights reserved Made by <a href="javascript:void(0);">JAI</a></p>
+            <div class="footer-right">
+               <div class="logo">
+                  <img src="https://jaiinfo.tech/logo/logo_only.png" alt="Logo">   
+                  <h1>Grostore</h1>
+               </div>
+               <div class="payment-icons">
+                  <i class="fab fa-cc-visa"></i>
+                  <i class="fab fa-cc-mastercard"></i>
+                  <i class="fab fa-cc-amazon-pay"></i>
+                  <i class="fab fa-cc-paypal"></i>
+               </div>
+            </div>
+         </div>
+      </div>
+      <script>
+         // Mobile Menu Toggle (Reused from index.html/cart.html)
+         const hamburgerMenu = document.getElementById('hamburger-menu');
+         const mainNav = document.getElementById('main-nav');
+         const mainNavCloseBtn = document.getElementById('main-nav-close');
+         const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+         
+         function updateBodyScroll() {
+             const isAnyMenuOpen = mainNav.classList.contains('active');
+             document.body.classList.toggle('no-scroll', isAnyMenuOpen);
+             mobileMenuOverlay.classList.toggle('active', isAnyMenuOpen);
+         }
+         
+         function toggleMainMenu() {
+             mainNav.classList.toggle('active');
+             updateBodyScroll();
+         }
+         
+         hamburgerMenu.addEventListener('click', toggleMainMenu);
+         mainNavCloseBtn.addEventListener('click', toggleMainMenu);
+         
+         mobileMenuOverlay.addEventListener('click', () => {
+             if (mainNav.classList.contains('active')) {
+                 toggleMainMenu();
+             }
+         });
+         
+         // --- Delivery Status Functionality ---
+         const trackingIdInput = document.getElementById('tracking-id');
+         const trackBtn = document.getElementById('track-btn');
+         const orderStatusDisplay = document.getElementById('order-status-display');
+         const noOrderFoundMessage = document.getElementById('no-order-found');
+         
+         const displayOrderId = document.getElementById('display-order-id');
+         const currentStatus = document.getElementById('current-status');
+         const estimatedDelivery = document.getElementById('estimated-delivery');
+         const trackingLink = document.getElementById('tracking-link');
+         const timelineList = document.getElementById('timeline-list');
+         const orderItemsGrid = document.getElementById('order-items-grid');
+         
+         // Simulated Order Data (replace with actual API call in a real application)
+         const orders = {
+             "GRO12345": {
+                 id: "GRO12345",
+                 status: "Out for Delivery",
+                 estimated: "2024-07-25",
+                 trackingUrl: "https://example.com/track/GRO12345",
+                 timeline: [
+                     { timestamp: "2024-07-22 10:00 AM", description: "Order Placed" },
+                     { timestamp: "2024-07-22 02:30 PM", description: "Processing at Warehouse" },
+                     { timestamp: "2024-07-23 09:15 AM", description: "Shipped from Distribution Center" },
+                     { timestamp: "2024-07-24 07:45 AM", description: "Arrived at Local Hub" },
+                     { timestamp: "2024-07-25 08:00 AM", description: "Out for Delivery" }
+                 ],
+                 items: [
+                     { name: "Popped Rice Crisps", category: "Snacks", price: 130.00, quantity: 1, image: "img/products/waterbottle.jpg" },
+                     { name: "Premium Leather Bag", category: "Accessories", price: 75.00, quantity: 1, image: "img/products/bag.jpg" }
+                 ]
+             },
+             "GRO67890": {
+                 id: "GRO67890",
+                 status: "Delivered",
+                 estimated: "2024-07-20",
+                 trackingUrl: "https://example.com/track/GRO67890",
+                 timeline: [
+                     { timestamp: "2024-07-18 09:00 AM", description: "Order Placed" },
+                     { timestamp: "2024-07-18 11:00 AM", description: "Processing at Warehouse" },
+                     { timestamp: "2024-07-19 03:00 PM", description: "Shipped from Distribution Center" },
+                     { timestamp: "2024-07-20 09:30 AM", description: "Arrived at Local Hub" },
+                     { timestamp: "2024-07-20 02:00 PM", description: "Out for Delivery" },
+                     { timestamp: "2024-07-20 04:30 PM", description: "Delivered to Customer" }
+                 ],
+                 items: [
+                     { name: "Stylish Running Shoe", category: "Footwear", price: 250.00, quantity: 2, image: "img/products/shoe.jpg" },
+                     { name: "Modern Keyboard", category: "Electronics", price: 80.00, quantity: 1, image: "img/products/keyboard.jpg" }
+                 ]
+             }
+         };
+         
+         function displayOrderStatus(order) {
+             displayOrderId.textContent = `#${order.id}`;
+             currentStatus.textContent = order.status;
+             currentStatus.className = 'status-badge ' + order.status.toLowerCase().replace(/\s/g, '-'); // Add status-specific class
+             estimatedDelivery.textContent = order.estimated;
+             trackingLink.href = order.trackingUrl;
+             
+             // Clear previous timeline and items
+             timelineList.innerHTML = '';
+             orderItemsGrid.innerHTML = '';
+         
+             // Populate timeline
+             order.timeline.forEach(event => {
+                 const li = document.createElement('li');
+                 li.innerHTML = `<span class="timeline-timestamp">${event.timestamp}</span> <span class="timeline-description">${event.description}</span>`;
+                 timelineList.appendChild(li);
+             });
+         
+             // Populate order items
+             order.items.forEach(item => {
+                 const itemCard = document.createElement('div');
+                 itemCard.className = 'product-card order-item-card'; // Reuse product-card for consistent styling
+                 itemCard.innerHTML = `
+                     <div class="product-image-wrapper">
+                         <img src="${item.image}" alt="${item.name}">
+                     </div>
+                     <div class="product-info">
+                         <h4>${item.name}</h4>
+                         <p class="product-category">${item.category}</p>
+                         <div class="product-info-bottom">
+                             <p class="price">$${item.price.toFixed(2)}</p>
+                             <p class="quantity-text">Qty: ${item.quantity}</p>
+                         </div>
+                     </div>
+                 `;
+                 orderItemsGrid.appendChild(itemCard);
+             });
+         
+             orderStatusDisplay.style.display = 'block';
+             noOrderFoundMessage.style.display = 'none';
+         }
+         
+         function showNoOrderFound() {
+             orderStatusDisplay.style.display = 'none';
+             noOrderFoundMessage.style.display = 'block';
+         }
+         
+         trackBtn.addEventListener('click', () => {
+             const orderId = trackingIdInput.value.trim().toUpperCase();
+             
+             if (!orderId) {
+                 alert("Please enter an Order ID or Tracking Number.");
+                 return;
+             }
+             
+             // Simulate loading state (optional)
+             trackBtn.textContent = "Tracking...";
+             trackBtn.disabled = true;
+         
+             setTimeout(() => { // Simulate network delay
+                 const order = orders[orderId];
+                 if (order) {
+                     displayOrderStatus(order);
+                 } else {
+                     showNoOrderFound();
+                 }
+                 trackBtn.textContent = "Track Order";
+                 trackBtn.disabled = false;
+             }, 1000); // 1 second delay
+         });
+
+         // Optional: Clear messages on input change
+         trackingIdInput.addEventListener('input', () => {
+            orderStatusDisplay.style.display = 'none';
+            noOrderFoundMessage.style.display = 'none';
+         });
+
+      </script>
+   </body>
+</html>

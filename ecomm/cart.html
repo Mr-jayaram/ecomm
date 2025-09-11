@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Shopping Cart - Grostore</title>
+      <link rel="icon shortcut" href="https://jaiinfo.tech/logo/logo_only.png">
+      <link rel="stylesheet" href="style.css">
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <!-- Bootstrap Icons CDN -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+   </head>
+   <body>
+      <!-- Overlay for mobile menus -->
+      <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+      <!-- Top Bar -->
+      <div class="top-bar">
+         <div class="container welcome-bar">
+            <p>Welcome to our Organic store</p>
+            <div class="top-bar-info">
+               <span><i class="bi bi-envelope"></i> groshop@support.com</span>
+               <span><i class="bi bi-geo-alt"></i> Washington, New York, USA - 254230</span>
+               <div class="dropdown">
+                  <span><i class="bi bi-globe"></i> English <i class="fas fa-chevron-down"></i></span>
+                  <div class="dropdown-content">
+                     <a href="#">বাংলা</a>
+                     <a href="#">Español</a>
+                  </div>
+               </div>
+               <div class="dropdown">
+                  <span><i class="bi bi-currency-rupee"></i> USD <i class="fas fa-chevron-down"></i></span>
+                  <div class="dropdown-content">
+                     <a href="#">EUR</a>
+                     <a href="#">BDT</a>
+                  </div>
+               </div>
+               <a href="#" class="dark-mode-toggle"><i class="fas fa-moon"></i> Dark</a>
+            </div>
+         </div>
+      </div>
+         <!-- Header Main -->
+      <header class="header-main">
+         <div class="container">
+                <a href="index.html">
+                    <div class="logo">
+                        <img src="https://jaiinfo.tech/logo/logo_only.png" alt="Grostore Logo">
+                        <h1>Grostore</h1>
+                    </div>
+                 </a>
+
+            <nav class="main-nav" id="main-nav">
+               <div class="nav-close-btn desktop-hidden" id="main-nav-close">
+                  <i class="fas fa-times"></i>
+               </div>
+               <div class="mobile-menu-logo">
+                  <img src="https://jaiinfo.tech/logo/logo_only.png" alt="Logo">
+               </div>
+               <a href="order-list.html">Orders</a>
+               <a href="wishlist.html">Wishlist</a>
+               <a href="settings.html">Settings</a>
+               <a href="#">pages</a>
+            </nav>
+            <div class="header-actions">
+               <!-- <a href="#" class="mobile-hidden-icon"><i class="bi bi-search"></i></a> -->
+               <a href="wishlist.html" class="mobile-hidden-icon"><i class="bi bi-heart"></i></a>               
+               <a href="order-list.html"class="mobile-hidden-icon"><i class="bi bi-bag"></i></a>
+               <a href="order-list.html"class="mobile-hidden-icon"><i class="bi bi-gear"></i></a>
+               <!-- <span class="mobile-hidden-icon"><i class="bi bi-telephone"></i> +80 157 058 4567</span> -->
+                <button class="login-btn"><a href="login.html"><i class="bi bi-box-arrow-in-left"></i>Login</a></button>
+               <button class="hamburger-menu desktop-hidden" id="hamburger-menu">
+               <i class="bi bi-list"></i>
+               </button>
+            </div>
+         </div>
+      </header>
+      <!-- Main Content Area for Cart -->
+      <main class="cart-page-content">
+         <div class="container">
+            <h2>Shopping Cart</h2>
+            <div class="cart-section">
+               <div class="cart-items-table-wrapper">
+                  <table class="cart-table">
+                     <thead>
+                        <tr>
+                           <th class="product-col">Product</th>
+                           <th class="price-col">Price</th>
+                           <th class="quantity-col">Quantity</th>
+                           <th class="total-col">Total</th>
+                           <th class="remove-col"></th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <!-- Cart Item 1 -->
+                        <tr>
+                           <td class="product-col">
+                              <div class="cart-product">
+                                 <img src="img/products/waterbottle.jpg" alt="Popped Rice Crisps">
+                                 <div class="cart-product-name">
+                                    <a href="product-info.html?id=crisps1">Popped Rice Crisps</a>
+                                    <p class="product-category">Snacks</p>
+                                 </div>
+                              </div>
+                           </td>
+                           <td class="price-col">$130.00</td>
+                           <td class="quantity-col">
+                              <div class="quantity-selector">
+                                 <button class="quantity-minus">-</button>
+                                 <input type="number" value="1" min="1" max="10">
+                                 <button class="quantity-plus">+</button>
+                              </div>
+                           </td>
+                           <td class="total-col item-total">$130.00</td>
+                           <td class="remove-col">
+                              <button class="remove-item-btn"><i class="fas fa-times"></i></button>
+                           </td>
+                        </tr>
+                        <!-- Cart Item 2 -->
+                        <tr>
+                           <td class="product-col">
+                              <div class="cart-product">
+                                 <img src="img/products/shoe.jpg" alt="Stylish Running Shoe">
+                                 <div class="cart-product-name">
+                                    <a href="product-info.html?id=crisps2">Stylish Running Shoe</a>
+                                    <p class="product-category">Footwear</p>
+                                 </div>
+                              </div>
+                           </td>
+                           <td class="price-col">$250.00</td>
+                           <td class="quantity-col">
+                              <div class="quantity-selector">
+                                 <button class="quantity-minus">-</button>
+                                 <input type="number" value="2" min="1" max="10">
+                                 <button class="quantity-plus">+</button>
+                              </div>
+                           </td>
+                           <td class="total-col item-total">$500.00</td>
+                           <td class="remove-col">
+                              <button class="remove-item-btn"><i class="fas fa-times"></i></button>
+                           </td>
+                        </tr>
+                        <!-- Cart Item 3 -->
+                        <tr>
+                           <td class="product-col">
+                              <div class="cart-product">
+                                 <img src="img/products/bag.jpg" alt="Premium Leather Bag">
+                                 <div class="cart-product-name">
+                                    <a href="product-info.html?id=crisps3">Premium Leather Bag</a>
+                                    <p class="product-category">Accessories</p>
+                                 </div>
+                              </div>
+                           </td>
+                           <td class="price-col">$75.00</td>
+                           <td class="quantity-col">
+                              <div class="quantity-selector">
+                                 <button class="quantity-minus">-</button>
+                                 <input type="number" value="1" min="1" max="10">
+                                 <button class="quantity-plus">+</button>
+                              </div>
+                           </td>
+                           <td class="total-col item-total">$75.00</td>
+                           <td class="remove-col">
+                              <button class="remove-item-btn"><i class="fas fa-times"></i></button>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <div class="cart-actions">
+                  <a href="index.html" class="continue-shopping-btn"><i class="fas fa-arrow-left"></i> Continue Shopping</a>
+                  <button class="update-cart-btn"><a href="cart.html"><i class="fas fa-sync-alt"></i> Update Cart</a></button>
+               </div>
+               <div class="cart-summary">
+                  <div class="coupon-code-section">
+                     <h3>Coupon Code</h3>
+                     <p>Enter your coupon code if you have one.</p>
+                     <div class="coupon-form">
+                        <input type="text" placeholder="Coupon code">
+                        <button>Apply Coupon</button>
+                     </div>
+                  </div>
+                  <div class="cart-totals">
+                     <h3>Cart Totals</h3>
+                     <table>
+                        <tr>
+                           <td>Subtotal</td>
+                           <td>$705.00</td>
+                        </tr>
+                        <tr>
+                           <td>Shipping</td>
+                           <td>$15.00</td>
+                        </tr>
+                        <tr>
+                           <td>Total</td>
+                           <td>$720.00</td>
+                        </tr>
+                     </table>
+                     <a href="payment.html" class="proceed-to-checkout-btn">Proceed To Checkout</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </main>
+      <!-- Footer Newsletter -->
+      <section class="footer-newsletter">
+         <div class="container">
+            <p>Subscribe to the G-Shop <span class="highlight">New Arrivals</span> & Other Information.</p>
+            <div class="newsletter-form">
+               <input type="email" placeholder="Enter Email Address">
+               <button>Subscribe</button>
+            </div>
+         </div>
+      </section>
+      <!-- Footer Links -->
+      <footer class="footer-main">
+         <div class="container footer-links-grid">
+            <div class="footer-column category">
+               <h3>Category</h3>
+               <ul>
+                  <li><a href="#">Testimonials</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Location & Working Hours</a></li>
+                  <li><a href="#">Our Guarantee</a></li>
+                  <li><a href="#">Track Your Order</a></li>
+                  <li><a href="#">Help Page</a></li>
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h3>Quick Links</h3>
+               <ul>
+                  <li><a href="#">Your Account</a></li>
+                  <li><a href="#">Returns & Exchanges</a></li>
+                  <li><a href="#">Return Center</a></li>
+                  <li><a href="#">Purchase History</a></li>
+                  <li><a href="#">Latest News Blog</a></li>
+                  <li><a href="#">Shipping & Delivery</a></li>
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h3>Contact Us</h3>
+               <ul>
+                  <li><a href="#">Testimonials</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Location & Working Hours</a></li>
+                  <li><a href="#">Our Guarantee</a></li>
+                  <li><a href="#">Track Your Order</a></li>
+                  <li><a href="#">Help Page</a></li>
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h3>Customer Support</h3>
+               <ul>
+                  <li><a href="#">Your Account</a></li>
+                  <li><a href="#">Returns & Exchanges</a></li>
+                  <li><a href="#">Return Center</a></li>
+                  <li><a href="#">Purchase History</a></li>
+                  <li><a href="#">Latest News Blog</a></li>
+                  <li><a href="#">Shipping & Delivery</a></li>
+               </ul>
+            </div>
+         </div>
+         <p class="website-link">www.Jaiinfo.com</p>
+      </footer>
+      <!-- Bottom Footer -->
+      <div class="bottom-footer">
+         <div class="container">
+            <p>&copy; All rights reserved Made by <a href="javascript:void(0);">JAI</a></p>
+            <div class="footer-right">
+               <div class="logo">
+                  <img src="https://jaiinfo.tech/logo/logo_only.png" alt="Logo">
+                  <h1>Grostore</h1>
+               </div>
+               <div class="payment-icons">
+                  <i class="fab fa-cc-visa"></i>
+                  <i class="fab fa-cc-mastercard"></i>
+                  <i class="fab fa-cc-amazon-pay"></i>
+                  <i class="fab fa-cc-paypal"></i>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- Order Placed Animation Modal -->
+      <div class="order-placed-modal-overlay" id="order-placed-modal-overlay" aria-hidden="true">
+         <div class="order-placed-modal-content" role="dialog" aria-modal="true" aria-labelledby="order-success-title">
+            <button class="modal-close-btn" id="order-placed-modal-close"><i class="fas fa-times"></i></button>
+            <div class="checkmark-animation">
+               <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 id="order-success-title">Order Placed Successfully!</h3>
+            <p>Thank you for your purchase. Your order has been confirmed.</p>
+            <p>Order ID: <span id="modal-order-id" class="status-badge order-placed"></span></p>
+            <p>Estimated Delivery: <span id="modal-estimated-delivery"></span></p>
+            <div class="modal-actions">
+               <a href="#" id="modal-view-order-btn" class="auth-btn">View Order Details</a>
+               <a href="index.html" class="auth-btn secondary-btn">Continue Shopping</a>
+            </div>
+         </div>
+      </div>
+
+      <!-- Audio for Order Placed Notification -->
+      <audio id="orderPlacedSound" src="audio/order-placed-success.mp3" preload="auto"></audio>
+      
+      <script>
+         // Mobile Menu Toggle (Reused from cart.html)
+         const hamburgerMenu = document.getElementById('hamburger-menu');
+         const mainNav = document.getElementById('main-nav');
+         const mainNavCloseBtn = document.getElementById('main-nav-close');
+         const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+         
+         // Variable to store the timeout ID for stopping the sound loop
+         let soundLoopTimeoutId; 
+
+         function updateBodyScroll() {
+             const isAnyMenuOpen = mainNav.classList.contains('active') || orderPlacedModalOverlay.classList.contains('active');
+             document.body.classList.toggle('no-scroll', isAnyMenuOpen);
+             mobileMenuOverlay.classList.toggle('active', isAnyMenuOpen);
+         }
+         
+         function toggleMainMenu() {
+             mainNav.classList.toggle('active');
+             updateBodyScroll();
+         }
+         
+         hamburgerMenu.addEventListener('click', toggleMainMenu);
+         mainNavCloseBtn.addEventListener('click', toggleMainMenu);
+         
+         mobileMenuOverlay.addEventListener('click', () => {
+             // Close main nav if open
+             if (mainNav.classList.contains('active')) {
+                 toggleMainMenu();
+             }
+             // Close order placed modal if open
+             if (orderPlacedModalOverlay.classList.contains('active')) {
+                 closeOrderPlacedModal();
+             }
+         });
+         
+         // Quantity Selector functionality for cart items
+         document.querySelectorAll('.quantity-selector').forEach(selector => {
+             const minusBtn = selector.querySelector('.quantity-minus');
+             const plusBtn = selector.querySelector('.quantity-plus');
+             const input = selector.querySelector('input[type="number"]');
+         
+             minusBtn.addEventListener('click', () => {
+                 let value = parseInt(input.value);
+                 if (value > parseInt(input.min)) {
+                     input.value = value - 1;
+                     // In a real app: update cart totals, possibly send AJAX request
+                 }
+             });
+         
+             plusBtn.addEventListener('click', () => {
+                 let value = parseInt(input.value);
+                 if (value < parseInt(input.max)) { // Check against max if defined
+                     input.value = value + 1;
+                     // In a real app: update cart totals, possibly send AJAX request
+                 }
+                 });
+         
+             input.addEventListener('change', () => {
+                 let value = parseInt(input.value);
+                 if (isNaN(value) || value < parseInt(input.min)) {
+                     input.value = input.min;
+                 } else if (value > parseInt(input.max)) {
+                     input.value = input.max;
+                 }
+                 // In a real app: update cart totals, possibly send AJAX request
+             });
+         });
+         
+         // Remove item functionality (example)
+         document.querySelectorAll('.remove-item-btn').forEach(button => {
+             button.addEventListener('click', () => {
+                 if (confirm('Are you sure you want to remove this item?')) {
+                     button.closest('tr').remove();
+                     // In a real app: Implement actual cart update logic here
+                     // e.g., update totals, send AJAX request
+                 }
+             });
+         });
+
+         // --- Order Placed Modal Functionality ---
+         const proceedToCheckoutBtn = document.getElementById('proceed-to-checkout-btn');
+         const orderPlacedModalOverlay = document.getElementById('order-placed-modal-overlay');
+         const orderPlacedModalCloseBtn = document.getElementById('order-placed-modal-close');
+         const modalOrderId = document.getElementById('modal-order-id');
+         const modalEstimatedDelivery = document.getElementById('modal-estimated-delivery');
+         const modalViewOrderBtn = document.getElementById('modal-view-order-btn');
+         const orderPlacedSound = document.getElementById('orderPlacedSound'); // Get the audio element
+         
+         const LOOP_DURATION_MS = 2000; // 2 seconds
+         
+         function generateOrderId() {
+             const prefix = "GRO";
+             const randomNumber = Math.floor(10000 + Math.random() * 90000); // 5-digit number
+             return prefix + randomNumber;
+         }
+         
+         function getEstimatedDeliveryDate() {
+             const today = new Date();
+             today.setDate(today.getDate() + 3); // Estimate 3 days from now
+             const options = { year: 'numeric', month: 'long', day: 'numeric' };
+             return today.toLocaleDateString('en-US', options);
+         }
+         
+         function openOrderPlacedModal() {
+             const orderId = generateOrderId();
+             const estimatedDelivery = getEstimatedDeliveryDate();
+         
+             modalOrderId.textContent = orderId;
+             modalEstimatedDelivery.textContent = estimatedDelivery;
+             modalViewOrderBtn.href = `delivery-status.html?orderId=${orderId}`; // Link to delivery status page
+         
+             orderPlacedModalOverlay.classList.add('active');
+             orderPlacedModalOverlay.setAttribute('aria-hidden', 'false');
+             document.body.classList.add('no-scroll');
+             // Add 'open' class for animation
+             orderPlacedModalOverlay.querySelector('.order-placed-modal-content').classList.add('open');
+             
+             // Play the notification sound in a loop for 4 seconds
+             if (orderPlacedSound) {
+                 orderPlacedSound.loop = true; // Enable looping for the sound
+                 orderPlacedSound.currentTime = 0; // Ensure it starts from the beginning
+                 orderPlacedSound.play().catch(error => {
+                     console.warn("Autoplay prevented:", error);
+                 });
+         
+                 // Set a timeout to stop the sound after 4 seconds
+                 soundLoopTimeoutId = setTimeout(() => {
+                     orderPlacedSound.pause();
+                     orderPlacedSound.loop = false; // Disable loop after 4s
+                     orderPlacedSound.currentTime = 0; // Reset for next time
+                     soundLoopTimeoutId = null; // Clear the timeout ID
+                 }, LOOP_DURATION_MS); 
+             }
+         }
+         
+         function closeOrderPlacedModal() {
+             orderPlacedModalOverlay.classList.remove('active');
+             orderPlacedModalOverlay.setAttribute('aria-hidden', 'true');
+             document.body.classList.remove('no-scroll');
+             // Remove 'open' class
+             orderPlacedModalOverlay.querySelector('.order-placed-modal-content').classList.remove('open');
+             
+             // Pause and reset sound, and clear any pending loop timeout
+             if (orderPlacedSound) {
+                orderPlacedSound.pause();
+                orderPlacedSound.currentTime = 0;
+                orderPlacedSound.loop = false; // Ensure loop is off
+                if (soundLoopTimeoutId) {
+                    clearTimeout(soundLoopTimeoutId); // Stop the pending timeout
+                    soundLoopTimeoutId = null;
+                }
+             }
+         }
+         
+         proceedToCheckoutBtn.addEventListener('click', (e) => {
+             e.preventDefault(); // Prevent default link behavior
+             openOrderPlacedModal();
+             // In a real application, you'd send an AJAX request to process the order here.
+             // If successful, then open the modal. If not, show an error.
+         });
+         
+         orderPlacedModalCloseBtn.addEventListener('click', closeOrderPlacedModal);
+         
+         // Close modal if clicking outside the content (on the overlay itself)
+         orderPlacedModalOverlay.addEventListener('click', (e) => {
+             if (e.target === orderPlacedModalOverlay) {
+                 closeOrderPlacedModal();
+             }
+         });
+      </script>
+   </body>
+</html>

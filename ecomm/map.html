@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Grostore Shop</title>
+      <link rel="icon shortcut" href="https://jaiinfo.tech/logo/logo_only.png">
+      <link rel="stylesheet" href="style.css">
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <!-- Swiper CSS -->
+      <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+      <!-- Bootstrap Icons CDN -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+      <style>
+         /* Existing Swiper styles from your head section */
+         .swiper {
+         width: 100%;
+         height: 450px; /* Adjust banner height as needed */
+         }
+         .swiper-slide {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 22px;
+         font-weight: 700;
+         color: #fff;
+         background-color: #f0f0f0; /* Default background if image fails */
+         position: relative;
+         overflow: hidden;
+         }
+         .swiper-slide img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover; /* Cover the slide area */
+         position: absolute;
+         top: 0;
+         left: 0;
+         z-index: 1;
+         }
+         .swiper-slide .slide-content {
+         position: relative;
+         z-index: 2; /* Ensure content is above the image */
+         text-align: center;
+         padding: 20px;
+         background-color: rgba(0, 0, 0, 0.4); /* Overlay for text readability */
+         border-radius: 8px;
+         }
+         .swiper-slide h3 {
+         font-size: 2.5em;
+         margin-bottom: 10px;
+         color: #fff;
+         }
+         .swiper-slide p {
+         font-size: 1.2em;
+         color: #eee;
+         }
+         .swiper-button-next,
+         .swiper-button-prev {
+         color: var(--primary-color, #7fad39); /* Use a color that fits your theme */
+         --swiper-navigation-size: 30px;
+         }
+         .swiper-pagination-bullet-active {
+         background: var(--primary-color, #7fad39);
+         }
+         /* Responsive adjustments for Swiper */
+         @media (max-width: 768px) {
+         .swiper {
+         height: 250px;
+         }
+         .swiper-slide h3 {
+         font-size: 1.8em;
+         }
+         .swiper-slide p {
+         font-size: 1em;
+         }
+         .swiper-button-next,
+         .swiper-button-prev {
+         display: none; /* Hide navigation buttons on small screens */
+         }
+         }
+      </style>
+   </head>
+   <body>
+      <!-- Overlay for mobile menus -->
+      <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+      <!-- Top Bar -->
+      <div class="top-bar">
+         <div class="container welcome-bar">
+            <p>Welcome to our Organic store</p>
+            <div class="top-bar-info">
+               <span><i class="bi bi-envelope"></i> groshop@support.com</span>
+               <span><i class="bi bi-geo-alt"></i> Washington, New York, USA - 254230</span>
+               <div class="dropdown">
+                  <span><i class="bi bi-globe"></i> English <i class="fas fa-chevron-down"></i></span>
+                  <div class="dropdown-content">
+                     <a href="#">বাংলা</a>
+                     <a href="#">Español</a>
+                  </div>
+               </div>
+               <div class="dropdown">
+                  <span><i class="bi bi-currency-rupee"></i> USD <i class="fas fa-chevron-down"></i></span>
+                  <div class="dropdown-content">
+                     <a href="#">EUR</a>
+                     <a href="#">BDT</a>
+                  </div>
+               </div>
+               <a href="#" class="dark-mode-toggle"><i class="fas fa-moon"></i> Dark</a>
+            </div>
+         </div>
+      </div>
+      <!-- Header Main -->
+      <header class="header-main">
+         <div class="container">
+            <div class="logo">
+               <img src="https://jaiinfo.tech/logo/logo_only.png" alt="Grostore Logo">
+               <h1>Grostore</h1>
+            </div>
+            <nav class="main-nav" id="main-nav">
+               <div class="nav-close-btn desktop-hidden" id="main-nav-close">
+                  <i class="fas fa-times"></i>
+               </div>
+               <div class="mobile-menu-logo">
+                  <img src="https://jaiinfo.tech/logo/logo_only.png" alt="Logo">
+               </div>
+               <a href="index.html">Home</a>
+               <a href="index.html">Products</a>
+               <a href="#">Blog</a>
+               <a href="#">pages</a>
+            </nav>
+            <div class="header-actions">
+               <a href="#" class="mobile-hidden-icon"><i class="bi bi-search"></i></a>
+               <a href="#" class="mobile-hidden-icon"><i class="bi bi-bag"></i></a>
+               <span class="mobile-hidden-icon"><i class="bi bi-telephone"></i> +80 157 058 4567</span>
+               <!-- Added Get Location Button for Demo -->
+               <a href="#" class="mobile-hidden-icon" id="get_location"><i class="bi bi-geo-alt-fill"></i> Get Location</a>
+               <button class="hamburger-menu desktop-hidden" id="hamburger-menu">
+               <i class="bi bi-list"></i>
+               </button>
+            </div>
+         </div>
+      </header>
+      <section class="banner-carousel">
+         <div class="container-fluid">
+            <div class="swiper mySwiper">
+               <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                     <img src="img/banner/banner-2.jpg" alt="Seasonal Vegetables">
+                  </div>
+                  <div class="swiper-slide">
+                     <img src="img/banner/banner-3.jpg" alt="Delicious Fruits">
+                  </div>
+                  <div class="swiper-slide">
+                     <img src="img/banner/banner-1.jpg" alt="Organic Groceries">
+                  </div>
+               </div>
+               <!-- Add Pagination -->
+               <div class="swiper-pagination"></div>
+               <!-- Add Navigation (Next/Prev buttons) -->
+               <div class="swiper-button-next"></div>
+               <div class="swiper-button-prev"></div>
+            </div>
+         </div>
+      </section>
+      <!-- Main Content Area -->
+      <main class="shop-content">
+         <!-- Sidebar -->
+         <aside class="sidebar" id="filter-sidebar">
+            <div class="sidebar-content" id="sidebar-content">
+               <div class="nav-close-btn desktop-hidden" id="filter-sidebar-close">
+                  <i class="fas fa-times"></i>
+               </div>
+               <div class="widget">
+                  <h3>Search Now</h3>
+                  <div class="search-box">
+                     <input type="text" placeholder="Search product...">
+                     <button><i class="fas fa-search"></i></button>
+                  </div>
+               </div>
+               <div class="widget">
+                  <h3>Categories</h3>
+                  <ul>
+                     <li><a href="#">Apples <span>08</span></a></li>
+                     <li><a href="#">Avocados <span>06</span></a></li>
+                     <li><a href="#">Dried Fruits & Nuts <span>10</span></a></li>
+                     <li><a href="#">Coffee <span>11</span></a></li>
+                     <li><a href="#">Juice Drinks <span>15</span></a></li>
+                     <li><a href="#">Fresh Fish <span>18</span></a></li>
+                  </ul>
+               </div>
+               <div class="widget">
+                  <h3>Filter by Price</h3>
+                  <div class="price-range">
+                     <div class="slider-track"></div>
+                     <input type="range" min="0" max="10000" value="0" id="min-price-slider">
+                     <input type="range" min="0" max="10000" value="10000" id="max-price-slider">
+                     <div class="range-display">
+                        <span>$0</span> - <span>$10000</span>
+                     </div>
+                     <button class="filter-btn">Filter</button>
+                  </div>
+               </div>
+               <div class="widget">
+                  <h3>Rating</h3>
+                  <ul>
+                     <li><a href="#"><span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span> <span>48</span></a></li>
+                     <li><a href="#"><span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span> <span>14</span></a></li>
+                     <li><a href="#"><span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span> <span>36</span></a></li>
+                     <li><a href="#"><span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span> <span>24</span></a></li>
+                  </ul>
+               </div>
+               <div class="widget">
+                  <h3>Tags</h3>
+                  <div class="tags">
+                     <a href="#">Vegetable</a>
+                     <a href="#">Healthy</a>
+                     <a href="#">Meat</a>
+                     <a href="#">Organic</a>
+                     <a href="#">Nature</a>
+                     <a href="#">food</a>
+                     <a href="#">bd food</a>
+                     <a href="#">fish</a>
+                     <a href="#">vegetable</a>
+                  </div>
+               </div>
+               <div class="widget best-selling">
+                  <h3>Best Selling</h3>
+                  <div class="product-item">
+                     <img src="img/products/waterbottle.jpg" alt="Strawberry juice">
+                     <div class="info">
+                        <h4>Strawberry juice</h4>
+                        <p>Fruit</p>
+                        <span class="price">$140.00</span>
+                        <span class="stars small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                     </div>
+                  </div>
+                  <div class="product-item">
+                     <img src="img/products/watch.jpg" alt="Plum juice">
+                     <div class="info">
+                        <h4>Bolt</h4>
+                        <p>Watch</p>
+                        <span class="price">$140.00</span>
+                        <span class="stars small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                     </div>
+                  </div>
+                  <div class="product-item">
+                     <img src="img/products/bag.jpg" alt="Lime juice">
+                     <div class="info">
+                        <h4>Lime juice</h4>
+                        <p>Fruit</p>
+                        <span class="price">$140.00</span>
+                        <span class="stars small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                     </div>
+                  </div>
+                  <div class="product-item">
+                     <img src="img/products/glass.jpg" alt="Banana juice">
+                     <div class="info">
+                        <h4>Banana juice</h4>
+                        <p>Fruit</p>
+                        <span class="price">$140.00</span>
+                        <span class="stars small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </aside>
+         <!-- Product Listing -->
+         <section class="product-listing">
+            <div class="listing-header">
+               <p>Showing 1-12 of 45 results</p>
+               <div class="listing-controls">
+                  <span>
+                     Show: 
+                     <select id="show-products-select">
+                        <option value="12">12</option>
+                        <option value="16">16</option>
+                        <option value="24">24</option>
+                        <option value="32">32</option>
+                     </select>
+                  </span>
+                  <span>
+                     Sort by: 
+                     <select id="sort-by-select">
+                        <option value="news-first">News First</option>
+                        <option value="price-low-to-high">Price: Low to High</option>
+                        <option value="price-high-to-low">Price: High to Low</option>
+                     </select>
+                  </span>
+                  <!-- Uncommented grid/list view toggles -->
+                  <a href="javascript:void(0);" class="view-toggle active" id="grid-view-toggle"><i class="fas fa-th"></i></a>
+                  <a href="javascript:void(0);" class="desktop-hidden filter-sidebar-icon" id="toggle-filters-btn"><i class="bi bi-funnel"></i></a>
+                  <a href="javascript:void(0);" class="view-toggle" id="list-view-toggle"><i class="fas fa-list"></i></a>
+               </div>
+            </div>
+            <div class="product-grid" id="product-grid">
+               <!-- Product Card 1 -->
+               <div class="product-card">
+                  <a href="product-info.html?id=crisps1">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/waterbottle.jpg" alt="Essence Mascara Lash Princess" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps1">
+                        <h4>Popped Rice Crisps</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 2 -->
+               <div class="product-card">
+                  <a href="product-info.html?id=crisps2">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/shoe.jpg" alt="Product 4" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps2">
+                        <h4>Popped Rice Crisps .</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 3 -->
+               <div class="product-card">
+                  <span class="discount-badge">-12% OFF</span>
+                  <a href="product-info.html?id=crisps3">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/keyboard.jpg" alt="Product 10" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps3">
+                        <h4>Popped Rice Crisps .</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 4 -->
+               <div class="product-card">
+                  <a href="product-info.html?id=crisps4">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/chair.jpg" alt="Product 10" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps4">
+                        <h4>Popped Rice Crisps .</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 5 -->
+               <div class="product-card">
+                  <a href="product-info.html?id=crisps5">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/tv.jpg" alt="Product 10" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps5">
+                        <h4>Popped Rice Crisps .</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 6 -->
+               <div class="product-card">
+                  <span class="discount-badge">-12% OFF</span>
+                  <a href="product-info.html?id=crisps6">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/sunscream.jpg" alt="Product 10" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps6">
+                        <h4>Popped Rice Crisps .</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 7 -->
+               <div class="product-card">
+                  <a href="product-info.html?id=crisps7">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/bat.jpg" alt="Product 10" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps7">
+                        <h4>Popped Rice Crisps Snacks</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 8 -->
+               <div class="product-card">
+                  <a href="product-info.html?id=crisps8">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/bag.jpg" alt="Product 10" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps8">
+                        <h4>Popped Rice Crisps Snacks</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 9 -->
+               <div class="product-card">
+                  <a href="product-info.html?id=crisps9">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/tshirt.jpg" alt="Product 10" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps9">
+                        <h4>Popped Rice Crisps Snacks</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 10 -->
+               <div class="product-card">
+                  <span class="discount-badge">-12% OFF</span>
+                  <a href="product-info.html?id=crisps10">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/watch.jpg" alt="Product 10" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps10">
+                        <h4>Popped Rice Crisps Snacks.</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 11 -->
+               <div class="product-card">
+                  <a href="product-info.html?id=crisps11">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/speaker.jpg" alt="Product 10" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps11">
+                        <h4>Popped Rice Crisps Snacks.</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 12 -->
+               <div class="product-card">
+                  <a href="product-info.html?id=crisps12">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/spray.jpg" alt="Product 10" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps12">
+                        <h4>Popped Rice Crisps Snacks.</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="pagination">
+               <a href="javascript:void(0)" class="active">1</a>
+               <a href="javascript:void(0)">2</a>
+               <a href="javascript:void(0)">3</a>
+               <a href="javascript:void(0)"><i class="fas fa-arrow-right"></i></a>
+            </div>
+         </section>
+      </main>
+      <!-- Footer Newsletter -->
+      <section class="footer-newsletter">
+         <div class="container">
+            <p>Subscribe to the G-Shop <span class="highlight">New Arrivals</span> & Other Information.</p>
+            <div class="newsletter-form">
+               <input type="email" placeholder="Enter Email Address">
+               <button>Subscribe</button>
+            </div>
+         </div>
+      </section>
+      <!-- Footer Links -->
+      <footer class="footer-main">
+         <div class="container footer-links-grid">
+            <div class="footer-column category">
+               <h3>Category</h3>
+               <ul>
+                  <li><a href="#">Testimonials</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Location & Working Hours</a></li>
+                  <li><a href="#">Our Guarantee</a></li>
+                  <li><a href="#">Track Your Order</a></li>
+                  <li><a href="#">Help Page</a></li>
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h3>Quick Links</h3>
+               <ul>
+                  <li><a href="#">Your Account</a></li>
+                  <li><a href="#">Returns & Exchanges</a></li>
+                  <li><a href="#">Return Center</a></li>
+                  <li><a href="#">Purchase History</a></li>
+                  <li><a href="#">Latest News Blog</a></li>
+                  <li><a href="#">Shipping & Delivery</a></li>
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h3>Contact Us</h3>
+               <ul>
+                  <li><a href="#">Testimonials</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Location & Working Hours</a></li>
+                  <li><a href="#">Our Guarantee</a></li>
+                  <li><a href="#">Track Your Order</a></li>
+                  <li><a href="#">Help Page</a></li>
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h3>Customer Support</h3>
+               <ul>
+                  <li><a href="#">Your Account</a></li>
+                  <li><a href="#">Returns & Exchanges</a></li>
+                  <li><a href="#">Return Center</a></li>
+                  <li><a href="#">Purchase History</a></li>
+                  <li><a href="#">Latest News Blog</a></li>
+                  <li><a href="#">Shipping & Delivery</a></li>
+               </ul>
+            </div>
+         </div>
+         <p class="website-link">www.Jaiinfo.com</p>
+      </footer>
+      <!-- Bottom Footer -->
+      <div class="bottom-footer">
+         <div class="container">
+            <p>&copy; All rights reserved Made by <a href="javascript:void(0);">JAI</a></p>
+            <div class="footer-right">
+               <div class="logo">
+                  <img src="https://jaiinfo.tech/logo/logo_only.png" alt="Logo">
+                  <h1>Grostore</h1>
+               </div>
+               <div class="payment-icons">
+                  <i class="fab fa-cc-visa"></i>
+                  <i class="fab fa-cc-mastercard"></i>
+                  <i class="fab fa-cc-amazon-pay"></i>
+                  <i class="fab fa-cc-paypal"></i>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- Chat Bot Icon -->
+      <div class="chat-icon-wrapper" id="chat-icon-wrapper">
+         <button class="chat-icon" id="chat-icon" aria-label="Open chat with Grostore Support">
+         <i class="fas fa-comments"></i>
+         </button>
+      </div>
+
+      <!-- Chat Bot Window -->
+      <div class="chat-window" id="chat-window" role="dialog" aria-modal="true" aria-labelledby="chat-header-title" aria-hidden="true">
+         <div class="chat-header">
+            <h3 id="chat-header-title">Grostore AI Support</h3>
+            <button class="chat-close-btn" id="chat-close-btn" aria-label="Close chat window">&times;</button>
+         </div>
+         <div class="chat-messages" id="chat-messages" aria-live="polite">
+            <!-- Initial bot message will be injected here by JS -->
+         </div>
+         <div class="chat-input-area">
+            <input type="text" id="user-input" placeholder="Type your message..." aria-label="Type your message">
+            <button id="send-button" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
+         </div>
+      </div>
+
+      <!-- Location Map Modal -->
+      <div class="location-map-modal-overlay" id="location-map-modal-overlay" aria-hidden="true">
+         <div class="location-map-modal-content" role="dialog" aria-modal="true" aria-labelledby="location-map-title">
+            <button class="modal-map-close" id="modal-map-close" aria-label="Close map modal">&times;</button>
+            <h3 id="location-map-title">Your Current Location</h3>
+            <div id="map-canvas" class="map-canvas"></div>
+            <p id="location-info"></p>
+         </div>
+      </div>
+
+
+      <!-- Google Maps API Script -->
+      <!-- REPLACE YOUR_API_KEY with your actual Google Maps API Key -->
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCg9mE-ebEXNj2oDLZVatdOcqvS7GiRohg&callback=initializeGoogleMap"></script>
+      <!-- Swiper JS -->
+      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+      <script>
+         // Swiper Initialization
+         const swiper = new Swiper(".mySwiper", {
+             loop: true, // Enable infinite loop
+             autoplay: {
+                 delay: 2000, // Slide changes every 5 seconds
+                 disableOnInteraction: false, // Continue autoplay after user interaction
+             },
+             pagination: {
+                 el: ".swiper-pagination",
+                 clickable: true,
+             },
+             navigation: { // Added for prev/next buttons
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+         });
+
+         // --- Mobile Menu Toggle --- (Reused from previous code)
+         const hamburgerMenu = document.getElementById('hamburger-menu');
+         const mainNav = document.getElementById('main-nav');
+         const mainNavCloseBtn = document.getElementById('main-nav-close');
+         const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+         
+         // Sidebar Filters Toggle for Mobile (if applicable)
+         const toggleFiltersBtn = document.getElementById('toggle-filters-btn');
+         const sidebarContent = document.getElementById('sidebar-content');
+         const filterSidebarCloseBtn = document.getElementById('filter-sidebar-close');
+         
+         function updateBodyScroll() {
+             const isAnyMenuOpen = mainNav.classList.contains('active') || 
+                                   (sidebarContent && sidebarContent.classList.contains('active')) ||
+                                   locationMapModalOverlay.classList.contains('active'); // Added map modal overlay
+             document.body.classList.toggle('no-scroll', isAnyMenuOpen);
+             mobileMenuOverlay.classList.toggle('active', isAnyMenuOpen);
+         }
+         
+         function toggleMainMenu() {
+             mainNav.classList.toggle('active');
+             updateBodyScroll();
+         }
+         
+         hamburgerMenu.addEventListener('click', toggleMainMenu);
+         mainNavCloseBtn.addEventListener('click', toggleMainMenu);
+         
+         if (toggleFiltersBtn) { // Check if filter button exists on the page
+             toggleFiltersBtn.addEventListener('click', toggleFilterSidebar);
+             filterSidebarCloseBtn.addEventListener('click', toggleFilterSidebar);
+             function toggleFilterSidebar() {
+                 sidebarContent.classList.toggle('active');
+                 updateBodyScroll();
+             }
+         }
+         
+         mobileMenuOverlay.addEventListener('click', () => {
+             if (mainNav.classList.contains('active')) {
+                 toggleMainMenu();
+             }
+             if (sidebarContent && sidebarContent.classList.contains('active')) {
+                 toggleFilterSidebar();
+             }
+             if (locationMapModalOverlay.classList.contains('active')) { // Close map modal
+                 closeMapModal();
+             }
+         });
+         
+         // --- Price Slider functionality --- (Reused from previous code)
+         const minPriceSlider = document.getElementById('min-price-slider');
+         const maxPriceSlider = document.getElementById('max-price-slider');
+         const rangeDisplaySpans = document.querySelectorAll('.price-range .range-display span');
+         
+         function updatePriceDisplay() {
+             if (minPriceSlider && maxPriceSlider && rangeDisplaySpans.length === 2) {
+                 rangeDisplaySpans[0].textContent = `$${minPriceSlider.value}`;
+                 rangeDisplaySpans[1].textContent = `$${maxPriceSlider.value}`;
+             }
+         }
+         if (minPriceSlider && maxPriceSlider) {
+             minPriceSlider.addEventListener('input', updatePriceDisplay);
+             maxPriceSlider.addEventListener('input', updatePriceDisplay);
+             updatePriceDisplay(); // Initial update
+         }
+
+         // --- Product Listing Functionality (Show & Sort By) --- (Reused from previous code)
+         const showProductsSelect = document.getElementById('show-products-select');
+         const sortBySelect = document.getElementById('sort-by-select');
+         const productGrid = document.getElementById('product-grid');
+         let productCards = Array.from(productGrid ? productGrid.querySelectorAll('.product-card') : []); 
+         
+         function updateDisplayedProducts() {
+             if (productGrid && showProductsSelect) {
+                 const productsToShow = parseInt(showProductsSelect.value);
+                 productCards.forEach((card, index) => {
+                     if (index < productsToShow) {
+                         card.style.display = 'flex';
+                     } else {
+                         card.style.display = 'none';
+                     }
+                 });
+             }
+         }
+         
+         function sortProductCards() {
+             if (productGrid && sortBySelect) {
+                 const sortOption = sortBySelect.value;
+                 productCards = Array.from(productGrid.querySelectorAll('.product-card'));
+         
+                 productCards.sort((a, b) => {
+                     const priceA = parseFloat(a.querySelector('.product-info .price').textContent.replace('$', ''));
+                     const priceB = parseFloat(b.querySelector('.product-info .price').textContent.replace('$', ''));
+                     const titleA = a.querySelector('.product-info h4').textContent.toLowerCase();
+                     const titleB = b.querySelector('.product-info h4').textContent.toLowerCase();
+             
+                     switch (sortOption) {
+                         case 'price-low-to-high': return priceA - priceB;
+                         case 'price-high-to-low': return priceB - priceA;
+                         case 'news-first': return 0;
+                         default: return 0;
+                     }
+                 });
+                 productCards.forEach(card => productGrid.appendChild(card));
+                 updateDisplayedProducts();
+             }
+         }
+         
+         const gridViewToggle = document.getElementById('grid-view-toggle');
+         const listViewToggle = document.getElementById('list-view-toggle');
+         
+         if (gridViewToggle) {
+             gridViewToggle.addEventListener('click', (e) => {
+                 e.preventDefault();
+                 listViewToggle.classList.remove('active');
+                 gridViewToggle.classList.add('active');
+                 productGrid.classList.remove('list-view');
+             });
+         }
+         if (listViewToggle) {
+             listViewToggle.addEventListener('click', (e) => {
+                 e.preventDefault();
+                 gridViewToggle.classList.remove('active');
+                 listViewToggle.classList.add('active');
+                 productGrid.classList.add('list-view');
+             });
+         }
+         
+         // Initial display and sort on page load
+         if (productGrid) { // Only run if product grid exists
+             updateDisplayedProducts();
+             sortProductCards();
+         }
+         
+         // --- Chat Bot Functionality --- (Reused from previous code)
+         const chatIconWrapper = document.getElementById('chat-icon-wrapper');
+         const chatIcon = document.getElementById('chat-icon');
+         const chatWindow = document.getElementById('chat-window');
+         const chatCloseBtn = document.getElementById('chat-close-btn');
+         const chatMessages = document.getElementById('chat-messages');
+         const userInput = document.getElementById('user-input');
+         const sendButton = document.getElementById('send-button');
+         
+         let isChatOpen = false;
+         
+         function appendMessage(sender, text) {
+             const messageDiv = document.createElement('div');
+             messageDiv.classList.add('chat-message', `${sender}-message`);
+             messageDiv.textContent = text;
+             chatMessages.appendChild(messageDiv);
+             scrollToBottom();
+         }
+         
+         function showTypingIndicator() {
+             const typingDiv = document.createElement('div');
+             typingDiv.classList.add('chat-message', 'bot-typing');
+             typingDiv.innerHTML = '<span></span><span></span><span></span>';
+             chatMessages.appendChild(typingDiv);
+             scrollToBottom();
+             return typingDiv;
+         }
+         
+         function removeTypingIndicator(indicator) {
+             if (indicator && indicator.parentNode) {
+                 indicator.parentNode.removeChild(indicator);
+             }
+         }
+         
+         function getBotResponse(userMessage) {
+             const lowerCaseMessage = userMessage.toLowerCase();
+             let botResponse = "I'm sorry, I don't understand that request. Can you please rephrase or ask about topics like 'order status', 'shipping', 'returns', 'products', or 'contact'?";
+             const typingIndicator = showTypingIndicator();
+         
+             setTimeout(() => { // Simulate AI processing time
+                 removeTypingIndicator(typingIndicator);
+         
+                 if (lowerCaseMessage.includes("hello") || lowerCaseMessage.includes("hi")) {
+                     botResponse = "Hello there! How can I assist you with your Grostore experience?";
+                 } else if (lowerCaseMessage.includes("order status") || lowerCaseMessage.includes("track order")) {
+                     botResponse = "To track your order, please provide your order ID. You can also visit our <a href='delivery-status.html' target='_blank'>Order Tracking page</a>.";
+                 } else if (lowerCaseMessage.includes("shipping") || lowerCaseMessage.includes("delivery")) {
+                     botResponse = "Our standard shipping takes 3-5 business days. For more details on delivery zones and costs, please check our <a href='#' target='_blank'>Shipping Policy</a>.";
+                 } else if (lowerCaseMessage.includes("return") || lowerCaseMessage.includes("refund")) {
+                     botResponse = "For returns or refunds, please visit our <a href='#' target='_blank'>Returns & Exchange page</a>. Make sure to check our policy requirements.";
+                 } else if (lowerCaseMessage.includes("products") || lowerCaseMessage.includes("items") || lowerCaseMessage.includes("shop")) {
+                     botResponse = "We offer a wide range of organic groceries, fresh produce, and household essentials. You can explore our categories on the <a href='index.html' target='_blank'>Products page</a>!";
+                 } else if (lowerCaseMessage.includes("contact") || lowerCaseMessage.includes("support")) {
+                     botResponse = "You can reach our customer support team via email at groshop@support.com or by calling +80 157 058 4567 during business hours.";
+                 } else if (lowerCaseMessage.includes("thank you") || lowerCaseMessage.includes("thanks")) {
+                     botResponse = "You're welcome! Is there anything else I can help you with?";
+                 }
+         
+                 const botMessageDiv = document.createElement('div');
+                 botMessageDiv.classList.add('chat-message', 'bot-message');
+                 botMessageDiv.innerHTML = botResponse;
+                 chatMessages.appendChild(botMessageDiv);
+                 scrollToBottom();
+         
+             }, 1000 + Math.random() * 1000); // Simulate 1-2 seconds response time
+         }
+         
+         function sendMessage() {
+             const userText = userInput.value.trim();
+             if (userText === "") return;
+         
+             appendMessage('user', userText);
+             userInput.value = '';
+             getBotResponse(userText);
+         }
+         
+         function scrollToBottom() {
+             chatMessages.scrollTop = chatMessages.scrollHeight;
+         }
+         
+         chatIcon.addEventListener('click', () => {
+             isChatOpen = !isChatOpen;
+             chatWindow.classList.toggle('open', isChatOpen);
+             chatWindow.setAttribute('aria-hidden', !isChatOpen);
+             chatIconWrapper.style.display = isChatOpen ? 'none' : 'block';
+         
+             if (isChatOpen) {
+                 userInput.focus();
+                 if (chatMessages.children.length === 0) {
+                     appendMessage("bot", "Hello! I'm your Grostore AI assistant. How can I help you today?");
+                     appendMessage("bot", "You can ask me about: 'order status', 'shipping', 'returns', 'products', or 'contact'.");
+                 }
+                 scrollToBottom();
+             } else {
+                 setTimeout(() => { chatIconWrapper.style.display = 'block'; }, 300);
+             }
+             document.body.classList.toggle('no-scroll', isChatOpen && window.innerWidth <= 768);
+         });
+         
+         chatCloseBtn.addEventListener('click', () => {
+             isChatOpen = false;
+             chatWindow.classList.remove('open');
+             chatWindow.setAttribute('aria-hidden', 'true');
+             setTimeout(() => { chatIconWrapper.style.display = 'block'; }, 300);
+             document.body.classList.remove('no-scroll');
+         });
+         
+         sendButton.addEventListener('click', sendMessage);
+         userInput.addEventListener('keypress', (event) => {
+             if (event.key === 'Enter') {
+                 sendMessage();
+             }
+         });
+         
+         document.addEventListener('DOMContentLoaded', () => {
+             if (window.innerWidth > 768) {
+                 chatWindow.classList.remove('open');
+                 chatWindow.setAttribute('aria-hidden', 'true');
+                 chatIconWrapper.style.display = 'block';
+             } else {
+                 if (isChatOpen) {
+                     chatIconWrapper.style.display = 'none';
+                 }
+             }
+         });
+         
+         // --- Location Map Modal Functionality ---
+         const get_location_btn = document.getElementById('get_location');
+         const locationMapModalOverlay = document.getElementById('location-map-modal-overlay');
+         const modalMapCloseBtn = document.getElementById('modal-map-close');
+         const mapCanvas = document.getElementById('map-canvas');
+         const locationInfo = document.getElementById('location-info');
+         
+         let currentMap = null; // To store the Google Map instance
+         
+         function openMapModal() {
+             locationMapModalOverlay.classList.add('active');
+             locationMapModalOverlay.setAttribute('aria-hidden', 'false');
+             document.body.classList.add('no-scroll');
+             // Add 'open' class for animation
+             locationMapModalOverlay.querySelector('.location-map-modal-content').classList.add('open');
+         }
+         
+         function closeMapModal() {
+             locationMapModalOverlay.classList.remove('active');
+             locationMapModalOverlay.setAttribute('aria-hidden', 'true');
+             document.body.classList.remove('no-scroll');
+             // Remove 'open' class
+             locationMapModalOverlay.querySelector('.location-map-modal-content').classList.remove('open');
+             locationInfo.textContent = ''; // Clear location info
+             currentMap = null; // Clear map instance to re-initialize on next open
+         }
+         
+         // This function is globally exposed for Google Maps API callback
+         window.initializeGoogleMap = function(latitude, longitude) {
+             // If latitude/longitude are not passed, it means the API called it, not our geo-location.
+             // We delay map init until geolocation is successful.
+             if (typeof latitude === 'number' && typeof longitude === 'number') {
+                 const userLatlng = { lat: latitude, lng: longitude };
+         
+                 // Ensure map canvas has dimensions before initializing
+                 if (mapCanvas && mapCanvas.offsetWidth > 0 && mapCanvas.offsetHeight > 0) {
+                     currentMap = new google.maps.Map(mapCanvas, {
+                         zoom: 15,
+                         center: userLatlng,
+                         mapTypeId: 'roadmap' // Can be 'roadmap', 'satellite', 'hybrid', 'terrain'
+                     });
+         
+                     new google.maps.Marker({
+                         position: userLatlng,
+                         map: currentMap,
+                         title: 'Your Location'
+                     });
+         
+                     // Optional: Reverse Geocoding to get a readable address
+                     const geocoder = new google.maps.Geocoder();
+                     geocoder.geocode({ 'location': userLatlng }, (results, status) => {
+                         if (status === 'OK' && results[0]) {
+                             locationInfo.textContent = `Address: ${results[0].formatted_address}`;
+                         } else {
+                             locationInfo.textContent = `Latitude: ${latitude}, Longitude: ${longitude}`;
+                             console.warn('Geocoder failed due to: ' + status);
+                         }
+                     });
+                 } else {
+                     console.warn("Map canvas not ready or visible for initialization.");
+                 }
+             }
+         };
+         
+         function requestLocationAndOpenMap() {
+             if (navigator.geolocation) {
+                 locationInfo.textContent = 'Getting your location...';
+                 openMapModal(); // Open modal first with a loading message
+         
+                 navigator.geolocation.getCurrentPosition(
+                     (position) => {
+                         const latitude = position.coords.latitude;
+                         const longitude = position.coords.longitude;
+                         locationInfo.textContent = 'Location found!';
+                         // Now initialize the map with the obtained coordinates
+                         // Check if Google Maps API is loaded (window.google.maps)
+                         if (window.google && window.google.maps) {
+                             initializeGoogleMap(latitude, longitude);
+                         } else {
+                             // Fallback if API not yet loaded (should be rare with async defer + callback)
+                             // You might add a deferred call or a spinner here.
+                             locationInfo.textContent = 'Google Maps API still loading... Please try again shortly.';
+                             console.warn("Google Maps API not yet loaded when geolocation succeeded.");
+                         }
+                     },
+                     (error) => {
+                         closeMapModal(); // Close modal on error
+                         let errorMessage = 'Unable to retrieve your location.';
+                         switch (error.code) {
+                             case error.PERMISSION_DENIED:
+                                 errorMessage = 'Geolocation permission denied. Please allow location access in your browser settings.';
+                                 break;
+                             case error.POSITION_UNAVAILABLE:
+                                 errorMessage = 'Location information is unavailable.';
+                                 break;
+                             case error.TIMEOUT:
+                                 errorMessage = 'The request to get user location timed out.';
+                                 break;
+                             case error.UNKNOWN_ERROR:
+                                 errorMessage = 'An unknown error occurred.';
+                                 break;
+                         }
+                         alert(errorMessage);
+                         console.error('Geolocation Error:', error);
+                     },
+                     {
+                         enableHighAccuracy: true,
+                         timeout: 10000, // 10 seconds
+                         maximumAge: 0 // No cached position
+                     }
+                 );
+             } else {
+                 alert('Geolocation is not supported by your browser.');
+             }
+         }
+         
+         // Event Listener for your get_location button
+         if (get_location_btn) {
+             get_location_btn.addEventListener('click', (e) => {
+                 e.preventDefault(); // Prevent default link behavior
+                 requestLocationAndOpenMap();
+             });
+         }
+         
+         modalMapCloseBtn.addEventListener('click', closeMapModal);
+         
+         locationMapModalOverlay.addEventListener('click', (e) => {
+             if (e.target === locationMapModalOverlay) {
+                 closeMapModal();
+             }
+         });
+         
+         // Ensure the Google Map is resized if the modal opens after it's loaded
+         // This is important if the map was initialized when its container was hidden.
+         document.addEventListener('resize', () => {
+             if (currentMap && locationMapModalOverlay.classList.contains('active')) {
+                 google.maps.event.trigger(currentMap, 'resize');
+                 currentMap.setCenter(currentMap.getCenter()); // Recenter the map
+             }
+         });
+      </script>
+   </body>
+</html>

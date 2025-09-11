@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Payment - Grostore</title>
+      <link rel="icon shortcut" href="https://jaiinfo.tech/logo/logo_only.png">
+      <link rel="stylesheet" href="style.css">
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <!-- Bootstrap Icons CDN -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+   </head>
+   <body>
+      <!-- Overlay for mobile menus -->
+      <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+      <!-- Top Bar -->
+      <div class="top-bar">
+         <div class="container welcome-bar">
+            <p>Welcome to our Organic store</p>
+            <div class="top-bar-info">
+               <span><i class="bi bi-envelope"></i> groshop@support.com</span>
+               <span><i class="bi bi-geo-alt"></i> Washington, New York, USA - 254230</span>
+               <div class="dropdown">
+                  <span><i class="bi bi-globe"></i> English <i class="fas fa-chevron-down"></i></span>
+                  <div class="dropdown-content">
+                     <a href="#">বাংলা</a>
+                     <a href="#">Español</a>
+                  </div>
+               </div>
+               <div class="dropdown">
+                  <span><i class="bi bi-currency-rupee"></i> USD <i class="fas fa-chevron-down"></i></span>
+                  <div class="dropdown-content">
+                     <a href="#">EUR</a>
+                     <a href="#">BDT</a>
+                  </div>
+               </div>
+               <a href="#" class="dark-mode-toggle"><i class="fas fa-moon"></i> Dark</a>
+            </div>
+         </div>
+      </div>
+          <!-- Header Main -->
+      <header class="header-main">
+         <div class="container">
+                <a href="index.html">
+                    <div class="logo">
+                        <img src="https://jaiinfo.tech/logo/logo_only.png" alt="Grostore Logo">
+                        <h1>Grostore</h1>
+                    </div>
+                 </a>
+
+            <nav class="main-nav" id="main-nav">
+               <div class="nav-close-btn desktop-hidden" id="main-nav-close">
+                  <i class="fas fa-times"></i>
+               </div>
+               <div class="mobile-menu-logo">
+                  <img src="https://jaiinfo.tech/logo/logo_only.png" alt="Logo">
+               </div>
+               <a href="order-list.html">Orders</a>
+               <a href="wishlist.html">Wishlist</a>
+               <a href="settings.html">Settings</a>
+               <a href="#">pages</a>
+            </nav>
+            <div class="header-actions">
+               <!-- <a href="#" class="mobile-hidden-icon"><i class="bi bi-search"></i></a> -->
+               <a href="wishlist.html" class="mobile-hidden-icon"><i class="bi bi-heart"></i></a>               
+               <a href="order-list.html"class="mobile-hidden-icon"><i class="bi bi-bag"></i></a>
+               <a href="order-list.html"class="mobile-hidden-icon"><i class="bi bi-gear"></i></a>
+               <!-- <span class="mobile-hidden-icon"><i class="bi bi-telephone"></i> +80 157 058 4567</span> -->
+                <button class="login-btn"><a href="login.html"><i class="bi bi-box-arrow-in-left"></i>Login</a></button>
+               <button class="hamburger-menu desktop-hidden" id="hamburger-menu">
+               <i class="bi bi-list"></i>
+               </button>
+            </div>
+         </div>
+      </header>
+      <!-- Main Content Area for Payment -->
+      <main class="payment-page-content">
+         <div class="container">
+            <h2>Choose Your Payment Method</h2>
+
+            <div class="payment-options-wrapper">
+               <!-- Payment Method: Cash on Delivery -->
+               <div class="payment-method">
+                  <input type="radio" id="payment-cod" name="payment-method" value="cod" checked>
+                  <label for="payment-cod">
+                     <i class="fas fa-money-bill-wave"></i> Cash on Delivery (COD)
+                  </label>
+                  <div class="payment-details" id="details-cod">
+                     <p>Pay with cash upon delivery at your doorstep.</p>
+                     <p class="warning-text">Please ensure you have the exact amount ready.</p>
+                     <button type="button" class="pay-now-btn auth-btn">Confirm Order (COD)</button>
+                  </div>
+               </div>
+
+               <!-- Payment Method: UPI -->
+               <div class="payment-method">
+                  <input type="radio" id="payment-upi" name="payment-method" value="upi">
+                  <label for="payment-upi">
+                     <i class="fas fa-qrcode"></i> UPI (Unified Payments Interface)
+                  </label>
+                  <div class="payment-details" id="details-upi">
+                     <form action="#" method="POST">
+                        <div class="form-group">
+                           <label for="upi-id">Enter UPI ID:</label>
+                           <input type="text" id="upi-id" name="upi-id" placeholder="e.g., yourname@bankupi" required>
+                        </div>
+                        <p class="note-text">You will receive a payment request on your UPI app.</p>
+                        <button type="submit" class="pay-now-btn auth-btn">Pay Now with UPI</button>
+                     </form>
+                  </div>
+               </div>
+
+               <!-- Payment Method: Card -->
+               <div class="payment-method">
+                  <input type="radio" id="payment-card" name="payment-method" value="card">
+                  <label for="payment-card">
+                     <i class="far fa-credit-card"></i> Credit / Debit Card
+                     <span class="payment-icons-list">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-discover"></i>
+                     </span>
+                  </label>
+                  <div class="payment-details" id="details-card">
+                     <form action="#" method="POST">
+                        <div class="form-group">
+                           <label for="card-number">Card Number</label>
+                           <input type="text" id="card-number" name="card-number" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" required>
+                        </div>
+                        <div class="form-row">
+                           <div class="form-group">
+                              <label for="expiry-date">Expiry Date (MM/YY)</label>
+                              <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" maxlength="5" required>
+                           </div>
+                           <div class="form-group">
+                              <label for="cvv">CVV</label>
+                              <input type="text" id="cvv" name="cvv" placeholder="XXX" maxlength="4" required>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <label for="card-holder-name">Cardholder Name</label>
+                           <input type="text" id="card-holder-name" name="card-holder-name" placeholder="Name on card" required>
+                        </div>
+                        <button type="submit" class="pay-now-btn auth-btn">Pay Now</button>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </main>
+      <!-- Footer Newsletter -->
+      <section class="footer-newsletter">
+         <div class="container">
+            <p>Subscribe to the G-Shop <span class="highlight">New Arrivals</span> & Other Information.</p>
+            <div class="newsletter-form">
+               <input type="email" placeholder="Enter Email Address">
+               <button>Subscribe</button>
+            </div>
+         </div>
+      </section>
+      <!-- Footer Links -->
+      <footer class="footer-main">
+         <div class="container footer-links-grid">
+            <div class="footer-column category">
+               <h3>Category</h3>
+               <ul>
+                  <li><a href="#">Testimonials</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Location & Working Hours</a></li>
+                  <li><a href="#">Our Guarantee</a></li>
+                  <li><a href="#">Track Your Order</a></li>
+                  <li><a href="#">Help Page</a></li>
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h3>Quick Links</h3>
+               <ul>
+                  <li><a href="#">Your Account</a></li>
+                  <li><a href="#">Returns & Exchanges</a></li>
+                  <li><a href="#">Return Center</a></li>
+                  <li><a href="#">Purchase History</a></li>
+                  <li><a href="#">Latest News Blog</a></li>
+                  <li><a href="#">Shipping & Delivery</a></li>
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h3>Contact Us</h3>
+               <ul>
+                  <li><a href="#">Testimonials</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Location & Working Hours</a></li>
+                  <li><a href="#">Our Guarantee</a></li>
+                  <li><a href="#">Track Your Order</a></li>
+                  <li><a href="#">Help Page</a></li>
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h3>Customer Support</h3>
+               <ul>
+                  <li><a href="#">Your Account</a></li>
+                  <li><a href="#">Returns & Exchanges</a></li>
+                  <li><a href="#">Return Center</a></li>
+                  <li><a href="#">Purchase History</a></li>
+                  <li><a href="#">Latest News Blog</a></li>
+                  <li><a href="#">Shipping & Delivery</a></li>
+               </ul>
+            </div>
+         </div>
+         <p class="website-link">www.Jaiinfo.com</p>
+      </footer>
+      <!-- Bottom Footer -->
+      <div class="bottom-footer">
+         <div class="container">
+            <p>&copy; All rights reserved Made by <a href="javascript:void(0);">JAI</a></p>
+            <div class="footer-right">
+               <div class="logo">
+                  <img src="https://jaiinfo.tech/logo/logo_only.png" alt="Logo">
+                  <h1>Grostore</h1>
+               </div>
+               <div class="payment-icons">
+                  <i class="fab fa-cc-visa"></i>
+                  <i class="fab fa-cc-mastercard"></i>
+                  <i class="fab fa-cc-amazon-pay"></i>
+                  <i class="fab fa-cc-paypal"></i>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- Order Placed Animation Modal (reused from cart.html) -->
+      <div class="order-placed-modal-overlay" id="order-placed-modal-overlay" aria-hidden="true">
+         <div class="order-placed-modal-content" role="dialog" aria-modal="true" aria-labelledby="order-success-title">
+            <button class="modal-close-btn" id="order-placed-modal-close"><i class="fas fa-times"></i></button>
+            <div class="checkmark-animation">
+               <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 id="order-success-title">Order Placed Successfully!</h3>
+            <p>Thank you for your purchase. Your order has been confirmed.</p>
+            <p>Order ID: <span id="modal-order-id" class="status-badge order-placed"></span></p>
+            <p>Estimated Delivery: <span id="modal-estimated-delivery"></span></p>
+            <div class="modal-actions">
+               <a href="#" id="modal-view-order-btn" class="auth-btn">View Order Details</a>
+               <a href="index.html" class="auth-btn secondary-btn">Continue Shopping</a>
+            </div>
+         </div>
+      </div>
+
+      <!-- Audio for Order Placed Notification (reused from cart.html) -->
+      <audio id="orderPlacedSound" src="audio/order-placed-success.mp3" preload="auto"></audio>
+      
+      <script>
+         // Mobile Menu Toggle (Reused from other pages)
+         const hamburgerMenu = document.getElementById('hamburger-menu');
+         const mainNav = document.getElementById('main-nav');
+         const mainNavCloseBtn = document.getElementById('main-nav-close');
+         const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+         
+         // Variable to store the timeout ID for stopping the sound loop
+         let soundLoopTimeoutId; 
+
+         function updateBodyScroll() {
+             const isAnyMenuOpen = mainNav.classList.contains('active') || orderPlacedModalOverlay.classList.contains('active');
+             document.body.classList.toggle('no-scroll', isAnyMenuOpen);
+             mobileMenuOverlay.classList.toggle('active', isAnyMenuOpen);
+         }
+         
+         function toggleMainMenu() {
+             mainNav.classList.toggle('active');
+             updateBodyScroll();
+         }
+         
+         hamburgerMenu.addEventListener('click', toggleMainMenu);
+         mainNavCloseBtn.addEventListener('click', toggleMainMenu);
+         
+         mobileMenuOverlay.addEventListener('click', () => {
+             // Close main nav if open
+             if (mainNav.classList.contains('active')) {
+                 toggleMainMenu();
+             }
+             // Close order placed modal if open
+             if (orderPlacedModalOverlay.classList.contains('active')) {
+                 closeOrderPlacedModal();
+             }
+         });
+         
+         // --- Payment Page Specific Functionality ---
+         const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
+         const paymentDetails = document.querySelectorAll('.payment-details');
+         const payNowButtons = document.querySelectorAll('.pay-now-btn');
+
+         function showPaymentDetails(selectedMethod) {
+             paymentDetails.forEach(detailsDiv => {
+                 detailsDiv.style.display = 'none';
+             });
+             const activeDetails = document.getElementById(`details-${selectedMethod}`);
+             if (activeDetails) {
+                 activeDetails.style.display = 'block';
+             }
+         }
+
+         // Event listener for payment method radio buttons
+         paymentMethods.forEach(radio => {
+             radio.addEventListener('change', (event) => {
+                 showPaymentDetails(event.target.value);
+             });
+         });
+
+         // --- Card Input Formatting ---
+         const cardNumberInput = document.getElementById('card-number');
+         const expiryDateInput = document.getElementById('expiry-date');
+
+         if (cardNumberInput) {
+             cardNumberInput.addEventListener('input', (e) => {
+                 e.target.value = e.target.value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
+             });
+         }
+         if (expiryDateInput) {
+             expiryDateInput.addEventListener('input', (e) => {
+                 let value = e.target.value.replace(/\D/g, '');
+                 if (value.length > 2) {
+                     value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                 }
+                 e.target.value = value;
+             });
+         }
+         
+         // --- Order Placed Modal Functionality (Reused from cart.html) ---
+         const orderPlacedModalOverlay = document.getElementById('order-placed-modal-overlay');
+         const orderPlacedModalCloseBtn = document.getElementById('order-placed-modal-close');
+         const modalOrderId = document.getElementById('modal-order-id');
+         const modalEstimatedDelivery = document.getElementById('modal-estimated-delivery');
+         const modalViewOrderBtn = document.getElementById('modal-view-order-btn');
+         const orderPlacedSound = document.getElementById('orderPlacedSound'); // Get the audio element
+         
+         const LOOP_DURATION_MS = 4000; // 4 seconds
+         
+         function generateOrderId() {
+             const prefix = "GRO";
+             const randomNumber = Math.floor(10000 + Math.random() * 90000); // 5-digit number
+             return prefix + randomNumber;
+         }
+         
+         function getEstimatedDeliveryDate() {
+             const today = new Date();
+             today.setDate(today.getDate() + 3); // Estimate 3 days from now
+             const options = { year: 'numeric', month: 'long', day: 'numeric' };
+             return today.toLocaleDateString('en-US', options);
+         }
+         
+         function openOrderPlacedModal() {
+             const orderId = generateOrderId();
+             const estimatedDelivery = getEstimatedDeliveryDate();
+         
+             modalOrderId.textContent = orderId;
+             modalEstimatedDelivery.textContent = estimatedDelivery;
+             modalViewOrderBtn.href = `delivery-status.html?orderId=${orderId}`; // Link to delivery status page
+         
+             orderPlacedModalOverlay.classList.add('active');
+             orderPlacedModalOverlay.setAttribute('aria-hidden', 'false');
+             document.body.classList.add('no-scroll');
+             // Add 'open' class for animation
+             orderPlacedModalOverlay.querySelector('.order-placed-modal-content').classList.add('open');
+             
+             // Play the notification sound in a loop for 4 seconds
+             if (orderPlacedSound) {
+                 orderPlacedSound.loop = true; // Enable looping for the sound
+                 orderPlacedSound.currentTime = 0; // Ensure it starts from the beginning
+                 orderPlacedSound.play().catch(error => {
+                     console.warn("Autoplay prevented:", error);
+                 });
+         
+                 // Set a timeout to stop the sound after 4 seconds
+                 soundLoopTimeoutId = setTimeout(() => {
+                     orderPlacedSound.pause();
+                     orderPlacedSound.loop = false; // Disable loop after 4s
+                     orderPlacedSound.currentTime = 0; // Reset for next time
+                     soundLoopTimeoutId = null; // Clear the timeout ID
+                 }, LOOP_DURATION_MS); 
+             }
+         }
+         
+         function closeOrderPlacedModal() {
+             orderPlacedModalOverlay.classList.remove('active');
+             orderPlacedModalOverlay.setAttribute('aria-hidden', 'true');
+             document.body.classList.remove('no-scroll');
+             // Remove 'open' class
+             orderPlacedModalOverlay.querySelector('.order-placed-modal-content').classList.remove('open');
+             
+             // Pause and reset sound, and clear any pending loop timeout
+             if (orderPlacedSound) {
+                orderPlacedSound.pause();
+                orderPlacedSound.currentTime = 0;
+                orderPlacedSound.loop = false; // Ensure loop is off
+                if (soundLoopTimeoutId) {
+                    clearTimeout(soundLoopTimeoutId); // Stop the pending timeout
+                    soundLoopTimeoutId = null;
+                }
+             }
+         }
+         
+         // Event listener for all "Pay Now" buttons on the payment page
+         payNowButtons.forEach(button => {
+             button.addEventListener('click', (e) => {
+                 e.preventDefault(); // Prevent default form submission or link behavior
+
+                 // In a real application, you'd perform form validation here.
+                 // If validation passes and payment processing (simulated) is successful:
+                 openOrderPlacedModal();
+             });
+         });
+         
+         orderPlacedModalCloseBtn.addEventListener('click', closeOrderPlacedModal);
+         
+         // Close modal if clicking outside the content (on the overlay itself)
+         orderPlacedModalOverlay.addEventListener('click', (e) => {
+             if (e.target === orderPlacedModalOverlay) {
+                 closeOrderPlacedModal();
+             }
+         });
+
+         // Initial load: Show details for the initially checked radio button
+         document.addEventListener('DOMContentLoaded', () => {
+             const initiallyChecked = document.querySelector('input[name="payment-method"]:checked');
+             if (initiallyChecked) {
+                 showPaymentDetails(initiallyChecked.value);
+             }
+         });
+      </script>
+   </body>
+</html>

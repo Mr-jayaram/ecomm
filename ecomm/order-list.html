@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>My Orders - Grostore</title>
+      <link rel="icon shortcut" href="https://jaiinfo.tech/logo/logo_only.png">
+      <link rel="stylesheet" href="style.css">
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <!-- Bootstrap Icons CDN -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+   </head>
+   <body>
+      <!-- Overlay for mobile menus -->
+      <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+      <!-- Top Bar -->
+      <div class="top-bar">
+         <div class="container welcome-bar">
+            <p>Welcome to our Organic store</p>
+            <div class="top-bar-info">
+               <span><i class="bi bi-envelope"></i> groshop@support.com</span>
+               <span><i class="bi bi-geo-alt"></i> Washington, New York, USA - 254230</span>
+               <div class="dropdown">
+                  <span><i class="bi bi-globe"></i> English <i class="fas fa-chevron-down"></i></span>
+                  <div class="dropdown-content">
+                     <a href="#">বাংলা</a>
+                     <a href="#">Español</a>
+                  </div>
+               </div>
+               <div class="dropdown">
+                  <span><i class="bi bi-currency-rupee"></i> USD <i class="fas fa-chevron-down"></i></span>
+                  <div class="dropdown-content">
+                     <a href="#">EUR</a>
+                     <a href="#">BDT</a>
+                  </div>
+               </div>
+               <a href="#" class="dark-mode-toggle"><i class="fas fa-moon"></i> Dark</a>
+            </div>
+         </div>
+      </div>
+         <!-- Header Main -->
+      <header class="header-main">
+         <div class="container">
+                <a href="index.html">
+                    <div class="logo">
+                        <img src="https://jaiinfo.tech/logo/logo_only.png" alt="Grostore Logo">
+                        <h1>Grostore</h1>
+                    </div>
+                 </a>
+
+            <nav class="main-nav" id="main-nav">
+               <div class="nav-close-btn desktop-hidden" id="main-nav-close">
+                  <i class="fas fa-times"></i>
+               </div>
+               <div class="mobile-menu-logo">
+                  <img src="https://jaiinfo.tech/logo/logo_only.png" alt="Logo">
+               </div>
+               <a href="order-list.html">Orders</a>
+               <a href="wishlist.html">Wishlist</a>
+               <a href="settings.html">Settings</a>
+               <a href="#">pages</a>
+            </nav>
+            <div class="header-actions">
+               <!-- <a href="#" class="mobile-hidden-icon"><i class="bi bi-search"></i></a> -->
+               <a href="wishlist.html" class="mobile-hidden-icon"><i class="bi bi-heart"></i></a>               
+               <a href="order-list.html"class="mobile-hidden-icon"><i class="bi bi-bag"></i></a>
+               <a href="order-list.html"class="mobile-hidden-icon"><i class="bi bi-gear"></i></a>
+               <!-- <span class="mobile-hidden-icon"><i class="bi bi-telephone"></i> +80 157 058 4567</span> -->
+                <button class="login-btn"><a href="login.html"><i class="bi bi-box-arrow-in-left"></i>Login</a></button>
+               <button class="hamburger-menu desktop-hidden" id="hamburger-menu">
+               <i class="bi bi-list"></i>
+               </button>
+            </div>
+         </div>
+      </header>
+      <!-- Main Content Area for Order List -->
+      <main class="order-list-page-content">
+         <div class="container">
+            <h2>My Orders</h2>
+
+            <div class="order-list-container" id="order-list-container">
+               <!-- Order Card 1 -->
+               <div class="order-card">
+                  <div class="order-card-header">
+                     <div>
+                        <h4>Order #GRO12345</h4>
+                        <p>Placed on: July 22, 2024</p>
+                     </div>
+                     <span class="status-badge shipped">Shipped</span>
+                  </div>
+                  <div class="order-summary-details">
+                     <p>Total: $720.00 | 3 items</p>
+                     <div class="order-items-preview">
+                        <!-- Items in this order -->
+                        <div class="order-item-preview-card">
+                           <img src="img/products/waterbottle.jpg" alt="Rice Crisps">
+                           <span>Crisps (x1)</span>
+                        </div>
+                        <div class="order-item-preview-card">
+                           <img src="img/products/shoe.jpg" alt="Running Shoe">
+                           <span>Shoe (x2)</span>
+                        </div>
+                        <div class="order-item-preview-card">
+                           <img src="img/products/bag.jpg" alt="Leather Bag">
+                           <span>Bag (x1)</span>
+                        </div>
+                        <!-- Add more items or a "+X more" if too many -->
+                     </div>
+                  </div>
+                  <div class="order-card-actions">
+                     <a href="delivery-status.html?orderId=GRO12345" class="auth-btn">View Details</a>
+                     <button class="auth-btn secondary-btn">Reorder</button>
+                  </div>
+               </div>
+
+               <!-- Order Card 2 -->
+               <div class="order-card">
+                  <div class="order-card-header">
+                     <div>
+                        <h4>Order #GRO67890</h4>
+                        <p>Placed on: July 18, 2024</p>
+                     </div>
+                     <span class="status-badge delivered">Delivered</span>
+                  </div>
+                  <div class="order-summary-details">
+                     <p>Total: $330.00 | 2 items</p>
+                     <div class="order-items-preview">
+                        <div class="order-item-preview-card">
+                           <img src="img/products/keyboard.jpg" alt="Keyboard">
+                           <span>Keyboard (x1)</span>
+                        </div>
+                        <div class="order-item-preview-card">
+                           <img src="img/products/speaker.jpg" alt="Speaker">
+                           <span>Speaker (x1)</span>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="order-card-actions">
+                     <a href="delivery-status.html?orderId=GRO67890" class="auth-btn">View Details</a>
+                     <button class="auth-btn secondary-btn">Reorder</button>
+                  </div>
+               </div>
+
+               <!-- Order Card 3 (Processing example) -->
+               <div class="order-card">
+                  <div class="order-card-header">
+                     <div>
+                        <h4>Order #GRO00112</h4>
+                        <p>Placed on: July 24, 2024</p>
+                     </div>
+                     <span class="status-badge processing">Processing</span>
+                  </div>
+                  <div class="order-summary-details">
+                     <p>Total: $140.00 | 1 item</p>
+                     <div class="order-items-preview">
+                        <div class="order-item-preview-card">
+                           <img src="img/products/glass.jpg" alt="Banana Juice">
+                           <span>Juice (x1)</span>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="order-card-actions">
+                     <a href="delivery-status.html?orderId=GRO00112" class="auth-btn">View Details</a>
+                     <button class="auth-btn secondary-btn">Cancel Order</button>
+                  </div>
+               </div>
+
+            </div>
+
+            <!-- Empty Order List Message (initially hidden) -->
+            <div class="empty-message" id="empty-order-list-message" style="display:none;">
+               <p><i class="fas fa-box-open"></i> You haven't placed any orders yet.</p>
+               <p>Once you do, they will appear here.</p>
+               <a href="index.html" class="auth-btn continue-shopping-btn">Start Shopping</a>
+            </div>
+
+         </div>
+      </main>
+      <!-- Footer Newsletter -->
+      <section class="footer-newsletter">
+         <div class="container">
+            <p>Subscribe to the G-Shop <span class="highlight">New Arrivals</span> & Other Information.</p>
+            <div class="newsletter-form">
+               <input type="email" placeholder="Enter Email Address">
+               <button>Subscribe</button>
+            </div>
+         </div>
+      </section>
+      <!-- Footer Links -->
+      <footer class="footer-main">
+         <div class="container footer-links-grid">
+            <div class="footer-column category">
+               <h3>Category</h3>
+               <ul>
+                  <li><a href="#">Testimonials</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Location & Working Hours</a></li>
+                  <li><a href="#">Our Guarantee</a></li>
+                  <li><a href="#">Track Your Order</a></li>
+                  <li><a href="#">Help Page</a></li>
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h3>Quick Links</h3>
+               <ul>
+                  <li><a href="#">Your Account</a></li>
+                  <li><a href="#">Returns & Exchanges</a></li>
+                  <li><a href="#">Return Center</a></li>
+                  <li><a href="#">Purchase History</a></li>
+                  <li><a href="#">Latest News Blog</a></li>
+                  <li><a href="#">Shipping & Delivery</a></li>
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h3>Contact Us</h3>
+               <ul>
+                  <li><a href="#">Testimonials</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Location & Working Hours</a></li>
+                  <li><a href="#">Our Guarantee</a></li>
+                  <li><a href="#">Track Your Order</a></li>
+                  <li><a href="#">Help Page</a></li>
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h3>Customer Support</h3>
+               <ul>
+                  <li><a href="#">Your Account</a></li>
+                  <li><a href="#">Returns & Exchanges</a></li>
+                  <li><a href="#">Return Center</a></li>
+                  <li><a href="#">Purchase History</a></li>
+                  <li><a href="#">Latest News Blog</a></li>
+                  <li><a href="#">Shipping & Delivery</a></li>
+               </ul>
+            </div>
+         </div>
+         <p class="website-link">www.Jaiinfo.com</p>
+      </footer>
+      <!-- Bottom Footer -->
+      <div class="bottom-footer">
+         <div class="container">
+            <p>&copy; All rights reserved Made by <a href="javascript:void(0);">JAI</a></p>
+            <div class="footer-right">
+               <div class="logo">
+                  <img src="https://jaiinfo.tech/logo/logo_only.png" alt="Logo">
+                  <h1>Grostore</h1>
+               </div>
+               <div class="payment-icons">
+                  <i class="fab fa-cc-visa"></i>
+                  <i class="fab fa-cc-mastercard"></i>
+                  <i class="fab fa-cc-amazon-pay"></i>
+                  <i class="fab fa-cc-paypal"></i>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- Chat Bot Icon -->
+      <div class="chat-icon-wrapper" id="chat-icon-wrapper">
+         <button class="chat-icon" id="chat-icon" aria-label="Open chat with Grostore Support">
+            <i class="fas fa-comments"></i>
+         </button>
+      </div>
+
+      <!-- Chat Bot Window -->
+      <div class="chat-window" id="chat-window" role="dialog" aria-modal="true" aria-labelledby="chat-header-title" aria-hidden="true">
+         <div class="chat-header">
+            <h3 id="chat-header-title">Grostore AI Support</h3>
+            <button class="chat-close-btn" id="chat-close-btn" aria-label="Close chat window">&times;</button>
+         </div>
+         <div class="chat-messages" id="chat-messages" aria-live="polite">
+            <!-- Initial bot message will be injected here by JS -->
+         </div>
+         <div class="chat-input-area">
+            <input type="text" id="user-input" placeholder="Type your message..." aria-label="Type your message">
+            <button id="send-button" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
+         </div>
+      </div>
+
+      <!-- Location Map Modal (Not directly used here, but for consistency if you copy full script) -->
+      <!-- Make sure Google Maps API key is in your main script, not duplicated here -->
+      <div class="location-map-modal-overlay" id="location-map-modal-overlay" aria-hidden="true" style="display:none;">
+         <div class="location-map-modal-content" role="dialog" aria-modal="true" aria-labelledby="location-map-title">
+            <button class="modal-map-close" id="modal-map-close" aria-label="Close map modal">&times;</button>
+            <h3 id="location-map-title">Your Current Location</h3>
+            <div id="map-canvas" class="map-canvas"></div>
+            <p id="location-info"></p>
+         </div>
+      </div>
+
+      <script>
+         // --- Mobile Menu Toggle --- (Reused from previous code)
+         const hamburgerMenu = document.getElementById('hamburger-menu');
+         const mainNav = document.getElementById('main-nav');
+         const mainNavCloseBtn = document.getElementById('main-nav-close');
+         const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+         
+         function updateBodyScroll() {
+             const isAnyMenuOpen = mainNav.classList.contains('active') ||
+                                   (document.getElementById('location-map-modal-overlay') && document.getElementById('location-map-modal-overlay').classList.contains('active'));
+             document.body.classList.toggle('no-scroll', isAnyMenuOpen);
+             mobileMenuOverlay.classList.toggle('active', isAnyMenuOpen);
+         }
+         
+         function toggleMainMenu() {
+             mainNav.classList.toggle('active');
+             updateBodyScroll();
+         }
+         
+         hamburgerMenu.addEventListener('click', toggleMainMenu);
+         mainNavCloseBtn.addEventListener('click', toggleMainMenu);
+         
+         mobileMenuOverlay.addEventListener('click', () => {
+             if (mainNav.classList.contains('active')) {
+                 toggleMainMenu();
+             }
+             if (document.getElementById('location-map-modal-overlay') && document.getElementById('location-map-modal-overlay').classList.contains('active')) {
+                 closeMapModal(); // Assuming closeMapModal is defined elsewhere or not used if this HTML isn't main
+             }
+         });
+         
+         // --- Chat Bot Functionality --- (Reused from previous code)
+         const chatIconWrapper = document.getElementById('chat-icon-wrapper');
+         const chatIcon = document.getElementById('chat-icon');
+         const chatWindow = document.getElementById('chat-window');
+         const chatCloseBtn = document.getElementById('chat-close-btn');
+         const chatMessages = document.getElementById('chat-messages');
+         const userInput = document.getElementById('user-input');
+         const sendButton = document.getElementById('send-button');
+         
+         let isChatOpen = false;
+         
+         function appendMessage(sender, text) {
+             const messageDiv = document.createElement('div');
+             messageDiv.classList.add('chat-message', `${sender}-message`);
+             messageDiv.innerHTML = text; // Use innerHTML to allow links
+             chatMessages.appendChild(messageDiv);
+             scrollToBottom();
+         }
+         
+         function showTypingIndicator() {
+             const typingDiv = document.createElement('div');
+             typingDiv.classList.add('chat-message', 'bot-typing');
+             typingDiv.innerHTML = '<span></span><span></span><span></span>';
+             chatMessages.appendChild(typingDiv);
+             scrollToBottom();
+             return typingDiv;
+         }
+         
+         function removeTypingIndicator(indicator) {
+             if (indicator && indicator.parentNode) {
+                 indicator.parentNode.removeChild(indicator);
+             }
+         }
+         
+         function getBotResponse(userMessage) {
+             const lowerCaseMessage = userMessage.toLowerCase();
+             let botResponse = "I'm sorry, I don't understand that request. Can you please rephrase or ask about topics like 'order status', 'shipping', 'returns', 'products', or 'contact'.";
+             const typingIndicator = showTypingIndicator();
+         
+             setTimeout(() => { // Simulate AI processing time
+                 removeTypingIndicator(typingIndicator);
+         
+                 if (lowerCaseMessage.includes("hello") || lowerCaseMessage.includes("hi")) {
+                     botResponse = "Hello there! How can I assist you with your Grostore experience?";
+                 } else if (lowerCaseMessage.includes("order status") || lowerCaseMessage.includes("track order")) {
+                     botResponse = "To track your order, please provide your order ID. You can also visit our <a href='delivery-status.html' target='_blank'>Order Tracking page</a>.";
+                 } else if (lowerCaseMessage.includes("shipping") || lowerCaseMessage.includes("delivery")) {
+                     botResponse = "Our standard shipping takes 3-5 business days. For more details on delivery zones and costs, please check our <a href='#' target='_blank'>Shipping Policy</a>.";
+                 } else if (lowerCaseMessage.includes("return") || lowerCaseMessage.includes("refund")) {
+                     botResponse = "For returns or refunds, please visit our <a href='#' target='_blank'>Returns & Exchange page</a>. Make sure to check our policy requirements.";
+                 } else if (lowerCaseMessage.includes("products") || lowerCaseMessage.includes("items") || lowerCaseMessage.includes("shop")) {
+                     botResponse = "We offer a wide range of organic groceries, fresh produce, and household essentials. You can explore our categories on the <a href='index.html' target='_blank'>Products page</a>!";
+                 } else if (lowerCaseMessage.includes("contact") || lowerCaseMessage.includes("support")) {
+                     botResponse = "You can reach our customer support team via email at groshop@support.com or by calling +80 157 058 4567 during business hours.";
+                 } else if (lowerCaseMessage.includes("thank you") || lowerCaseMessage.includes("thanks")) {
+                     botResponse = "You're welcome! Is there anything else I can help you with?";
+                 }
+         
+                 appendMessage("bot", botResponse);
+         
+             }, 1000 + Math.random() * 1000); // Simulate 1-2 seconds response time
+         }
+         
+         function sendMessage() {
+             const userText = userInput.value.trim();
+             if (userText === "") return;
+         
+             appendMessage('user', userText);
+             userInput.value = ''; // Clear input field
+             getBotResponse(userText);
+         }
+         
+         function scrollToBottom() {
+             chatMessages.scrollTop = chatMessages.scrollHeight;
+         }
+         
+         chatIcon.addEventListener('click', () => {
+             isChatOpen = !isChatOpen;
+             chatWindow.classList.toggle('open', isChatOpen);
+             chatWindow.setAttribute('aria-hidden', !isChatOpen);
+             chatIconWrapper.style.display = isChatOpen ? 'none' : 'block';
+         
+             if (isChatOpen) {
+                 userInput.focus();
+                 if (chatMessages.children.length === 0) {
+                     appendMessage("bot", "Hello! I'm your Grostore AI assistant. How can I help you today?");
+                     appendMessage("bot", "You can ask me about: 'order status', 'shipping', 'returns', 'products', or 'contact'.");
+                 }
+                 scrollToBottom();
+             } else {
+                 setTimeout(() => { chatIconWrapper.style.display = 'block'; }, 300);
+             }
+             document.body.classList.toggle('no-scroll', isChatOpen && window.innerWidth <= 768);
+         });
+         
+         chatCloseBtn.addEventListener('click', () => {
+             isChatOpen = false;
+             chatWindow.classList.remove('open');
+             chatWindow.setAttribute('aria-hidden', 'true');
+             setTimeout(() => { chatIconWrapper.style.display = 'block'; }, 300);
+             document.body.classList.remove('no-scroll');
+         });
+         
+         sendButton.addEventListener('click', sendMessage);
+         userInput.addEventListener('keypress', (event) => {
+             if (event.key === 'Enter') {
+                 sendMessage();
+             }
+         });
+         
+         document.addEventListener('DOMContentLoaded', () => {
+             if (window.innerWidth > 768) {
+                 chatWindow.classList.remove('open');
+                 chatWindow.setAttribute('aria-hidden', 'true');
+                 chatIconWrapper.style.display = 'block';
+             } else {
+                 if (isChatOpen) {
+                     chatIconWrapper.style.display = 'none';
+                 }
+             }
+         });
+
+         // --- Order List Specific Functionality ---
+         const orderListContainer = document.getElementById('order-list-container');
+         const emptyOrderListMessage = document.getElementById('empty-order-list-message');
+
+         function updateOrderListState() {
+            if (orderListContainer.children.length === 0) {
+                orderListContainer.style.display = 'none';
+                emptyOrderListMessage.style.display = 'block';
+            } else {
+                orderListContainer.style.display = 'grid'; // Assuming a grid layout for order cards
+                emptyOrderListMessage.style.display = 'none';
+            }
+         }
+
+         // Simulated Reorder Button (can be expanded to add items to cart)
+         document.querySelectorAll('.order-card-actions .secondary-btn').forEach(button => {
+            if (button.textContent === 'Reorder') { // Check for "Reorder" button
+                button.addEventListener('click', (e) => {
+                    const orderId = e.target.closest('.order-card').querySelector('h4').textContent.replace('Order #', '');
+                    alert(`Simulating reorder for ${orderId}. Items would be added to cart.`);
+                    // In a real app, you'd fetch order items and add them to cart
+                });
+            } else if (button.textContent === 'Cancel Order') { // Check for "Cancel Order" button
+                button.addEventListener('click', (e) => {
+                    const orderId = e.target.closest('.order-card').querySelector('h4').textContent.replace('Order #', '');
+                    if (confirm(`Are you sure you want to cancel order ${orderId}? This cannot be undone.`)) {
+                        e.target.closest('.order-card').remove(); // Simulate removal
+                        alert(`Order ${orderId} has been cancelled.`);
+                        updateOrderListState(); // Update empty state
+                    }
+                });
+            }
+         });
+
+         // Initial check for order list state on page load
+         document.addEventListener('DOMContentLoaded', updateOrderListState);
+
+         // --- Location Map Modal (Placeholder functions if full script not included) ---
+         // If you are including the full location map script from index.html, these can be removed.
+         // Otherwise, they are minimal stubs to prevent errors.
+         const locationMapModalOverlay = document.getElementById('location-map-modal-overlay');
+         function closeMapModal() {
+             if (locationMapModalOverlay) {
+                 locationMapModalOverlay.classList.remove('active');
+                 locationMapModalOverlay.setAttribute('aria-hidden', 'true');
+                 document.body.classList.remove('no-scroll');
+                 locationMapModalOverlay.querySelector('.location-map-modal-content').classList.remove('open');
+             }
+         }
+      </script>
+   </body>
+</html>

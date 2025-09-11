@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Grostore Shop</title>
+      <link rel="icon shortcut" href="https://jaiinfo.tech/logo/logo_only.png">
+      <link rel="stylesheet" href="style.css">
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <!-- Swiper CSS -->
+      <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+      <!-- Bootstrap Icons CDN -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+      <style>
+         .swiper {
+         width: 100%;
+         height: 450px; /* Adjust banner height as needed */
+         }
+         .swiper-slide {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 22px;
+         font-weight: 700;
+         color: #fff;
+         background-color: #f0f0f0; /* Default background if image fails */
+         position: relative;
+         overflow: hidden;
+         }
+         .swiper-slide img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover; /* Cover the slide area */
+         position: absolute;
+         top: 0;
+         left: 0;
+         z-index: 1;
+         }
+         .swiper-slide .slide-content {
+         position: relative;
+         z-index: 2; /* Ensure content is above the image */
+         text-align: center;
+         padding: 20px;
+         background-color: rgba(0, 0, 0, 0.4); /* Overlay for text readability */
+         border-radius: 8px;
+         }
+         .swiper-slide h3 {
+         font-size: 2.5em;
+         margin-bottom: 10px;
+         color: #fff;
+         }
+         .swiper-slide p {
+         font-size: 1.2em;
+         color: #eee;
+         }
+         .swiper-button-next,
+         .swiper-button-prev {
+         color: var(--primary-color, #7fad39); /* Use a color that fits your theme */
+         --swiper-navigation-size: 30px;
+         }
+         .swiper-pagination-bullet-active {
+         background: var(--primary-color, #7fad39);
+         }
+         /* Responsive adjustments for Swiper */
+         @media (max-width: 768px) {
+         .swiper {
+         height: 250px;
+         }
+         .swiper-slide h3 {
+         font-size: 1.8em;
+         }
+         .swiper-slide p {
+         font-size: 1em;
+         }
+         .swiper-button-next,
+         .swiper-button-prev {
+         display: none; /* Hide navigation buttons on small screens */
+         }
+         }
+      </style>
+   </head>
+   <body>
+      <!-- Overlay for mobile menus -->
+      <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+      <!-- Top Bar -->
+      <div class="top-bar">
+         <div class="container welcome-bar">
+            <p>Welcome to our Organic store</p>
+            <div class="top-bar-info">
+               <span><i class="bi bi-envelope"></i> groshop@support.com</span>
+               <span><i class="bi bi-geo-alt"></i> Washington, New York, USA - 254230</span>
+               <div class="dropdown">
+                  <span><i class="bi bi-globe"></i> English <i class="fas fa-chevron-down"></i></span>
+                  <div class="dropdown-content">
+                     <a href="#">বাংলা</a>
+                     <a href="#">Español</a>
+                  </div>
+               </div>
+               <div class="dropdown">
+                  <span><i class="bi bi-currency-rupee"></i> USD <i class="fas fa-chevron-down"></i></span>
+                  <div class="dropdown-content">
+                     <a href="#">EUR</a>
+                     <a href="#">BDT</a>
+                  </div>
+               </div>
+               <a href="#" class="dark-mode-toggle"><i class="fas fa-moon"></i> Dark</a>
+            </div>
+         </div>
+      </div>
+      <!-- Header Main -->
+      <header class="header-main">
+         <div class="container">
+                <a href="index.html">
+                    <div class="logo">
+                        <img src="https://jaiinfo.tech/logo/logo_only.png" alt="Grostore Logo">
+                        <h1>Grostore</h1>
+                    </div>
+                 </a>
+
+            <nav class="main-nav" id="main-nav">
+               <div class="nav-close-btn desktop-hidden" id="main-nav-close">
+                  <i class="fas fa-times"></i>
+               </div>
+               <div class="mobile-menu-logo">
+                  <img src="https://jaiinfo.tech/logo/logo_only.png" alt="Logo">
+               </div>
+               <a href="order-list.html">Orders</a>
+               <a href="wishlist.html">Wishlist</a>
+               <a href="settings.html">Settings</a>
+               <a href="#">pages</a>
+            </nav>
+            <div class="header-actions">
+               <!-- <a href="#" class="mobile-hidden-icon"><i class="bi bi-search"></i></a> -->
+               <a href="wishlist.html" class="mobile-hidden-icon"><i class="bi bi-heart"></i></a>               
+               <a href="order-list.html"class="mobile-hidden-icon"><i class="bi bi-bag"></i></a>
+               <a href="order-list.html"class="mobile-hidden-icon"><i class="bi bi-gear"></i></a>
+               <!-- <span class="mobile-hidden-icon"><i class="bi bi-telephone"></i> +80 157 058 4567</span> -->
+                <button class="login-btn"><a href="login.html"><i class="bi bi-box-arrow-in-left"></i>Login</a></button>
+               <button class="hamburger-menu desktop-hidden" id="hamburger-menu">
+               <i class="bi bi-list"></i>
+               </button>
+            </div>
+         </div>
+      </header>
+      <section class="banner-carousel">
+         <div class="container-fluid">
+            <div class="swiper mySwiper">
+               <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                     <img src="img/banner/banner-2.jpg" alt="Seasonal Vegetables">
+                  </div>
+                  <div class="swiper-slide">
+                     <img src="img/banner/banner-3.jpg" alt="Delicious Fruits">
+                  </div>
+                  <div class="swiper-slide">
+                     <img src="img/banner/banner-1.jpg" alt="Organic Groceries">
+                  </div>
+               </div>
+               <!-- Add Pagination -->
+               <div class="swiper-pagination"></div>
+            </div>
+         </div>
+      </section>
+      <!-- Main Content Area -->
+      <main class="shop-content">
+         <!-- Sidebar -->
+         <aside class="sidebar" id="filter-sidebar">
+            <div class="sidebar-content" id="sidebar-content">
+               <div class="nav-close-btn desktop-hidden" id="filter-sidebar-close">
+                  <i class="fas fa-times"></i>
+               </div>
+               <div class="widget">
+                  <h3>Search Now</h3>
+                  <div class="search-box">
+                     <input type="text" placeholder="Search product...">
+                     <button><i class="fas fa-search"></i></button>
+                  </div>
+               </div>
+               <div class="widget">
+                  <h3>Categories</h3>
+                  <ul>
+                     <li><a href="#">Apples <span>08</span></a></li>
+                     <li><a href="#">Avocados <span>06</span></a></li>
+                     <li><a href="#">Dried Fruits & Nuts <span>10</span></a></li>
+                     <li><a href="#">Coffee <span>11</span></a></li>
+                     <li><a href="#">Juice Drinks <span>15</span></a></li>
+                     <li><a href="#">Fresh Fish <span>18</span></a></li>
+                  </ul>
+               </div>
+               <div class="widget">
+                  <h3>Filter by Price</h3>
+                  <div class="price-range">
+                     <div class="slider-track"></div>
+                     <input type="range" min="0" max="10000" value="0" id="min-price-slider">
+                     <input type="range" min="0" max="10000" value="10000" id="max-price-slider">
+                     <div class="range-display">
+                        <span>$0</span> - <span>$10000</span>
+                     </div>
+                     <button class="filter-btn">Filter</button>
+                  </div>
+               </div>
+               <div class="widget">
+                  <h3>Rating</h3>
+                  <ul>
+                     <li><a href="#"><span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span> <span>48</span></a></li>
+                     <li><a href="#"><span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span> <span>14</span></a></li>
+                     <li><a href="#"><span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span> <span>36</span></a></li>
+                     <li><a href="#"><span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span> <span>24</span></a></li>
+                  </ul>
+               </div>
+               <div class="widget">
+                  <h3>Tags</h3>
+                  <div class="tags">
+                     <a href="#">Vegetable</a>
+                     <a href="#">Healthy</a>
+                     <a href="#">Meat</a>
+                     <a href="#">Organic</a>
+                     <a href="#">Nature</a>
+                     <a href="#">food</a>
+                     <a href="#">bd food</a>
+                     <a href="#">fish</a>
+                     <a href="#">vegetable</a>
+                  </div>
+               </div>
+               <div class="widget best-selling">
+                  <h3>Best Selling</h3>
+                  <div class="product-item">
+                     <img src="img/products/waterbottle.jpg" alt="Strawberry juice">
+                     <div class="info">
+                        <h4>Strawberry juice</h4>
+                        <p>Fruit</p>
+                        <span class="price">$140.00</span>
+                        <span class="stars small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                     </div>
+                  </div>
+                  <div class="product-item">
+                     <img src="img/products/watch.jpg" alt="Plum juice">
+                     <div class="info">
+                        <h4>Bolt</h4>
+                        <p>Watch</p>
+                        <span class="price">$140.00</span>
+                        <span class="stars small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                     </div>
+                  </div>
+                  <div class="product-item">
+                     <img src="img/products/bag.jpg" alt="Lime juice">
+                     <div class="info">
+                        <h4>Lime juice</h4>
+                        <p>Fruit</p>
+                        <span class="price">$140.00</span>
+                        <span class="stars small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                     </div>
+                  </div>
+                  <div class="product-item">
+                     <img src="img/products/glass.jpg" alt="Banana juice">
+                     <div class="info">
+                        <h4>Banana juice</h4>
+                        <p>Fruit</p>
+                        <span class="price">$140.00</span>
+                        <span class="stars small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </aside>
+         <!-- Product Listing -->
+         <section class="product-listing">
+            <div class="listing-header">
+               <p>Showing 1-12 of 45 results</p>
+               <div class="listing-controls">
+                  <span>
+                     Show: 
+                     <select id="show-products-select">
+                        <option value="12">12</option>
+                        <option value="16">16</option>
+                        <option value="24">24</option>
+                        <option value="32">32</option>
+                     </select>
+                  </span>
+                  <span>
+                     Sort by: 
+                     <select id="sort-by-select">
+                        <option value="news-first">News First</option>
+                        <option value="price-low-to-high">Price: Low to High</option>
+                        <option value="price-high-to-low">Price: High to Low</option>
+                     </select>
+                  </span>
+                  <!-- <a href="javascript:void(0);" class="view-toggle active" id="grid-view-toggle"><i class="fas fa-th"></i></a> -->
+                  <a href="javascript:void(0);" class="desktop-hidden filter-sidebar-icon" id="toggle-filters-btn"><i class="bi bi-funnel"></i></a>
+                  <!-- <a href="javascript:void(0);" class="view-toggle" id="list-view-toggle"><i class="fas fa-list"></i></a> -->
+               </div>
+               <!-- <button class="" id="">Show Filters</button> -->
+            </div>
+            <div class="product-grid" id="product-grid">
+               <!-- Product Card 1 -->
+               <div class="product-card">
+                  <a href="product-info.html?id=crisps1">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/waterbottle.jpg" alt="Essence Mascara Lash Princess" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps1">
+                        <h4>Popped Rice Crisps</h4>
+                     </a>
+                     <!-- Link title too -->
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 2 -->
+               <div class="product-card">
+                  <a href="product-info.html?id=crisps2">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/shoe.jpg" alt="Product 4" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps2">
+                        <h4>Popped Rice Crisps .</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 3 -->
+               <div class="product-card">
+                  <span class="discount-badge">-12% OFF</span>
+                  <a href="product-info.html?id=crisps3">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/keyboard.jpg" alt="Product 10" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps3">
+                        <h4>Popped Rice Crisps .</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 4 -->
+               <div class="product-card">
+                  <a href="product-info.html?id=crisps4">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/chair.jpg" alt="Product 10" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps4">
+                        <h4>Popped Rice Crisps .</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 5 -->
+               <div class="product-card">
+                  <a href="product-info.html?id=crisps5">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/tv.jpg" alt="Product 10" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps5">
+                        <h4>Popped Rice Crisps .</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 6 -->
+               <div class="product-card">
+                  <span class="discount-badge">-12% OFF</span>
+                  <a href="product-info.html?id=crisps6">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/sunscream.jpg" alt="Product 10" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps6">
+                        <h4>Popped Rice Crisps .</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 7 -->
+               <div class="product-card">
+                  <a href="product-info.html?id=crisps7">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/bat.jpg" alt="Product 10" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps7">
+                        <h4>Popped Rice Crisps Snacks</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 8 -->
+               <div class="product-card">
+                  <a href="product-info.html?id=crisps8">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/bag.jpg" alt="Product 10" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps8">
+                        <h4>Popped Rice Crisps Snacks</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 9 -->
+               <div class="product-card">
+                  <a href="product-info.html?id=crisps9">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/tshirt.jpg" alt="Product 10" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps9">
+                        <h4>Popped Rice Crisps Snacks</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 10 -->
+               <div class="product-card">
+                  <span class="discount-badge">-12% OFF</span>
+                  <a href="product-info.html?id=crisps10">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/watch.jpg" alt="Product 10" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps10">
+                        <h4>Popped Rice Crisps Snacks.</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 11 -->
+               <div class="product-card">
+                  <a href="product-info.html?id=crisps11">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/speaker.jpg" alt="Product 10" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps11">
+                        <h4>Popped Rice Crisps Snacks.</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- Product Card 12 -->
+               <div class="product-card">
+                  <a href="product-info.html?id=crisps12">
+                     <div class="product-image-wrapper">
+                        <img src="img/products/spray.jpg" alt="Product 10" >
+                     </div>
+                  </a>
+                  <div class="product-info">
+                     <a href="product-info.html?id=crisps12">
+                        <h4>Popped Rice Crisps Snacks.</h4>
+                     </a>
+                     <div class="product-info-bottom">
+                        <div class="rating">
+                           <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="price">$130.00</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="pagination">
+               <a href="javascript:void(0)" class="active">1</a>
+               <a href="javascript:void(0)">2</a>
+               <a href="javascript:void(0)">3</a>
+               <a href="javascript:void(0)"><i class="fas fa-arrow-right"></i></a>
+            </div>
+         </section>
+      </main>
+      <!-- Footer Newsletter -->
+      <section class="footer-newsletter">
+         <div class="container">
+            <p>Subscribe to the G-Shop <span class="highlight">New Arrivals</span> & Other Information.</p>
+            <div class="newsletter-form">
+               <input type="email" placeholder="Enter Email Address">
+               <button>Subscribe</button>
+            </div>
+         </div>
+      </section>
+      <!-- Footer Links -->
+      <footer class="footer-main">
+         <div class="container footer-links-grid">
+            <div class="footer-column category">
+               <h3>Category</h3>
+               <ul>
+                  <li><a href="#">Testimonials</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Location & Working Hours</a></li>
+                  <li><a href="#">Our Guarantee</a></li>
+                  <li><a href="#">Track Your Order</a></li>
+                  <li><a href="#">Help Page</a></li>
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h3>Quick Links</h3>
+               <ul>
+                  <li><a href="#">Your Account</a></li>
+                  <li><a href="#">Returns & Exchanges</a></li>
+                  <li><a href="#">Return Center</a></li>
+                  <li><a href="#">Purchase History</a></li>
+                  <li><a href="#">Latest News Blog</a></li>
+                  <li><a href="#">Shipping & Delivery</a></li>
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h3>Contact Us</h3>
+               <ul>
+                  <li><a href="#">Testimonials</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Location & Working Hours</a></li>
+                  <li><a href="#">Our Guarantee</a></li>
+                  <li><a href="#">Track Your Order</a></li>
+                  <li><a href="#">Help Page</a></li>
+               </ul>
+            </div>
+            <div class="footer-column">
+               <h3>Customer Support</h3>
+               <ul>
+                  <li><a href="#">Your Account</a></li>
+                  <li><a href="#">Returns & Exchanges</a></li>
+                  <li><a href="#">Return Center</a></li>
+                  <li><a href="#">Purchase History</a></li>
+                  <li><a href="#">Latest News Blog</a></li>
+                  <li><a href="#">Shipping & Delivery</a></li>
+               </ul>
+            </div>
+         </div>
+         <p class="website-link">www.Jaiinfo.com</p>
+      </footer>
+      <!-- Bottom Footer -->
+      <div class="bottom-footer">
+         <div class="container">
+            <p>&copy; All rights reserved Made by <a href="javascript:void(0);">JAI</a></p>
+            <div class="footer-right">
+               <div class="logo">
+                  <img src="https://jaiinfo.tech/logo/logo_only.png" alt="Logo">
+                  <h1>Grostore</h1>
+               </div>
+               <div class="payment-icons">
+                  <i class="fab fa-cc-visa"></i>
+                  <i class="fab fa-cc-mastercard"></i>
+                  <i class="fab fa-cc-amazon-pay"></i>
+                  <i class="fab fa-cc-paypal"></i>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Swiper JS -->
+      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+      <script>
+         // Price Slider functionality
+         const minPriceSlider = document.getElementById('min-price-slider');
+         const maxPriceSlider = document.getElementById('max-price-slider');
+         const rangeDisplaySpans = document.querySelectorAll('.price-range .range-display span');
+         
+         function updatePriceDisplay() {
+             rangeDisplaySpans[0].textContent = `$${minPriceSlider.value}`;
+             rangeDisplaySpans[1].textContent = `$${maxPriceSlider.value}`;
+         }
+         
+         minPriceSlider.addEventListener('input', updatePriceDisplay);
+         maxPriceSlider.addEventListener('input', updatePriceDisplay);
+         updatePriceDisplay(); // Initial update
+         
+         // Mobile Menu Toggle
+         const hamburgerMenu = document.getElementById('hamburger-menu');
+         const mainNav = document.getElementById('main-nav');
+         const mainNavCloseBtn = document.getElementById('main-nav-close');
+         const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+         
+         // Sidebar Filters Toggle for Mobile
+         const toggleFiltersBtn = document.getElementById('toggle-filters-btn');
+         const sidebarContent = document.getElementById('sidebar-content');
+         const filterSidebarCloseBtn = document.getElementById('filter-sidebar-close');
+         
+         function updateBodyScroll() {
+             const isAnyMenuOpen = mainNav.classList.contains('active') || sidebarContent.classList.contains('active');
+             document.body.classList.toggle('no-scroll', isAnyMenuOpen);
+             mobileMenuOverlay.classList.toggle('active', isAnyMenuOpen);
+         }
+         
+         function toggleMainMenu() {
+             mainNav.classList.toggle('active');
+             updateBodyScroll();
+         }
+         
+         function toggleFilterSidebar() {
+             sidebarContent.classList.toggle('active');
+             // toggleFiltersBtn.textContent = sidebarContent.classList.contains('active') ? 'Hide Filters' : 'Show Filters';
+             updateBodyScroll();
+         }
+         
+         hamburgerMenu.addEventListener('click', toggleMainMenu);
+         mainNavCloseBtn.addEventListener('click', toggleMainMenu); // Close button for main nav
+         toggleFiltersBtn.addEventListener('click', toggleFilterSidebar);
+         filterSidebarCloseBtn.addEventListener('click', toggleFilterSidebar); // Close button for filter sidebar
+         
+         mobileMenuOverlay.addEventListener('click', () => {
+             if (mainNav.classList.contains('active')) {
+                 toggleMainMenu();
+             }
+             if (sidebarContent.classList.contains('active')) {
+                 toggleFilterSidebar();
+             }
+         });
+         
+         // Toggle dropdowns in mobile menu (optional, can also use :hover)
+         document.querySelectorAll('.main-nav .dropdown > a').forEach(item => {
+             item.addEventListener('click', function(e) {
+                 if (window.innerWidth <= 768) { // Only on mobile
+                     e.preventDefault();
+                     this.parentElement.classList.toggle('active'); // Use 'active' class on parent dropdown
+                     const dropdownContent = this.nextElementSibling;
+                     if (dropdownContent) {
+                         dropdownContent.style.display = dropdownContent.style.display === 'flex' ? 'none' : 'flex';
+                     }
+                 }
+             });
+         });
+         
+         // --- Product Listing Functionality (Show & Sort By) ---
+         const showProductsSelect = document.getElementById('show-products-select');
+         const sortBySelect = document.getElementById('sort-by-select');
+         const productGrid = document.getElementById('product-grid');
+         let productCards = Array.from(productGrid.querySelectorAll('.product-card')); // Convert NodeList to Array for sorting
+         
+         // Function to update the number of displayed products
+         function updateDisplayedProducts() {
+             const productsToShow = parseInt(showProductsSelect.value);
+             productCards.forEach((card, index) => {
+                 if (index < productsToShow) {
+                     card.style.display = 'flex'; // Display as flex to maintain grid/list layout
+                 } else {
+                     card.style.display = 'none';
+                 }
+             });
+             // You might also want to update pagination text here, e.g., "Showing 1-X of Y results"
+         }
+         
+         // Function to sort product cards
+         function sortProductCards() {
+             const sortOption = sortBySelect.value;
+         
+             // Get a fresh list of product cards to ensure correct sorting order based on current DOM
+             // This is important if products are dynamically added/removed or filtered.
+             productCards = Array.from(productGrid.querySelectorAll('.product-card'));
+         
+             productCards.sort((a, b) => {
+                 const priceA = parseFloat(a.querySelector('.product-info .price').textContent.replace('$', ''));
+                 const priceB = parseFloat(b.querySelector('.product-info .price').textContent.replace('$', ''));
+                 // You could add more data points for sorting, e.g., product name, rating, etc.
+                 const titleA = a.querySelector('.product-info h4').textContent.toLowerCase();
+                 const titleB = b.querySelector('.product-info h4').textContent.toLowerCase();
+         
+                 switch (sortOption) {
+                     case 'price-low-to-high':
+                         return priceA - priceB;
+                     case 'price-high-to-low':
+                         return priceB - priceA;
+                     case 'news-first':
+                         // For "News First", without specific timestamps or IDs,
+                         // we can either keep the current order or sort by title as a default.
+                         // For this example, let's just keep the initial order (return 0).
+                         return 0;
+                     default:
+                         return 0; // Default to no change if option not recognized
+                 }
+             });
+         
+             // Re-append sorted cards to the grid
+             // Appending an element that is already a child of the parent
+             // will move it to the end of the parent.
+             productCards.forEach(card => productGrid.appendChild(card));
+         
+             // After sorting, ensure the correct number of products are displayed
+             updateDisplayedProducts();
+         }
+         
+         // --- Grid/List View Toggle ---
+         const gridViewToggle = document.getElementById('grid-view-toggle');
+         const listViewToggle = document.getElementById('list-view-toggle');
+         
+         gridViewToggle.addEventListener('click', (e) => {
+             e.preventDefault();
+             listViewToggle.classList.remove('active');
+             gridViewToggle.classList.add('active');
+             productGrid.classList.remove('list-view');
+         });
+         
+         listViewToggle.addEventListener('click', (e) => {
+             e.preventDefault();
+             gridViewToggle.classList.remove('active');
+             listViewToggle.classList.add('active');
+             productGrid.classList.add('list-view');
+         });
+         
+         
+         // Initial display and sort on page load
+         updateDisplayedProducts();
+         sortProductCards(); // Apply initial sort based on default selected option
+         
+         // Initialize Swiper
+         const swiper = new Swiper(".mySwiper", {
+             loop: true, // Enable infinite loop
+             autoplay: {
+                 delay: 2000, // Slide changes every 5 seconds
+                 disableOnInteraction: false, // Continue autoplay after user interaction
+             },
+             pagination: {
+                 el: ".swiper-pagination",
+                 clickable: true,
+             },
+            
+         });
+      </script>
+   </body>
+</html>
