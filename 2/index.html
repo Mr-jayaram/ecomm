@@ -932,7 +932,7 @@
         
         .result-info {
              flex-grow: 1;
-        }
+         }
         
         .result-name {
             font-size: 1.2rem;
@@ -1104,17 +1104,26 @@
         }
         
         @media (max-width: 768px) {
-            /* Slider responsive */
+            
+            /* === CSS UPDATED FOR SMALLER MOBILE SLIDER === */
             .hero-slider {
-                height: 80vh;
-                min-height: 400px;
+                height: 40vh; /* Was 50vh */
+                min-height: 300px; /* Was 400px */
             }
             .slide-content h1 {
-                font-size: 3rem;
+                font-size: 2.2rem; /* Was 3rem */
             }
             .slide-content p {
-                font-size: 1.1rem;
+                font-size: 1rem; /* Was 1.1rem */
+                margin-bottom: 1.5rem; /* Was 2rem */
             }
+            /* This is a new rule to target the button specifically inside the slide */
+            .slide-content .cta-btn {
+                padding: 0.8rem 2rem; /* Was 1rem 3rem */
+                font-size: 1rem; /* Was 1.1rem */
+            }
+            /* === END OF UPDATE === */
+            
             .slider-nav {
                 padding: 0 0.5rem;
             }
@@ -1204,12 +1213,12 @@
     </div>
 </div>
         <div class="slide">
-            <div class="slide-image" style="background-image: url('https://source.unsplash.com/random/1600x900?toy,plush');"></div>
+            <div class="slide-image" style="background-image: url('https://source.unsplash.com/random/1600x900?toy,lego');"></div>
             <div class="slide-overlay"></div>
             <div class="slide-content">
-                <h1>New Plush Collection</h1>
-                <p>The softest, most cuddly friends have arrived</p>
-                <button class="cta-btn">Meet Them</button>
+                <h1>Build Your World</h1>
+                <p>Endless creativity with new building sets</p>
+                <button class="cta-btn">Start Building</button>
             </div>
         </div>
         <div class="slide">
@@ -1438,6 +1447,16 @@
         </div>
     </section>
 
+    <section id="contact" class="newsletter-cta">
+        <div class="newsletter-card">
+            <h2 class="section-title">Join the Fun!</h2>
+            <p>Subscribe to our newsletter for exclusive deals, new arrivals, and 10% off your first order!</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button class="cta-btn" type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
     <div class="search-modal" id="search-modal">
         <div class="modal-close" id="modal-close">&times;</div>
         <div class="search-bar-container">
@@ -1537,7 +1556,8 @@
                 const target = document.querySelector(targetId);
                 
                 if(target) {
-                    const headerOffset = 90;
+                    // Use dynamic header height from JS
+                    const headerOffset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 90;
                     const elementPosition = target.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -1599,16 +1619,40 @@
             const prevSlide = slides[previousSlideIndex];
             const nextSlide = slides[currentSlide];
 
+            // --- Simpler Fade/Clip-Path Logic ---
+            
+            // Set next slide to be ready
+            nextSlide.style.clipPath = 'polygon(0 0, 100% 0, 100% 100%, 0 100%)';
+            nextSlide.classList.add('active');
+
+            // Animate out previous slide
+            prevSlide.classList.remove('active');
+            
+            // We need to reset the clip-path of the old slide *after* transition
+            // But for this simple one, we just remove active
+            // Let's refine the CSS clip-path logic for better in/out
+            // The provided CSS logic is a bit complex. Let's stick to the original intent.
+            
             if (direction === 'next') {
-                prevSlide.style.clipPath = 'polygon(0 0, 0 0, 0 100%, 0 100%)';
-                nextSlide.style.clipPath = 'polygon(0 0, 100% 0, 100% 100%, 0 100%)';
+                 prevSlide.style.clipPath = 'polygon(0 0, 0 0, 0 100%, 0 100%)';
+                 // nextSlide.style.clipPath = 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'; // Already set by .active
             } else {
-                prevSlide.style.clipPath = 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)';
-                nextSlide.style.clipPath = 'polygon(0 0, 100% 0, 100% 100%, 0 100%)';
+                 prevSlide.style.clipPath = 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)';
+                 // nextSlide.style.clipPath = 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'; // Already set by .active
             }
             
-            prevSlide.classList.remove('active');
-            nextSlide.classList.add('active');
+            // After the transition, reset the non-active slides
+            setTimeout(() => {
+                slides.forEach((s, i) => {
+                    if (i !== currentSlide) {
+                        s.style.clipPath = 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)'; // Reset to hidden
+                    }
+                });
+                // Ensure the active one is correct
+                slides[currentSlide].style.clipPath = 'polygon(0 0, 100% 0, 100% 100%, 0 100%)';
+                
+            }, 1200); // Match CSS transition duration
+            
             
             if (paginationDots.length > 0) {
                 paginationDots[previousSlideIndex].classList.remove('active');
@@ -1635,6 +1679,11 @@
         }
 
         if (slides.length > 0) {
+            // Set initial state
+            slides.forEach((s, i) => {
+                 if(i !== 0) s.style.clipPath = 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)';
+            });
+            
             createPagination();
             startInterval();
 
@@ -1727,5 +1776,4 @@
         // --- END OF NEW LOGIC ---
     </script>
 </body>
-
 </html>
