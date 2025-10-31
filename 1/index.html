@@ -172,11 +172,15 @@
         
         .nav-icons { display: flex; align-items: center; }
 
-        .nav-icons a {
+        .nav-icons > * {
             margin-left: 20px;
+        }
+
+        .nav-icons a {
             color: var(--color-text);
             font-size: 1.1em;
             position: relative;
+            cursor: pointer;
         }
 
         .nav-icons a:hover { color: var(--color-primary); }
@@ -199,8 +203,57 @@
             z-index: 1100;
             color: var(--color-primary);
         }
+        
+        .profile-dropdown {
+            position: relative;
+        }
 
-        /* --- Hero Styles --- */
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 15px);
+            right: 0;
+            background-color: var(--color-light);
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            list-style: none;
+            padding: 10px 0;
+            margin: 0;
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            z-index: 1100;
+        }
+        
+        .dropdown-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            font-size: 0.9em;
+            color: var(--color-text);
+            font-weight: 500;
+        }
+        
+        .dropdown-menu a:hover {
+            background-color: var(--color-grey);
+            color: var(--color-primary);
+        }
+        
+        .dropdown-menu li {
+            border-top: 1px solid var(--color-border);
+        }
+        
+        .dropdown-menu li:first-child {
+            border-top: none;
+        }
+
+        /* --- Hero Styles --- MODIFICATION: Updated for Slideshow */
         .hero-section {
             position: relative;
             height: 90vh;
@@ -209,35 +262,42 @@
             align-items: center;
             justify-content: flex-start;
             color: var(--color-light);
-            background-image: url('https://via.placeholder.com/1920x1080/d4e6f1/1d3557?text=Modern+Fashion+Hero');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
             overflow: hidden;
         }
 
-        .hero-section::before {
-            content: '';
+        #hero-bg-slideshow {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+        }
+
+        .hero-bg-slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out; /* Smooth fade transition */
+            transform: scale(1.1); /* Start slightly zoomed for the animation */
+        }
+
+        .hero-bg-slide.active {
+            opacity: 1;
+            animation: zoomIn 15s ease-out forwards;
+        }
+
+        .hero-overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             background: linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.7) 10%, rgba(var(--color-primary-rgb), 0.1) 100%);
             z-index: 1;
         }
         
-        .hero-section::after {
-             content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: inherit;
-            background-size: cover;
-            background-position: center;
-            animation: zoomIn 15s ease-out forwards;
-            z-index: 0;
-        }
-
         .hero-content {
             position: relative;
-            z-index: 2;
+            z-index: 2; /* Ensure content is above overlay and background */
             padding-left: 5%;
             max-width: 650px;
             text-align: left;
@@ -269,15 +329,15 @@
         .hero-content .btn { animation-delay: 0.9s; }
 
         @keyframes zoomIn {
-            from { transform: scale(1); }
-            to { transform: scale(1.1); }
+            from { transform: scale(1.1); } /* Start slightly zoomed in */
+            to { transform: scale(1.2); } /* End slightly more zoomed */
         }
 
         @keyframes fadeInSlideUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
+        
         /* --- Featured Categories --- */
         .featured-categories {
             display: grid;
@@ -337,19 +397,19 @@
         }
 
         /* --- New Arrivals & All Products Section --- */
-        .new-arrivals, .all-products, .features-section { /* --- MODIFIED --- */
+        .new-arrivals, .all-products, .features-section {
             text-align: center;
         }
         
-        .new-arrivals, .features-section { /* --- MODIFIED --- */
+        .new-arrivals, .features-section, .comment-section { 
             background-color: var(--color-grey);
         }
         
-        .all-products { /* --- MODIFIED --- */
+        .all-products {
             background-color: var(--color-light);
         }
 
-        .new-arrivals h2, .all-products h2, .features-section h2 {
+        .new-arrivals h2, .all-products h2, .features-section h2, .comment-section h2 { 
             margin-bottom: 50px;
         }
 
@@ -435,7 +495,7 @@
         .view-all-btn { margin-top: 30px; padding: 15px 40px; }
 
         /* --- Features Section --- */
-        .features-grid { /* --- MODIFIED --- */
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 40px;
@@ -458,23 +518,21 @@
         }
 
         /* --- Comment/Review Section --- */
-        /* --- MODIFIED --- */
         .customer-reviews {
             text-align: center;
-            background-color: var(--color-primary); /* New dark background */
+            background-color: var(--color-primary);
         }
-        .customer-reviews h2, .customer-reviews h3 {
-            color: var(--color-light); /* Light text for dark background */
+        .customer-reviews h2 {
+            color: var(--color-light);
         }
         .customer-reviews .section-intro {
-            color: var(--color-text-medium); /* Lighter intro text */
+            color: var(--color-text-medium);
             font-size: 1.1em;
             margin-bottom: 40px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
-        /* End of modification */
 
         .review-card {
             background-color: var(--color-light);
@@ -508,9 +566,9 @@
         .review-rating .fas { color: #ffc107; }
         .review-body { color: #555; font-style: italic; }
 
-        .comment-form-section h3 {
+        .comment-section h3 {
             text-align: center;
-            margin-top: 50px; margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         .comment-form {
             max-width: 800px; margin: 0 auto;
@@ -549,34 +607,22 @@
         }
 
         /* --- Newsletter Signup --- */
-        /* --- MODIFIED --- */
         .newsletter-signup {
             text-align: center;
-            background-color: var(--color-light); /* Changed back to light */
+            background-color: var(--color-light);
         }
         .newsletter-signup h2 {
-            color: var(--color-primary); /* Changed back to dark */
+            color: var(--color-primary);
             font-size: 2.2em; margin-bottom: 15px;
         }
         .newsletter-signup p {
-            color: #555; /* Changed back to standard text color */
+            color: #555;
             font-size: 1.1em;
             margin-bottom: 30px;
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
         }
-        .newsletter-form .btn {
-             /* Button is now a standard primary button */
-            background-color: var(--color-primary);
-            color: var(--color-light);
-            border-color: var(--color-primary);
-        }
-        .newsletter-form .btn:hover {
-            background-color: var(--color-primary-light);
-            border-color: var(--color-primary-light);
-        }
-        /* End of modification */
         
         .newsletter-form {
             display: flex;
@@ -657,6 +703,130 @@
         .footer-bottom a { color: var(--color-text-light); margin: 0 5px; }
         .footer-bottom a:hover { color: var(--color-light); }
 
+        /* --- Search Modal Styles --- */
+        .search-modal {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 2000;
+            display: none; 
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .search-modal.active {
+            display: flex;
+        }
+        
+        .search-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(var(--color-primary-rgb), 0.8);
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .search-modal.active .search-overlay {
+            opacity: 1;
+        }
+
+        .search-content {
+            position: relative;
+            z-index: 2001;
+            width: 90%;
+            max-width: 600px;
+            margin-top: 10vh;
+            transform: translateY(-20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .search-modal.active .search-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        #search-input {
+            width: 100%;
+            padding: 20px 25px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            border: 2px solid var(--color-border);
+            font-family: var(--font-body);
+            color: var(--color-text);
+        }
+        
+        #search-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .close-search {
+            position: absolute;
+            top: -30px;
+            right: -10px;
+            font-size: 2em;
+            color: var(--color-light);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .close-search:hover {
+            transform: rotate(90deg);
+        }
+
+        #search-results-container {
+            margin-top: 20px;
+            max-height: 60vh;
+            overflow-y: auto;
+            background-color: var(--color-light);
+            border-radius: 5px;
+            padding: 10px;
+        }
+        
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        .search-result-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .search-result-item:hover {
+            background-color: var(--color-grey);
+        }
+        
+        .search-result-item img {
+            width: 60px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .search-result-info h4 {
+            font-family: var(--font-body);
+            font-weight: 600;
+            color: var(--color-primary);
+            font-size: 1em;
+            margin: 0 0 5px 0;
+        }
+        
+        .search-result-info p {
+            margin: 0;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
         /* --- Responsive Media Queries --- */
         @media (max-width: 992px) {
             h1 { font-size: 3em; } h2 { font-size: 2.2em; }
@@ -682,8 +852,8 @@
         
         @media (max-width: 768px) {
             .section-padding { padding: 60px 5%; }
-            .hero-section { height: 80vh; justify-content: center; background-attachment: scroll; }
-             .hero-section::before { background: linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.7) 0%, rgba(var(--color-primary-rgb), 0.5) 100%); }
+            .hero-section { height: 80vh; justify-content: center; }
+             .hero-overlay { background: linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.7) 0%, rgba(var(--color-primary-rgb), 0.5) 100%); }
             .hero-content { text-align: center; padding-left: 0; max-width: 90%; }
             .hero-content p { margin-left: auto; margin-right: auto; }
             .hero-content h1 { font-size: 3.2em; }
@@ -727,8 +897,17 @@
             </ul>
             
             <div class="nav-icons">
-                <a href="#"><i class="fas fa-search"></i></a>
-                <a href="#"><i class="fas fa-user"></i></a>
+                <a id="search-icon"><i class="fas fa-search"></i></a>
+                
+                <div class="profile-dropdown">
+                    <a id="profile-icon"><i class="fas fa-user"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a href="#">Login</a></li>
+                    </ul>
+                </div>
+                
                 <a href="#"><i class="fas fa-shopping-bag"></i><span class="cart-count">0</span></a>
             </div>
             
@@ -738,258 +917,259 @@
         </nav>
     </header>
 
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1>Elevate Your Everyday Style</h1>
-            <p>Discover our curated collection of contemporary fashion. Effortless elegance starts here.</p>
-            <a href="#" class="btn btn-primary">SHOP NOW</a>
-        </div>
-    </section>
-
-    <section class="featured-categories section-padding container">
-        <div class="category-card large" style="background-image: url('https://via.placeholder.com/600x400/a8dadc/1d3557?text=Sustainable+Denim');">
-            <h3>Sustainable Denim</h3>
-            <a href="#" class="btn btn-secondary">Shop Denim</a>
-        </div>
-        <div class="category-card" style="background-image: url('https://via.placeholder.com/300x400/bde0fe/1d3557?text=Essentials');">
-            <h3>Timeless Essentials</h3>
-            <a href="#" class="btn btn-secondary">Shop Essentials</a>
-        </div>
-        <div class="category-card" style="background-image: url('https://via.placeholder.com/300x400/90e0ef/1d3557?text=Accessories');">
-            <h3>Modern Accessories</h3>
-            <a href="#" class="btn btn-secondary">Shop Accessories</a>
-        </div>
-    </section>
-
-    <section class="new-arrivals section-padding">
-        <div class="container">
-            <h2>New Arrivals</h2>
-            <div class="product-grid">
-                
-                <div class="product-card">
-                    <div class="product-image-wrapper">
-                        <img src="https://via.placeholder.com/300x400/f1faee/1d3557?text=Ribbed+Top" alt="Ribbed Knit Top">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Tops</p>
-                        <h3 class="product-title">Effortless Ribbed Top</h3>
-                        <p class="product-price">$55.00</p>
-                    </div>
-                    <a href="#" class="btn btn-quick-view">Quick View</a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image-wrapper">
-                        <img src="https://via.placeholder.com/300x400/e0fbfc/1d3557?text=Wide+Leg+Pants" alt="Wide Leg Trousers">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Bottoms</p>
-                        <h3 class="product-title">Chic Wide Leg Trousers</h3>
-                        <p class="product-price">$78.00</p>
-                    </div>
-                    <a href="#" class="btn btn-quick-view">Quick View</a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image-wrapper">
-                        <img src="https://via.placeholder.com/300x400/c7ddef/1d3557?text=Summer+Dress" alt="Flowy Summer Dress">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Dresses</p>
-                        <h3 class="product-title">Flowy Midi Summer Dress</h3>
-                        <p class="product-price">$99.00</p>
-                    </div>
-                    <a href="#" class="btn btn-quick-view">Quick View</a>
-                </div>
-
-                 <div class="product-card">
-                    <div class="product-image-wrapper">
-                        <img src="https://via.placeholder.com/300x400/b8c0d0/1d3557?text=Blazer" alt="Structured Blazer">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Outerwear</p>
-                        <h3 class="product-title">Modern Structured Blazer</h3>
-                        <p class="product-price">$140.00</p>
-                    </div>
-                    <a href="#" class="btn btn-quick-view">Quick View</a>
-                </div>
-                
+    <main>
+        <!-- MODIFICATION: Hero Section updated for slideshow -->
+        <section class="hero-section">
+            <div id="hero-bg-slideshow"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>Elevate Your Everyday Style</h1>
+                <p>Discover our curated collection of contemporary fashion. Effortless elegance starts here.</p>
+                <a href="#" class="btn btn-primary">SHOP NOW</a>
             </div>
-            <a href="#" class="btn btn-primary view-all-btn">VIEW ALL NEW ARRIVALS</a>
-        </div>
-    </section>
-    
-    <section class="all-products section-padding">
-        <div class="container">
-            <h2>All Products</h2>
-            <div class="product-grid">
-                <!-- Row 1 -->
-                <div class="product-card">
-                    <div class="product-image-wrapper">
-                        <img src="https://via.placeholder.com/300x400/f1faee/1d3557?text=Ribbed+Top" alt="Ribbed Knit Top">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Tops</p>
-                        <h3 class="product-title">Effortless Ribbed Top</h3>
-                        <p class="product-price">$55.00</p>
-                    </div>
-                    <a href="#" class="btn btn-quick-view">Quick View</a>
-                </div>
-                <div class="product-card">
-                    <div class="product-image-wrapper">
-                        <img src="https://via.placeholder.com/300x400/e0fbfc/1d3557?text=Wide+Leg+Pants" alt="Wide Leg Trousers">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Bottoms</p>
-                        <h3 class="product-title">Chic Wide Leg Trousers</h3>
-                        <p class="product-price">$78.00</p>
-                    </div>
-                    <a href="#" class="btn btn-quick-view">Quick View</a>
-                </div>
-                <div class="product-card">
-                    <div class="product-image-wrapper">
-                        <img src="https://via.placeholder.com/300x400/c7ddef/1d3557?text=Summer+Dress" alt="Flowy Summer Dress">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Dresses</p>
-                        <h3 class="product-title">Flowy Midi Summer Dress</h3>
-                        <p class="product-price">$99.00</p>
-                    </div>
-                    <a href="#" class="btn btn-quick-view">Quick View</a>
-                </div>
-                 <div class="product-card">
-                    <div class="product-image-wrapper">
-                        <img src="https://via.placeholder.com/300x400/b8c0d0/1d3557?text=Blazer" alt="Structured Blazer">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Outerwear</p>
-                        <h3 class="product-title">Modern Structured Blazer</h3>
-                        <p class="product-price">$140.00</p>
-                    </div>
-                    <a href="#" class="btn btn-quick-view">Quick View</a>
-                </div>
-                
-                <!-- Row 2: More Products -->
-                 <div class="product-card">
-                    <div class="product-image-wrapper">
-                        <img src="https://via.placeholder.com/300x400/a2d2ff/1d3557?text=Crossbody+Bag" alt="Crossbody Bag">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Accessories</p>
-                        <h3 class="product-title">Minimalist Crossbody Bag</h3>
-                        <p class="product-price">$85.00</p>
-                    </div>
-                    <a href="#" class="btn btn-quick-view">Quick View</a>
-                </div>
-                <div class="product-card">
-                    <div class="product-image-wrapper">
-                        <img src="https://via.placeholder.com/300x400/ffc8dd/1d3557?text=Knit+Sweater" alt="Knit Sweater">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Tops</p>
-                        <h3 class="product-title">Cozy Knit Sweater</h3>
-                        <p class="product-price">$110.00</p>
-                    </div>
-                    <a href="#" class="btn btn-quick-view">Quick View</a>
-                </div>
-                <div class="product-card">
-                    <div class="product-image-wrapper">
-                        <img src="https://via.placeholder.com/300x400/cdb4db/1d3557?text=Straight+Jeans" alt="Straight Leg Jeans">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Denim</p>
-                        <h3 class="product-title">Classic Straight Jeans</h3>
-                        <p class="product-price">$125.00</p>
-                    </div>
-                    <a href="#" class="btn btn-quick-view">Quick View</a>
-                </div>
-                 <div class="product-card">
-                    <div class="product-image-wrapper">
-                        <img src="https://via.placeholder.com/300x400/bde0fe/1d3557?text=Trench+Coat" alt="Trench Coat">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Outerwear</p>
-                        <h3 class="product-title">Timeless Trench Coat</h3>
-                        <p class="product-price">$220.00</p>
-                    </div>
-                    <a href="#" class="btn btn-quick-view">Quick View</a>
-                </div>
-                
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="features-section section-padding">
-         <div class="container">
-            <div class="features-grid">
-                <div class="feature-item">
-                    <i class="fas fa-leaf"></i>
-                    <h3>Conscious Materials</h3>
-                    <p>We prioritize sustainable and recycled fabrics in every collection we create.</p>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-box"></i>
-                    <h3>Easy Returns</h3>
-                    <p>Not a perfect fit? No problem. Enjoy our 30-day hassle-free return policy.</p>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-truck-fast"></i>
-                    <h3>Free Shipping</h3>
-                    <p>Get free standard shipping on all domestic orders over $75.</p>
-                </div>
+        <section class="featured-categories section-padding container">
+            <div class="category-card large" style="background-image: url('https://images.pexels.com/photos/5693889/pexels-photo-5693889.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=2');">
+                <h3>Sustainable Denim</h3>
+                <a href="#" class="btn btn-secondary">Shop Denim</a>
             </div>
-         </div>
-    </section>
+            <div class="category-card" style="background-image: url('https://images.pexels.com/photos/2043590/pexels-photo-2043590.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2');">
+                <h3>Timeless Essentials</h3>
+                <a href="#" class="btn btn-secondary">Shop Essentials</a>
+            </div>
+            <div class="category-card" style="background-image: url('https://images.pexels.com/photos/1102777/pexels-photo-1102777.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2');">
+                <h3>Modern Accessories</h3>
+                <a href="#" class="btn btn-secondary">Shop Accessories</a>
+            </div>
+        </section>
 
-    <section class="customer-reviews section-padding">
-        <div class="container">
-            <h2>What Our Customers Say</h2>
-            <p class="section-intro">We value the feedback from our community. Here's what people are saying about their favorite pieces.</p>
-            
-            <div class="reviews-container">
-                <div class="reviews-wrapper">
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="avatar">JS</div>
-                            <div>
-                                <div class="review-author">Jane Smith</div>
-                                <div class="review-rating">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                </div>
-                            </div>
+        <section class="new-arrivals section-padding">
+            <div class="container">
+                <h2>New Arrivals</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.pexels.com/photos/6045353/pexels-photo-6045353.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Ribbed Knit Top">
                         </div>
-                        <p class="review-body">"I am absolutely in love with the Chic Wide Leg Trousers! The quality is amazing, and they are so comfortable yet stylish. I get compliments every time I wear them."</p>
+                        <div class="product-info">
+                            <p class="product-category">Tops</p>
+                            <h3 class="product-title">Effortless Ribbed Top</h3>
+                            <p class="product-price">$55.00</p>
+                        </div>
+                        <a href="#" class="btn btn-quick-view">Quick View</a>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.pexels.com/photos/7679878/pexels-photo-7679878.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Wide Leg Trousers">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-category">Bottoms</p>
+                            <h3 class="product-title">Chic Wide Leg Trousers</h3>
+                            <p class="product-price">$78.00</p>
+                        </div>
+                        <a href="#" class="btn btn-quick-view">Quick View</a>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.pexels.com/photos/4937449/pexels-photo-4937449.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Flowy Summer Dress">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-category">Dresses</p>
+                            <h3 class="product-title">Flowy Midi Summer Dress</h3>
+                            <p class="product-price">$99.00</p>
+                        </div>
+                        <a href="#" class="btn btn-quick-view">Quick View</a>
+                    </div>
+                     <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.pexels.com/photos/2613260/pexels-photo-2613260.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Structured Blazer">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-category">Outerwear</p>
+                            <h3 class="product-title">Modern Structured Blazer</h3>
+                            <p class="product-price">$140.00</p>
+                        </div>
+                        <a href="#" class="btn btn-quick-view">Quick View</a>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-primary view-all-btn">VIEW ALL NEW ARRIVALS</a>
+            </div>
+        </section>
+        
+        <section class="all-products section-padding">
+            <div class="container">
+                <h2>All Products</h2>
+                <div class="product-grid">
+                    <!-- Row 1 -->
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.pexels.com/photos/6045353/pexels-photo-6045353.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Ribbed Knit Top">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-category">Tops</p>
+                            <h3 class="product-title">Effortless Ribbed Top</h3>
+                            <p class="product-price">$55.00</p>
+                        </div>
+                        <a href="#" class="btn btn-quick-view">Quick View</a>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.pexels.com/photos/7679878/pexels-photo-7679878.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Wide Leg Trousers">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-category">Bottoms</p>
+                            <h3 class="product-title">Chic Wide Leg Trousers</h3>
+                            <p class="product-price">$78.00</p>
+                        </div>
+                        <a href="#" class="btn btn-quick-view">Quick View</a>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.pexels.com/photos/4937449/pexels-photo-4937449.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Flowy Summer Dress">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-category">Dresses</p>
+                            <h3 class="product-title">Flowy Midi Summer Dress</h3>
+                            <p class="product-price">$99.00</p>
+                        </div>
+                        <a href="#" class="btn btn-quick-view">Quick View</a>
+                    </div>
+                     <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.pexels.com/photos/2613260/pexels-photo-2613260.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Structured Blazer">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-category">Outerwear</p>
+                            <h3 class="product-title">Modern Structured Blazer</h3>
+                            <p class="product-price">$140.00</p>
+                        </div>
+                        <a href="#" class="btn btn-quick-view">Quick View</a>
                     </div>
                     
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="avatar">M.D.</div>
-                             <div>
-                                <div class="review-author">Michael Doe</div>
-                                <div class="review-rating">
-                                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                                </div>
-                            </div>
+                    <!-- Row 2: More Products -->
+                     <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.pexels.com/photos/6311645/pexels-photo-6311645.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Crossbody Bag">
                         </div>
-                        <p class="review-body">"Great service and fast shipping. The Modern Structured Blazer fits perfectly. I docked one star because I wish it came in more colors. Would definitely buy again!"</p>
+                        <div class="product-info">
+                            <p class="product-category">Accessories</p>
+                            <h3 class="product-title">Minimalist Crossbody Bag</h3>
+                            <p class="product-price">$85.00</p>
+                        </div>
+                        <a href="#" class="btn btn-quick-view">Quick View</a>
                     </div>
-
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="avatar">AL</div>
-                             <div>
-                                <div class="review-author">Anna Lee</div>
-                                <div class="review-rating">
-                                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                </div>
-                            </div>
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.pexels.com/photos/4041133/pexels-photo-4041133.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Knit Sweater">
                         </div>
-                        <p class="review-body">"The Flowy Midi Summer Dress is my new favorite outfit. It's so light and airy, perfect for warm days. The fabric feels very high-quality. Highly recommend!"</p>
+                        <div class="product-info">
+                            <p class="product-category">Tops</p>
+                            <h3 class="product-title">Cozy Knit Sweater</h3>
+                            <p class="product-price">$110.00</p>
+                        </div>
+                        <a href="#" class="btn btn-quick-view">Quick View</a>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.pexels.com/photos/6770530/pexels-photo-6770530.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Straight Leg Jeans">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-category">Denim</p>
+                            <h3 class="product-title">Classic Straight Jeans</h3>
+                            <p class="product-price">$125.00</p>
+                        </div>
+                        <a href="#" class="btn btn-quick-view">Quick View</a>
+                    </div>
+                     <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.pexels.com/photos/3965545/pexels-photo-3965545.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Trench Coat">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-category">Outerwear</p>
+                            <h3 class="product-title">Timeless Trench Coat</h3>
+                            <p class="product-price">$220.00</p>
+                        </div>
+                        <a href="#" class="btn btn-quick-view">Quick View</a>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="comment-form-section">
+        <section class="features-section section-padding">
+             <div class="container">
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Conscious Materials</h3>
+                        <p>We prioritize sustainable and recycled fabrics in every collection we create.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-box"></i>
+                        <h3>Easy Returns</h3>
+                        <p>Not a perfect fit? No problem. Enjoy our 30-day hassle-free return policy.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-truck-fast"></i>
+                        <h3>Free Shipping</h3>
+                        <p>Get free standard shipping on all domestic orders over $75.</p>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <section class="customer-reviews section-padding">
+            <div class="container">
+                <h2>What Our Customers Say</h2>
+                <p class="section-intro">We value the feedback from our community. Here's what people are saying about their favorite pieces.</p>
+                
+                <div class="reviews-container">
+                    <div class="reviews-wrapper">
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="avatar">JS</div>
+                                <div>
+                                    <div class="review-author">Jane Smith</div>
+                                    <div class="review-rating">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="review-body">"I am absolutely in love with the Chic Wide Leg Trousers! The quality is amazing, and they are so comfortable yet stylish. I get compliments every time I wear them."</p>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="avatar">M.D.</div>
+                                 <div>
+                                    <div class="review-author">Michael Doe</div>
+                                    <div class="review-rating">
+                                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="review-body">"Great service and fast shipping. The Modern Structured Blazer fits perfectly. I docked one star because I wish it came in more colors. Would definitely buy again!"</p>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="avatar">AL</div>
+                                 <div>
+                                    <div class="review-author">Anna Lee</div>
+                                    <div class="review-rating">
+                                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="review-body">"The Flowy Midi Summer Dress is my new favorite outfit. It's so light and airy, perfect for warm days. The fabric feels very high-quality. Highly recommend!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="comment-section section-padding">
+            <div class="container">
                 <h3>Leave a Comment</h3>
                  <form class="comment-form">
                     <input type="text" placeholder="Your Name" required>
@@ -998,19 +1178,19 @@
                     <button type="submit" class="btn btn-primary">SUBMIT COMMENT</button>
                 </form>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="newsletter-signup section-padding">
-        <div class="container">
-            <h2>Stay in the Loop</h2>
-            <p>Sign up for exclusive offers, styling tips, and early access to new collections.</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="submit" class="btn btn-primary">SUBSCRIBE</button>
-            </form>
-        </div>
-    </section>
+        <section class="newsletter-signup section-padding">
+            <div class="container">
+                <h2>Stay in the Loop</h2>
+                <p>Sign up for exclusive offers, styling tips, and early access to new collections.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-primary">SUBSCRIBE</button>
+                </form>
+            </div>
+        </section>
+    </main>
 
     <footer class="main-footer">
         <div class="footer-grid">
@@ -1063,22 +1243,136 @@
         </div>
     </footer>
 
-    <script>
-        // Simple JS for mobile menu toggle
-        document.querySelector('.menu-toggle').addEventListener('click', () => {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
+    <!-- Search Modal HTML -->
+    <div id="search-modal" class="search-modal">
+        <div class="search-overlay"></div>
+        <div class="search-content">
+            <input type="text" id="search-input" placeholder="Search for products...">
+            <div class="close-search">&times;</div>
+            <div id="search-results-container"></div>
+        </div>
+    </div>
 
-        // JS for seamless auto-scroll
+
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle
+            document.querySelector('.menu-toggle').addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+
+            // Auto-scrolling reviews
             const reviewsWrapper = document.querySelector('.reviews-wrapper');
             if(reviewsWrapper) {
                 const reviewCards = reviewsWrapper.querySelectorAll('.review-card');
                 reviewCards.forEach(card => {
-                    const clone = card.cloneNode(true);
-                    reviewsWrapper.appendChild(clone);
+                    reviewsWrapper.appendChild(card.cloneNode(true));
                 });
             }
+
+            // --- Search Modal & Live Results Logic ---
+            const searchIcon = document.getElementById('search-icon');
+            const searchModal = document.getElementById('search-modal');
+            const searchInput = document.getElementById('search-input');
+            const searchResultsContainer = document.getElementById('search-results-container');
+            const allProductCards = document.querySelectorAll('.all-products .product-card');
+
+            const openSearch = () => {
+                searchModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                searchInput.focus();
+            };
+
+            const closeSearch = () => {
+                searchModal.classList.remove('active');
+                document.body.style.overflow = '';
+                searchInput.value = '';
+                searchResultsContainer.innerHTML = '';
+            };
+
+            searchIcon.addEventListener('click', openSearch);
+            searchModal.querySelector('.search-overlay').addEventListener('click', closeSearch);
+            searchModal.querySelector('.close-search').addEventListener('click', closeSearch);
+
+            searchInput.addEventListener('keyup', () => {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                searchResultsContainer.innerHTML = ''; 
+
+                if (searchTerm.length < 2) { 
+                    return;
+                }
+
+                allProductCards.forEach(card => {
+                    const title = card.querySelector('.product-title').textContent.toLowerCase();
+                    const category = card.querySelector('.product-category').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || category.includes(searchTerm)) {
+                        const price = card.querySelector('.product-price').textContent;
+                        const imageSrc = card.querySelector('img').src;
+                        const linkHref = card.querySelector('.btn-quick-view').href;
+                        const productTitle = card.querySelector('.product-title').textContent;
+
+                        const resultItem = document.createElement('a');
+                        resultItem.href = linkHref;
+                        resultItem.classList.add('search-result-item');
+                        resultItem.innerHTML = `
+                            <img src="${imageSrc}" alt="${productTitle}">
+                            <div class="search-result-info">
+                                <h4>${productTitle}</h4>
+                                <p>${price}</p>
+                            </div>
+                        `;
+                        
+                        searchResultsContainer.appendChild(resultItem);
+                    }
+                });
+            });
+
+            // --- Profile Dropdown Logic ---
+            const profileIcon = document.getElementById('profile-icon');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+            
+            profileIcon.addEventListener('click', (event) => {
+                event.preventDefault(); 
+                dropdownMenu.classList.toggle('active');
+            });
+
+            window.addEventListener('click', (event) => {
+                if (!profileIcon.parentElement.contains(event.target)) {
+                    if (dropdownMenu.classList.contains('active')) {
+                        dropdownMenu.classList.remove('active');
+                    }
+                }
+            });
+
+            // --- MODIFICATION: Banner Slideshow Logic ---
+            const heroImages = [
+                'https://images.pexels.com/photos/3755706/pexels-photo-3755706.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', // Original
+                'https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', // Clothes on rack
+                'https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' // Folded clothes
+            ];
+            let currentImageIndex = 0;
+            const slideshowContainer = document.getElementById('hero-bg-slideshow');
+
+            // Preload images and create slide elements
+            heroImages.forEach((src, index) => {
+                const slide = document.createElement('div');
+                slide.classList.add('hero-bg-slide');
+                slide.style.backgroundImage = `url('${src}')`;
+                if (index === 0) {
+                    slide.classList.add('active'); // Set the first image as active
+                }
+                slideshowContainer.appendChild(slide);
+            });
+
+            const slides = slideshowContainer.querySelectorAll('.hero-bg-slide');
+
+            setInterval(() => {
+                slides[currentImageIndex].classList.remove('active');
+                currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+                slides[currentImageIndex].classList.add('active');
+            }, 2000); // Change image every 2 seconds
+
         });
     </script>
 </body>
