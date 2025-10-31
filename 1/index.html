@@ -23,7 +23,7 @@
             --color-text-medium: #ccc; /* Medium-light text for footer */
                         
             --color-light: #fff;
-            --color-grey: #f8f8f8;
+            --color-grey: #f5f5f5;
             --color-border: #eee;
         }
                 
@@ -395,9 +395,45 @@
             min-height: 400px;
         }
         
+        /* --- MODIFICATION: Section Header Styles --- */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline; /* Aligns text better than 'center' */
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            margin-bottom: 0; /* Margin is now on the parent wrapper */
+        }
+        
+        .view-all-link {
+            font-weight: 600;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            white-space: nowrap; /* Prevents wrapping */
+        }
+        
+        .view-all-link i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .view-all-link:hover {
+            color: var(--color-primary-light);
+        }
+        
+        .view-all-link:hover i {
+            transform: translateX(4px);
+        }
+        /* --- End of Section Header Styles --- */
+        
         /* --- New Arrivals & All Products Section --- */
         .new-arrivals, .all-products, .features-section {
-            text-align: center;
+             /* text-align: center; -- MODIFICATION: Removed center alignment from new-arrivals and all-products */
         }
                 
         .new-arrivals, .features-section, .comment-section { 
@@ -408,8 +444,14 @@
             background-color: var(--color-light);
         }
         
-        .new-arrivals h2, .all-products h2, .features-section h2, .comment-section h2 { 
+        /* MODIFICATION: Removed new-arrivals h2, all-products h2 */
+        .features-section h2, .comment-section h2 { 
             margin-bottom: 50px;
+        }
+
+        /* MODIFICATION: Added this rule for features-section */
+        .features-section {
+            text-align: center;
         }
         
         .product-grid {
@@ -623,7 +665,8 @@
         
         .comment-form .btn {
             grid-column: 1 / -1;
-            justify-self: center; width: 50%;
+            justify-self: center; 
+            width: 50%;
         }
         
         .reviews-container {
@@ -900,7 +943,7 @@
             .hero-content p { margin-left: auto; margin-right: auto; }
             .hero-content h1 { font-size: 3.2em; }
             h2 { font-size: 2em; }
-            .featured-categories { grid-template-columns: 1fr; }
+            .featured-categories { grid-template-columns: 1fr; margin-top: 20px; }
             .category-card.large { grid-column: span 1; min-height: 300px; }
             .category-card { min-height: 300px; }
             .features-grid { grid-template-columns: 1fr; gap: 30px; }
@@ -908,6 +951,7 @@
             .newsletter-form { flex-direction: column; gap: 15px; }
             .footer-bottom { flex-direction: column; text-align: center; }
             .footer-bottom p { margin-bottom: 10px; }
+
         }
                 
         @media (max-width: 480px) {
@@ -932,6 +976,23 @@
             .btn-add-to-cart {
                 width: 100%; /* Make button full width on mobile */
             }
+
+            /* --- Responsive fix for new section header --- */
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                margin-bottom: 30px;
+            }
+            .section-header h2 {
+                font-size: 2em; /* Adjust as needed */
+            }
+            .view-all-link {
+                font-size: 0.8em;
+            }
+            .comment-form .btn {
+            width: 100%;
+        }
         }
     </style>
 </head>
@@ -999,8 +1060,9 @@
         </section>
         
         <section class="new-arrivals section-padding">
-            <div class="">
-                <h2>New Arrivals</h2>
+            <div class="container"> <div class="section-header"> <h2>New Arrivals</h2>
+                    <a href="#" class="view-all-link">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
                 <div class="product-grid">
                     
                     <div class="product-card">
@@ -1011,8 +1073,8 @@
                             <p class="product-category">Tops</p>
                             <h3 class="product-title">Effortless Ribbed Top</h3>
                             <div class="product-footer">
-                                <p class="product-price">$55.00</p>
-                                <a href="#" class="btn-add-to-cart">
+                                <p class="product-price">₹ 55.00</p>
+                                <a href="javascript:void(0);" class="btn-add-to-cart">
                                     <i class="fas fa-shopping-bag"></i>
                                     <span>Add to Cart</span>
                                 </a>
@@ -1028,8 +1090,8 @@
                             <p class="product-category">Bottoms</p>
                             <h3 class="product-title">Chic Wide Leg Trousers</h3>
                             <div class="product-footer">
-                                <p class="product-price">$78.00</p>
-                                <a href="#" class="btn-add-to-cart">
+                                <p class="product-price">₹  78.00</p>
+                                <a href="javascript:void(0);" class="btn-add-to-cart">
                                     <i class="fas fa-shopping-bag"></i>
                                     <span>Add to Cart</span>
                                 </a>
@@ -1045,8 +1107,8 @@
                             <p class="product-category">Dresses</p>
                             <h3 class="product-title">Flowy Midi Summer Dress</h3>
                             <div class="product-footer">
-                                <p class="product-price">$99.00</p>
-                                <a href="#" class="btn-add-to-cart">
+                                <p class="product-price">₹ 99.00</p>
+                                <a href="javascript:void(0);" class="btn-add-to-cart">
                                     <i class="fas fa-shopping-bag"></i>
                                     <span>Add to Cart</span>
                                 </a>
@@ -1062,8 +1124,8 @@
                             <p class="product-category">Outerwear</p>
                             <h3 class="product-title">Modern Structured Blazer</h3>
                             <div class="product-footer">
-                                <p class="product-price">$140.00</p>
-                                <a href="#" class="btn-add-to-cart">
+                                <p class="product-price">₹ 140.00</p>
+                                <a href="javascript:void(0);" class="btn-add-to-cart">
                                     <i class="fas fa-shopping-bag"></i>
                                     <span>Add to Cart</span>
                                 </a>
@@ -1071,13 +1133,13 @@
                         </div>
                     </div>
                 </div>
-                <a href="#" class="btn btn-primary view-all-btn">VIEW ALL NEW ARRIVALS</a>
             </div>
         </section>
-                
+        
         <section class="all-products section-padding">
-            <div class="">
-                <h2>All Products</h2>
+            <div class="container"> <div class="section-header"> <h2>All Products</h2>
+                    <a href="#" class="view-all-link">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
                 <div class="product-grid">
                     <div class="product-card">
                         <div class="product-image-wrapper">
@@ -1087,8 +1149,8 @@
                             <p class="product-category">Tops</p>
                             <h3 class="product-title">Effortless Ribbed Top</h3>
                             <div class="product-footer">
-                                <p class="product-price">$55.00</p>
-                                <a href="#" class="btn-add-to-cart">
+                                <p class="product-price">₹ 55.00</p>
+                                <a href="javascript:void(0);" class="btn-add-to-cart">
                                     <i class="fas fa-shopping-bag"></i>
                                     <span>Add to Cart</span>
                                 </a>
@@ -1104,8 +1166,8 @@
                             <p class="product-category">Bottoms</p>
                             <h3 class="product-title">Chic Wide Leg Trousers</h3>
                             <div class="product-footer">
-                                <p class="product-price">$78.00</p>
-                                <a href="#" class="btn-add-to-cart">
+                                <p class="product-price">₹ 78.00</p>
+                                <a href="javascript:void(0);" class="btn-add-to-cart">
                                     <i class="fas fa-shopping-bag"></i>
                                     <span>Add to Cart</span>
                                 </a>
@@ -1121,8 +1183,8 @@
                             <p class="product-category">Dresses</p>
                             <h3 class="product-title">Flowy Midi Summer Dress</h3>
                             <div class="product-footer">
-                                <p class="product-price">$99.00</p>
-                                <a href="#" class="btn-add-to-cart">
+                                <p class="product-price">₹ 99.00</p>
+                                <a href="javascript:void(0);" class="btn-add-to-cart">
                                     <i class="fas fa-shopping-bag"></i>
                                     <span>Add to Cart</span>
                                 </a>
@@ -1138,8 +1200,8 @@
                             <p class="product-category">Outerwear</p>
                             <h3 class="product-title">Modern Structured Blazer</h3>
                             <div class="product-footer">
-                                <p class="product-price">$140.00</p>
-                                <a href="#" class="btn-add-to-cart">
+                                <p class="product-price">₹ 140.00</p>
+                                <a href="javascript:void(0);" class="btn-add-to-cart">
                                     <i class="fas fa-shopping-bag"></i>
                                     <span>Add to Cart</span>
                                 </a>
@@ -1155,8 +1217,8 @@
                             <p class="product-category">Accessories</p>
                             <h3 class="product-title">Minimalist Crossbody Bag</h3>
                             <div class="product-footer">
-                                <p class="product-price">$85.00</p>
-                                <a href="#" class="btn-add-to-cart">
+                                <p class="product-price">₹ 85.00</p>
+                                <a href="javascript:void(0);" class="btn-add-to-cart">
                                     <i class="fas fa-shopping-bag"></i>
                                     <span>Add to Cart</span>
                                 </a>
@@ -1172,8 +1234,8 @@
                             <p class="product-category">Tops</p>
                             <h3 class="product-title">Cozy Knit Sweater</h3>
                             <div class="product-footer">
-                                <p class="product-price">$110.00</p>
-                                <a href="#" class="btn-add-to-cart">
+                                <p class="product-price">₹ 110.00</p>
+                                <a href="javascript:void(0);" class="btn-add-to-cart">
                                     <i class="fas fa-shopping-bag"></i>
                                     <span>Add to Cart</span>
                                 </a>
@@ -1189,8 +1251,8 @@
                             <p class="product-category">Denim</p>
                             <h3 class="product-title">Classic Straight Jeans</h3>
                             <div class="product-footer">
-                                <p class="product-price">$125.00</p>
-                                <a href="#" class="btn-add-to-cart">
+                                <p class="product-price">₹ 125.00</p>
+                                <a href="javascript:void(0);" class="btn-add-to-cart">
                                     <i class="fas fa-shopping-bag"></i>
                                     <span>Add to Cart</span>
                                 </a>
@@ -1206,8 +1268,8 @@
                             <p class="product-category">Outerwear</p>
                             <h3 class="product-title">Timeless Trench Coat</h3>
                             <div class="product-footer">
-                                <p class="product-price">$220.00</p>
-                                <a href="#" class="btn-add-to-cart">
+                                <p class="product-price">₹ 220.00</p>
+                                <a href="javascript:void(0);" class="btn-add-to-cart">
                                     <i class="fas fa-shopping-bag"></i>
                                     <span>Add to Cart</span>
                                 </a>
@@ -1234,7 +1296,7 @@
                     <div class="feature-item">
                         <i class="fas fa-truck-fast"></i>
                         <h3>Free Shipping</h3>
-                        <p>Get free standard shipping on all domestic orders over $75.</p>
+                        <p>Get free standard shipping on all domestic orders over ₹ 75.</p>
                     </div>
                 </div>
              </div>
@@ -1357,7 +1419,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 YOUR BRAND. All rights reserved.</p>
+            <p>&copy; 2025 2k Tech World. All rights reserved.</p>
             <p>
                 <a href="#">Privacy Policy</a> | 
                 <a href="#">Terms of Service</a>
