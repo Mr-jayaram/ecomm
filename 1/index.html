@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Trendy Store - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* --- Global Styles & Typography --- */
+        :root {
+            --font-body: 'Poppins', sans-serif;
+            --font-heading: 'Playfair Display', serif;
+            
+            /* --- Blue Theme Palette --- */
+            --color-primary: #1d3557; /* Main deep blue */
+            --color-primary-light: #457b9d; /* Lighter blue for hovers/accents */
+            --color-primary-rgb: 29, 53, 87; /* For rgba() overlays */
+            
+            --color-text: #333; /* Standard body text */
+            --color-text-light: #f1faee; /* Very light text for dark backgrounds */
+            --color-text-medium: #ccc; /* Medium-light text for footer */
+            
+            --color-light: #fff;
+            --color-grey: #f8f8f8;
+            --color-border: #eee;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-light);
+            color: var(--color-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--color-primary);
+            margin-top: 0;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        h1 { font-size: 3.5em; }
+        h2 { font-size: 2.5em; }
+        h3 { font-size: 1.5em; }
+
+        a {
+            text-decoration: none;
+            color: var(--color-text);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-primary-light);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 600;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-light);
+            border-color: var(--color-primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-primary-light);
+            border-color: var(--color-primary-light);
+            color: var(--color-light);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-light);
+            border-color: var(--color-light);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-light);
+            color: var(--color-primary);
+        }
+        
+        .section-padding {
+            padding: 80px 5%;
+        }
+
+        /* --- Header & Navbar --- */
+        .main-header {
+            background-color: var(--color-light);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo a {
+            font-family: var(--font-heading);
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .nav-links {
+            list-style: none; margin: 0; padding: 0;
+            display: flex; align-items: center;
+        }
+
+        .nav-links li { margin: 0 18px; }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--color-text);
+            text-transform: uppercase;
+            font-size: 0.9em;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 2px;
+            background-color: var(--color-primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after { width: 100%; }
+        
+        .nav-icons { display: flex; align-items: center; }
+
+        .nav-icons a {
+            margin-left: 20px;
+            color: var(--color-text);
+            font-size: 1.1em;
+            position: relative;
+        }
+
+        .nav-icons a:hover { color: var(--color-primary); }
+
+        .cart-count {
+            position: absolute;
+            top: -8px; right: -10px;
+            background-color: var(--color-primary);
+            color: var(--color-light);
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.7em;
+            font-weight: 700;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            z-index: 1100;
+            color: var(--color-primary);
+        }
+
+        /* --- Hero Styles --- */
+        .hero-section {
+            position: relative;
+            height: 90vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            color: var(--color-light);
+            background-image: url('https://via.placeholder.com/1920x1080/d4e6f1/1d3557?text=Modern+Fashion+Hero');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.7) 10%, rgba(var(--color-primary-rgb), 0.1) 100%);
+            z-index: 1;
+        }
+        
+        .hero-section::after {
+             content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: inherit;
+            background-size: cover;
+            background-position: center;
+            animation: zoomIn 15s ease-out forwards;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding-left: 5%;
+            max-width: 650px;
+            text-align: left;
+        }
+
+        .hero-content h1, .hero-content p, .hero-content .btn {
+            opacity: 0;
+            animation: fadeInSlideUp 0.8s ease-out forwards;
+        }
+
+        .hero-content h1 {
+            color: var(--color-light);
+            line-height: 1.1;
+            font-size: 4em;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            animation-delay: 0.5s;
+        }
+
+        .hero-content p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            max-width: 500px;
+            color: #eee;
+            font-weight: 300;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+            animation-delay: 0.7s;
+        }
+
+        .hero-content .btn { animation-delay: 0.9s; }
+
+        @keyframes zoomIn {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        @keyframes fadeInSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Featured Categories --- */
+        .featured-categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 20px;
+        }
+
+        .category-card {
+            background-size: cover;
+            background-position: center;
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            color: var(--color-light);
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(var(--color-primary-rgb), 0.7) 0%, rgba(var(--color-primary-rgb), 0) 60%);
+            z-index: 1;
+            transition: background 0.3s ease;
+        }
+        
+        .category-card:hover::before {
+             background: linear-gradient(to top, rgba(var(--color-primary-rgb), 0.8) 0%, rgba(var(--color-primary-rgb), 0.1) 60%);
+        }
+
+        .category-card h3, .category-card .btn {
+            position: relative;
+            z-index: 2;
+        }
+
+        .category-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            color: var(--color-light);
+        }
+
+        .category-card.large {
+            grid-column: span 2; 
+            min-height: 400px;
+        }
+
+        /* --- New Arrivals & All Products Section --- */
+        .new-arrivals, .all-products, .features-section { /* --- MODIFIED --- */
+            text-align: center;
+        }
+        
+        .new-arrivals, .features-section { /* --- MODIFIED --- */
+            background-color: var(--color-grey);
+        }
+        
+        .all-products { /* --- MODIFIED --- */
+            background-color: var(--color-light);
+        }
+
+        .new-arrivals h2, .all-products h2, .features-section h2 {
+            margin-bottom: 50px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background-color: var(--color-light);
+            border: 1px solid var(--color-border);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .product-image-wrapper {
+            overflow: hidden; 
+            height: 350px;
+            position: relative;
+        }
+
+        .product-card img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover img { transform: scale(1.05); }
+
+        .product-info { padding: 20px; }
+
+        .product-category {
+            font-size: 0.8em; color: #888;
+            text-transform: uppercase;
+            margin-bottom: 5px; font-weight: 500;
+        }
+
+        .product-title {
+            font-size: 1.1em; font-weight: 600;
+            margin-bottom: 10px; line-height: 1.3;
+            color: var(--color-primary);
+        }
+
+        .product-price {
+            font-size: 1.1em; font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+        }
+
+        .btn-quick-view {
+            display: block; width: 100%;
+            padding: 12px 0;
+            background-color: var(--color-primary);
+            color: var(--color-light);
+            border: none;
+            text-transform: uppercase;
+            font-weight: 600; font-size: 0.9em;
+            opacity: 0; 
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+            position: absolute;
+            bottom: 0; left: 0;
+            border-radius: 0;
+        }
+
+        .product-card:hover .btn-quick-view {
+            opacity: 1; 
+            transform: translateY(0);
+        }
+        
+        .product-card:hover .product-info { padding-bottom: 60px; }
+
+        .view-all-btn { margin-top: 30px; padding: 15px 40px; }
+
+        /* --- Features Section --- */
+        .features-grid { /* --- MODIFIED --- */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .feature-item i {
+            font-size: 2.5em; color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-item h3 {
+            font-size: 1.3em; font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .feature-item p {
+            font-size: 0.95em; color: #555;
+            line-height: 1.7;
+        }
+
+        /* --- Comment/Review Section --- */
+        /* --- MODIFIED --- */
+        .customer-reviews {
+            text-align: center;
+            background-color: var(--color-primary); /* New dark background */
+        }
+        .customer-reviews h2, .customer-reviews h3 {
+            color: var(--color-light); /* Light text for dark background */
+        }
+        .customer-reviews .section-intro {
+            color: var(--color-text-medium); /* Lighter intro text */
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* End of modification */
+
+        .review-card {
+            background-color: var(--color-light);
+            border: 1px solid var(--color-border);
+            padding: 30px;
+            margin-bottom: 20px;
+            text-align: left;
+            border-radius: 8px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .review-header {
+            display: flex; align-items: center;
+            margin-bottom: 15px;
+        }
+        .review-header .avatar {
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            background-color: var(--color-primary-light);
+            color: var(--color-light);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 600; font-size: 1.2em;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .review-author {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+        .review-rating .fas { color: #ffc107; }
+        .review-body { color: #555; font-style: italic; }
+
+        .comment-form-section h3 {
+            text-align: center;
+            margin-top: 50px; margin-bottom: 20px;
+        }
+        .comment-form {
+            max-width: 800px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .comment-form input, .comment-form textarea {
+            width: 100%; padding: 15px;
+            border: 1px solid #ccc;
+            font-family: var(--font-body);
+            font-size: 1em; border-radius: 5px;
+        }
+        .comment-form textarea {
+            grid-column: 1 / -1;
+            resize: vertical; min-height: 120px;
+        }
+        .comment-form .btn {
+            grid-column: 1 / -1;
+            justify-self: center; width: 50%;
+        }
+
+        .reviews-container {
+            max-width: 800px; height: 400px;
+            overflow: hidden; position: relative;
+            margin: 0 auto;
+        }
+
+        .reviews-wrapper { animation: scrollUp 20s linear infinite; }
+        
+        .reviews-container:hover .reviews-wrapper { animation-play-state: paused; }
+
+        @keyframes scrollUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+
+        /* --- Newsletter Signup --- */
+        /* --- MODIFIED --- */
+        .newsletter-signup {
+            text-align: center;
+            background-color: var(--color-light); /* Changed back to light */
+        }
+        .newsletter-signup h2 {
+            color: var(--color-primary); /* Changed back to dark */
+            font-size: 2.2em; margin-bottom: 15px;
+        }
+        .newsletter-signup p {
+            color: #555; /* Changed back to standard text color */
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .newsletter-form .btn {
+             /* Button is now a standard primary button */
+            background-color: var(--color-primary);
+            color: var(--color-light);
+            border-color: var(--color-primary);
+        }
+        .newsletter-form .btn:hover {
+            background-color: var(--color-primary-light);
+            border-color: var(--color-primary-light);
+        }
+        /* End of modification */
+        
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input[type="email"] {
+            flex-grow: 1;
+            padding: 15px;
+            border: 1px solid #ccc;
+            font-family: var(--font-body);
+            font-size: 1em;
+            border-radius: 5px;
+        }
+        
+        .newsletter-form input[type="email"]:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        /* --- Footer --- */
+        .main-footer {
+            background-color: var(--color-primary);
+            color: var(--color-text-medium);
+            padding: 80px 5%;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto 50px;
+        }
+        
+        .footer-column h3 {
+            font-family: var(--font-heading);
+            color: var(--color-light);
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column p {
+            font-size: 0.9em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column ul { list-style: none; padding: 0; margin: 0; }
+        .footer-column li { margin-bottom: 12px; }
+        
+        .footer-column a {
+            color: var(--color-text-medium);
+            font-size: 0.9em; font-weight: 300;
+        }
+        
+        .footer-column a:hover { color: var(--color-light); padding-left: 5px; }
+        .social-icons a { color: var(--color-text-medium); font-size: 1.2em; margin-right: 15px; }
+        .social-icons a:hover { color: var(--color-light); }
+        
+        .footer-bottom {
+            border-top: 1px solid var(--color-primary-light);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--color-text-medium);
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-bottom p { margin: 5px 10px; }
+        .footer-bottom a { color: var(--color-text-light); margin: 0 5px; }
+        .footer-bottom a:hover { color: var(--color-light); }
+
+        /* --- Responsive Media Queries --- */
+        @media (max-width: 992px) {
+            h1 { font-size: 3em; } h2 { font-size: 2.2em; }
+            .navbar { height: 70px; } .menu-toggle { display: block; }
+            .nav-links {
+                position: fixed; top: 70px; left: 0; width: 100%; height: calc(100vh - 70px);
+                background-color: var(--color-light); flex-direction: column;
+                align-items: flex-start; padding: 30px; transform: translateX(-100%);
+                transition: transform 0.4s ease-in-out; z-index: 999;
+                border-top: 1px solid var(--color-border);
+            }
+            .nav-links.active { transform: translateX(0); }
+            .nav-links li { margin: 0; width: 100%; }
+            .nav-links a { display: block; padding: 15px 10px; font-size: 1.1em; width: 100%; }
+            .nav-links a::after { display: none; }
+            .nav-icons { margin-left: auto; padding-right: 15px; }
+            .featured-categories { grid-template-columns: repeat(2, 1fr); }
+            .category-card.large { grid-column: span 2; }
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+        
+        @media (max-width: 768px) {
+            .section-padding { padding: 60px 5%; }
+            .hero-section { height: 80vh; justify-content: center; background-attachment: scroll; }
+             .hero-section::before { background: linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.7) 0%, rgba(var(--color-primary-rgb), 0.5) 100%); }
+            .hero-content { text-align: center; padding-left: 0; max-width: 90%; }
+            .hero-content p { margin-left: auto; margin-right: auto; }
+            .hero-content h1 { font-size: 3.2em; }
+            h2 { font-size: 2em; }
+            .featured-categories { grid-template-columns: 1fr; }
+            .category-card.large { grid-column: span 1; min-height: 300px; }
+            .category-card { min-height: 300px; }
+            .features-grid { grid-template-columns: 1fr; gap: 30px; }
+            .comment-form { grid-template-columns: 1fr; }
+            .newsletter-form { flex-direction: column; gap: 15px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-bottom p { margin-bottom: 10px; }
+        }
+        
+        @media (max-width: 480px) {
+            .container { padding: 0 15px; }
+            .hero-content h1 { font-size: 2.8em; }
+            .hero-content p { font-size: 1.1em; }
+            .product-grid { grid-template-columns: 1fr; }
+            .product-image-wrapper { height: 300px; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .social-icons { text-align: center; }
+            .footer-column a:hover { padding-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="navbar container">
+            <div class="logo">
+                <a href="index.html">YOUR BRAND</a>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Collections</a></li>
+                <li><a href="#">Sale</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="#"><i class="fas fa-user"></i></a>
+                <a href="#"><i class="fas fa-shopping-bag"></i><span class="cart-count">0</span></a>
+            </div>
+            
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Elevate Your Everyday Style</h1>
+            <p>Discover our curated collection of contemporary fashion. Effortless elegance starts here.</p>
+            <a href="#" class="btn btn-primary">SHOP NOW</a>
+        </div>
+    </section>
+
+    <section class="featured-categories section-padding container">
+        <div class="category-card large" style="background-image: url('https://via.placeholder.com/600x400/a8dadc/1d3557?text=Sustainable+Denim');">
+            <h3>Sustainable Denim</h3>
+            <a href="#" class="btn btn-secondary">Shop Denim</a>
+        </div>
+        <div class="category-card" style="background-image: url('https://via.placeholder.com/300x400/bde0fe/1d3557?text=Essentials');">
+            <h3>Timeless Essentials</h3>
+            <a href="#" class="btn btn-secondary">Shop Essentials</a>
+        </div>
+        <div class="category-card" style="background-image: url('https://via.placeholder.com/300x400/90e0ef/1d3557?text=Accessories');">
+            <h3>Modern Accessories</h3>
+            <a href="#" class="btn btn-secondary">Shop Accessories</a>
+        </div>
+    </section>
+
+    <section class="new-arrivals section-padding">
+        <div class="container">
+            <h2>New Arrivals</h2>
+            <div class="product-grid">
+                
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/300x400/f1faee/1d3557?text=Ribbed+Top" alt="Ribbed Knit Top">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Tops</p>
+                        <h3 class="product-title">Effortless Ribbed Top</h3>
+                        <p class="product-price">$55.00</p>
+                    </div>
+                    <a href="#" class="btn btn-quick-view">Quick View</a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/300x400/e0fbfc/1d3557?text=Wide+Leg+Pants" alt="Wide Leg Trousers">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Bottoms</p>
+                        <h3 class="product-title">Chic Wide Leg Trousers</h3>
+                        <p class="product-price">$78.00</p>
+                    </div>
+                    <a href="#" class="btn btn-quick-view">Quick View</a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/300x400/c7ddef/1d3557?text=Summer+Dress" alt="Flowy Summer Dress">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Dresses</p>
+                        <h3 class="product-title">Flowy Midi Summer Dress</h3>
+                        <p class="product-price">$99.00</p>
+                    </div>
+                    <a href="#" class="btn btn-quick-view">Quick View</a>
+                </div>
+
+                 <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/300x400/b8c0d0/1d3557?text=Blazer" alt="Structured Blazer">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Outerwear</p>
+                        <h3 class="product-title">Modern Structured Blazer</h3>
+                        <p class="product-price">$140.00</p>
+                    </div>
+                    <a href="#" class="btn btn-quick-view">Quick View</a>
+                </div>
+                
+            </div>
+            <a href="#" class="btn btn-primary view-all-btn">VIEW ALL NEW ARRIVALS</a>
+        </div>
+    </section>
+    
+    <section class="all-products section-padding">
+        <div class="container">
+            <h2>All Products</h2>
+            <div class="product-grid">
+                <!-- Row 1 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/300x400/f1faee/1d3557?text=Ribbed+Top" alt="Ribbed Knit Top">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Tops</p>
+                        <h3 class="product-title">Effortless Ribbed Top</h3>
+                        <p class="product-price">$55.00</p>
+                    </div>
+                    <a href="#" class="btn btn-quick-view">Quick View</a>
+                </div>
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/300x400/e0fbfc/1d3557?text=Wide+Leg+Pants" alt="Wide Leg Trousers">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Bottoms</p>
+                        <h3 class="product-title">Chic Wide Leg Trousers</h3>
+                        <p class="product-price">$78.00</p>
+                    </div>
+                    <a href="#" class="btn btn-quick-view">Quick View</a>
+                </div>
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/300x400/c7ddef/1d3557?text=Summer+Dress" alt="Flowy Summer Dress">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Dresses</p>
+                        <h3 class="product-title">Flowy Midi Summer Dress</h3>
+                        <p class="product-price">$99.00</p>
+                    </div>
+                    <a href="#" class="btn btn-quick-view">Quick View</a>
+                </div>
+                 <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/300x400/b8c0d0/1d3557?text=Blazer" alt="Structured Blazer">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Outerwear</p>
+                        <h3 class="product-title">Modern Structured Blazer</h3>
+                        <p class="product-price">$140.00</p>
+                    </div>
+                    <a href="#" class="btn btn-quick-view">Quick View</a>
+                </div>
+                
+                <!-- Row 2: More Products -->
+                 <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/300x400/a2d2ff/1d3557?text=Crossbody+Bag" alt="Crossbody Bag">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Accessories</p>
+                        <h3 class="product-title">Minimalist Crossbody Bag</h3>
+                        <p class="product-price">$85.00</p>
+                    </div>
+                    <a href="#" class="btn btn-quick-view">Quick View</a>
+                </div>
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/300x400/ffc8dd/1d3557?text=Knit+Sweater" alt="Knit Sweater">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Tops</p>
+                        <h3 class="product-title">Cozy Knit Sweater</h3>
+                        <p class="product-price">$110.00</p>
+                    </div>
+                    <a href="#" class="btn btn-quick-view">Quick View</a>
+                </div>
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/300x400/cdb4db/1d3557?text=Straight+Jeans" alt="Straight Leg Jeans">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Denim</p>
+                        <h3 class="product-title">Classic Straight Jeans</h3>
+                        <p class="product-price">$125.00</p>
+                    </div>
+                    <a href="#" class="btn btn-quick-view">Quick View</a>
+                </div>
+                 <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://via.placeholder.com/300x400/bde0fe/1d3557?text=Trench+Coat" alt="Trench Coat">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Outerwear</p>
+                        <h3 class="product-title">Timeless Trench Coat</h3>
+                        <p class="product-price">$220.00</p>
+                    </div>
+                    <a href="#" class="btn btn-quick-view">Quick View</a>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section section-padding">
+         <div class="container">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Conscious Materials</h3>
+                    <p>We prioritize sustainable and recycled fabrics in every collection we create.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-box"></i>
+                    <h3>Easy Returns</h3>
+                    <p>Not a perfect fit? No problem. Enjoy our 30-day hassle-free return policy.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-truck-fast"></i>
+                    <h3>Free Shipping</h3>
+                    <p>Get free standard shipping on all domestic orders over $75.</p>
+                </div>
+            </div>
+         </div>
+    </section>
+
+    <section class="customer-reviews section-padding">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <p class="section-intro">We value the feedback from our community. Here's what people are saying about their favorite pieces.</p>
+            
+            <div class="reviews-container">
+                <div class="reviews-wrapper">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="avatar">JS</div>
+                            <div>
+                                <div class="review-author">Jane Smith</div>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-body">"I am absolutely in love with the Chic Wide Leg Trousers! The quality is amazing, and they are so comfortable yet stylish. I get compliments every time I wear them."</p>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="avatar">M.D.</div>
+                             <div>
+                                <div class="review-author">Michael Doe</div>
+                                <div class="review-rating">
+                                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-body">"Great service and fast shipping. The Modern Structured Blazer fits perfectly. I docked one star because I wish it came in more colors. Would definitely buy again!"</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="avatar">AL</div>
+                             <div>
+                                <div class="review-author">Anna Lee</div>
+                                <div class="review-rating">
+                                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-body">"The Flowy Midi Summer Dress is my new favorite outfit. It's so light and airy, perfect for warm days. The fabric feels very high-quality. Highly recommend!"</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-form-section">
+                <h3>Leave a Comment</h3>
+                 <form class="comment-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Write your comment here..." required></textarea>
+                    <button type="submit" class="btn btn-primary">SUBMIT COMMENT</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter-signup section-padding">
+        <div class="container">
+            <h2>Stay in the Loop</h2>
+            <p>Sign up for exclusive offers, styling tips, and early access to new collections.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn btn-primary">SUBSCRIBE</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>YOUR BRAND</h3>
+                <p>Fashion for the conscious individual. Redefining modern style with quality and care.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a href="#">Dresses</a></li>
+                    <li><a href="#">Tops</a></li>
+                    <li><a href="#">Bottoms</a></li>
+                    <li><a href="#">Outerwear</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>About</h3>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 YOUR BRAND. All rights reserved.</p>
+            <p>
+                <a href="#">Privacy Policy</a> | 
+                <a href="#">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JS for mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // JS for seamless auto-scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const reviewsWrapper = document.querySelector('.reviews-wrapper');
+            if(reviewsWrapper) {
+                const reviewCards = reviewsWrapper.querySelectorAll('.review-card');
+                reviewCards.forEach(card => {
+                    const clone = card.cloneNode(true);
+                    reviewsWrapper.appendChild(clone);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
