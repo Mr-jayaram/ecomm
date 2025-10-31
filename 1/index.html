@@ -6,31 +6,30 @@
     <title>Your Trendy Store - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+        
     <style>
         /* --- Global Styles & Typography --- */
         :root {
             --font-body: 'Poppins', sans-serif;
             --font-heading: 'Playfair Display', serif;
-            
+                        
             /* --- Blue Theme Palette --- */
             --color-primary: #1d3557; /* Main deep blue */
             --color-primary-light: #457b9d; /* Lighter blue for hovers/accents */
             --color-primary-rgb: 29, 53, 87; /* For rgba() overlays */
-            
+                        
             --color-text: #333; /* Standard body text */
             --color-text-light: #f1faee; /* Very light text for dark backgrounds */
             --color-text-medium: #ccc; /* Medium-light text for footer */
-            
+                        
             --color-light: #fff;
             --color-grey: #f8f8f8;
             --color-border: #eee;
         }
-        
+                
         html {
             scroll-behavior: smooth;
         }
-
         body {
             font-family: var(--font-body);
             margin: 0;
@@ -40,11 +39,11 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
-        
+                
         * {
             box-sizing: border-box;
         }
-
+        
         h1, h2, h3 {
             font-family: var(--font-heading);
             color: var(--color-primary);
@@ -52,33 +51,33 @@
             margin-bottom: 1rem;
             line-height: 1.2;
         }
-        
+                
         h1 { font-size: 3.5em; }
         h2 { font-size: 2.5em; }
         h3 { font-size: 1.5em; }
-
+        
         a {
             text-decoration: none;
             color: var(--color-text);
             transition: color 0.3s ease;
         }
-
+        
         a:hover {
             color: var(--color-primary-light);
         }
-        
+                
         img {
             max-width: 100%;
             height: auto;
             display: block;
         }
-
+        
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
+        
         .btn {
             display: inline-block;
             padding: 12px 28px;
@@ -92,34 +91,34 @@
             letter-spacing: 0.5px;
             border-radius: 5px;
         }
-
+        
         .btn-primary {
             background-color: var(--color-primary);
             color: var(--color-light);
             border-color: var(--color-primary);
         }
-
+        
         .btn-primary:hover {
             background-color: var(--color-primary-light);
             border-color: var(--color-primary-light);
             color: var(--color-light);
         }
-
+        
         .btn-secondary {
             background-color: transparent;
             color: var(--color-light);
             border-color: var(--color-light);
         }
-
+        
         .btn-secondary:hover {
             background-color: var(--color-light);
             color: var(--color-primary);
         }
-        
+                
         .section-padding {
             padding: 80px 5%;
         }
-
+        
         /* --- Header & Navbar --- */
         .main-header {
             background-color: var(--color-light);
@@ -128,28 +127,28 @@
             top: 0;
             z-index: 1000;
         }
-
+        
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             height: 80px;
         }
-
+        
         .logo a {
             font-family: var(--font-heading);
             font-size: 1.8em;
             font-weight: 700;
             color: var(--color-primary);
         }
-
+        
         .nav-links {
             list-style: none; margin: 0; padding: 0;
             display: flex; align-items: center;
         }
-
+        
         .nav-links li { margin: 0 18px; }
-
+        
         .nav-links a {
             font-weight: 500;
             color: var(--color-text);
@@ -158,7 +157,7 @@
             position: relative;
             padding: 5px 0;
         }
-
+        
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -167,24 +166,24 @@
             background-color: var(--color-primary);
             transition: width 0.3s ease;
         }
-        
+                
         .nav-links a:hover::after { width: 100%; }
-        
+                
         .nav-icons { display: flex; align-items: center; }
-
+        
         .nav-icons > * {
             margin-left: 20px;
         }
-
+        
         .nav-icons a {
             color: var(--color-text);
             font-size: 1.1em;
             position: relative;
             cursor: pointer;
         }
-
+        
         .nav-icons a:hover { color: var(--color-primary); }
-
+        
         .cart-count {
             position: absolute;
             top: -8px; right: -10px;
@@ -195,7 +194,7 @@
             font-size: 0.7em;
             font-weight: 700;
         }
-
+        
         .menu-toggle {
             display: none;
             font-size: 1.5em;
@@ -203,11 +202,11 @@
             z-index: 1100;
             color: var(--color-primary);
         }
-        
+                
         .profile-dropdown {
             position: relative;
         }
-
+        
         .dropdown-menu {
             position: absolute;
             top: calc(100% + 15px);
@@ -225,13 +224,13 @@
             transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
             z-index: 1100;
         }
-        
+                
         .dropdown-menu.active {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
-
+        
         .dropdown-menu a {
             display: block;
             padding: 10px 20px;
@@ -239,20 +238,20 @@
             color: var(--color-text);
             font-weight: 500;
         }
-        
+                
         .dropdown-menu a:hover {
             background-color: var(--color-grey);
             color: var(--color-primary);
         }
-        
+                
         .dropdown-menu li {
             border-top: 1px solid var(--color-border);
         }
-        
+                
         .dropdown-menu li:first-child {
             border-top: none;
         }
-
+        
         /* --- Hero Styles --- MODIFICATION: Updated for Slideshow */
         .hero-section {
             position: relative;
@@ -264,14 +263,14 @@
             color: var(--color-light);
             overflow: hidden;
         }
-
+        
         #hero-bg-slideshow {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
             z-index: 0;
         }
-
+        
         .hero-bg-slide {
             position: absolute;
             top: 0; left: 0;
@@ -282,19 +281,19 @@
             transition: opacity 1s ease-in-out; /* Smooth fade transition */
             transform: scale(1.1); /* Start slightly zoomed for the animation */
         }
-
+        
         .hero-bg-slide.active {
             opacity: 1;
             animation: zoomIn 15s ease-out forwards;
         }
-
+        
         .hero-overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             background: linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.7) 10%, rgba(var(--color-primary-rgb), 0.1) 100%);
             z-index: 1;
         }
-        
+                
         .hero-content {
             position: relative;
             z-index: 2; /* Ensure content is above overlay and background */
@@ -302,12 +301,12 @@
             max-width: 650px;
             text-align: left;
         }
-
+        
         .hero-content h1, .hero-content p, .hero-content .btn {
             opacity: 0;
             animation: fadeInSlideUp 0.8s ease-out forwards;
         }
-
+        
         .hero-content h1 {
             color: var(--color-light);
             line-height: 1.1;
@@ -315,7 +314,7 @@
             text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
             animation-delay: 0.5s;
         }
-
+        
         .hero-content p {
             font-size: 1.3em;
             margin-bottom: 30px;
@@ -325,26 +324,26 @@
             text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
             animation-delay: 0.7s;
         }
-
+        
         .hero-content .btn { animation-delay: 0.9s; }
-
+        
         @keyframes zoomIn {
             from { transform: scale(1.1); } /* Start slightly zoomed in */
             to { transform: scale(1.2); } /* End slightly more zoomed */
         }
-
+        
         @keyframes fadeInSlideUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+                
         /* --- Featured Categories --- */
         .featured-categories {
             display: grid;
             grid-template-columns: repeat(4, 1fr); 
             gap: 20px;
         }
-
+        
         .category-card {
             background-size: cover;
             background-position: center;
@@ -360,12 +359,12 @@
             border-radius: 8px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
+                
         .category-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-
+        
         .category-card::before {
             content: '';
             position: absolute;
@@ -374,52 +373,52 @@
             z-index: 1;
             transition: background 0.3s ease;
         }
-        
-        .category-card:hover::before {
-             background: linear-gradient(to top, rgba(var(--color-primary-rgb), 0.8) 0%, rgba(var(--color-primary-rgb), 0.1) 60%);
+                
+        .category-card:hover::before { 
+            background: linear-gradient(to top, rgba(var(--color-primary-rgb), 0.8) 0%, rgba(var(--color-primary-rgb), 0.1) 60%);
         }
-
+        
         .category-card h3, .category-card .btn {
             position: relative;
             z-index: 2;
         }
-
+        
         .category-card h3 {
             font-size: 1.8em;
             margin-bottom: 15px;
             line-height: 1.2;
             color: var(--color-light);
         }
-
+        
         .category-card.large {
             grid-column: span 2; 
             min-height: 400px;
         }
-
+        
         /* --- New Arrivals & All Products Section --- */
         .new-arrivals, .all-products, .features-section {
             text-align: center;
         }
-        
+                
         .new-arrivals, .features-section, .comment-section { 
             background-color: var(--color-grey);
         }
-        
+                
         .all-products {
             background-color: var(--color-light);
         }
-
+        
         .new-arrivals h2, .all-products h2, .features-section h2, .comment-section h2 { 
             margin-bottom: 50px;
         }
-
+        
         .product-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 30px;
             margin-bottom: 50px;
         }
-
+        
         .product-card {
             background-color: var(--color-light);
             border: 1px solid var(--color-border);
@@ -429,71 +428,96 @@
             overflow: hidden;
             border-radius: 8px;
         }
-
+        
         .product-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.08);
         }
-
+        
         .product-image-wrapper {
             overflow: hidden; 
-            height: 350px;
+            height: 260px;
             position: relative;
         }
-
+        
         .product-card img {
             width: 100%; height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-
+        
         .product-card:hover img { transform: scale(1.05); }
-
-        .product-info { padding: 20px; }
-
+        
+        .product-info { padding:0 20px 20px 20px; }
+        
         .product-category {
             font-size: 0.8em; color: #888;
             text-transform: uppercase;
             margin-bottom: 5px; font-weight: 500;
         }
-
+        
         .product-title {
             font-size: 1.1em; font-weight: 600;
             margin-bottom: 10px; line-height: 1.3;
             color: var(--color-primary);
         }
-
+        
         .product-price {
             font-size: 1.1em; font-weight: 700;
             color: var(--color-primary);
-            margin-bottom: 15px;
-        }
-
-        .btn-quick-view {
-            display: block; width: 100%;
-            padding: 12px 0;
-            background-color: var(--color-primary);
-            color: var(--color-light);
-            border: none;
-            text-transform: uppercase;
-            font-weight: 600; font-size: 0.9em;
-            opacity: 0; 
-            transform: translateY(100%);
-            transition: all 0.3s ease;
-            position: absolute;
-            bottom: 0; left: 0;
-            border-radius: 0;
-        }
-
-        .product-card:hover .btn-quick-view {
-            opacity: 1; 
-            transform: translateY(0);
+            margin-bottom: 0;
+            /* Make sure price aligns well with the new button */
+            display: flex;
+            align-items: center;
+            height: 42px; /* Match button height */
         }
         
-        .product-card:hover .product-info { padding-bottom: 60px; }
+        /* --- NEW STYLES FOR PRODUCT CARD FOOTER --- */
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px; /* Adds space above the price/button row */
+        }
+        
+        /* --- CSS MODIFICATION FOR BUTTON --- */
+        .btn-add-to-cart {
+            display: inline-flex; /* Use inline-flex to align icon and text */
+            align-items: center;
+            justify-content: center;
+            gap: 8px; /* Space between icon and text */
+            padding: 10px 15px; /* Add padding for text */
+            background-color: var(--color-primary);
+            color: var(--color-light);
+            border-radius: 8px; /* User's requested border-radius */
+            font-size: 12px; /* Match other buttons */
+            font-weight: 600; /* Match other buttons */
+            text-decoration: none;
+            text-transform: uppercase; /* Match other buttons */
+            letter-spacing: 0.5px; /* Match other buttons */
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            border: 1px solid var(--color-primary); /* Add border for consistency */
+        }
 
+        .btn-add-to-cart i {
+            font-size: 1em; /* Adjust icon size if needed */
+        }
+        
+        .btn-add-to-cart span {
+            display: block; /* Ensures text is treated as a block */
+        }
+
+        .btn-add-to-cart:hover {
+            background-color: var(--color-primary-light);
+            border-color: var(--color-primary-light);
+            color: var(--color-light);
+            transform: none; /* Remove the scale transform */
+        }
+        /* --- END OF CSS MODIFICATION --- */
+                
         .view-all-btn { margin-top: 30px; padding: 15px 40px; }
-
+        
         /* --- Features Section --- */
         .features-grid {
             display: grid;
@@ -501,30 +525,32 @@
             gap: 40px;
             text-align: center;
         }
-        
+                
         .feature-item i {
             font-size: 2.5em; color: var(--color-primary);
             margin-bottom: 20px;
         }
-        
+                
         .feature-item h3 {
             font-size: 1.3em; font-weight: 600;
             margin-bottom: 10px;
         }
-        
+                
         .feature-item p {
             font-size: 0.95em; color: #555;
             line-height: 1.7;
         }
-
+        
         /* --- Comment/Review Section --- */
         .customer-reviews {
             text-align: center;
             background-color: var(--color-primary);
         }
+        
         .customer-reviews h2 {
             color: var(--color-light);
         }
+        
         .customer-reviews .section-intro {
             color: var(--color-text-medium);
             font-size: 1.1em;
@@ -533,7 +559,7 @@
             margin-left: auto;
             margin-right: auto;
         }
-
+        
         .review-card {
             background-color: var(--color-light);
             border: 1px solid var(--color-border);
@@ -545,10 +571,12 @@
             margin-left: auto;
             margin-right: auto;
         }
+        
         .review-header {
             display: flex; align-items: center;
             margin-bottom: 15px;
         }
+        
         .review-header .avatar {
             width: 50px; height: 50px;
             border-radius: 50%;
@@ -559,62 +587,71 @@
             margin-right: 15px;
             flex-shrink: 0;
         }
+        
         .review-author {
             font-weight: 600;
             color: var(--color-primary);
         }
+        
         .review-rating .fas { color: #ffc107; }
+        
         .review-body { color: #555; font-style: italic; }
-
+        
         .comment-section h3 {
             text-align: center;
             margin-bottom: 30px;
         }
+        
         .comment-form {
             max-width: 800px; margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
+        
         .comment-form input, .comment-form textarea {
             width: 100%; padding: 15px;
             border: 1px solid #ccc;
             font-family: var(--font-body);
             font-size: 1em; border-radius: 5px;
         }
+        
         .comment-form textarea {
             grid-column: 1 / -1;
             resize: vertical; min-height: 120px;
         }
+        
         .comment-form .btn {
             grid-column: 1 / -1;
             justify-self: center; width: 50%;
         }
-
+        
         .reviews-container {
             max-width: 800px; height: 400px;
             overflow: hidden; position: relative;
             margin: 0 auto;
         }
-
-        .reviews-wrapper { animation: scrollUp 20s linear infinite; }
         
+        .reviews-wrapper { animation: scrollUp 20s linear infinite; }
+                
         .reviews-container:hover .reviews-wrapper { animation-play-state: paused; }
-
+        
         @keyframes scrollUp {
             0% { transform: translateY(0); }
             100% { transform: translateY(-50%); }
         }
-
+        
         /* --- Newsletter Signup --- */
         .newsletter-signup {
             text-align: center;
             background-color: var(--color-light);
         }
+        
         .newsletter-signup h2 {
             color: var(--color-primary);
             font-size: 2.2em; margin-bottom: 15px;
         }
+        
         .newsletter-signup p {
             color: #555;
             font-size: 1.1em;
@@ -623,7 +660,7 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
+                
         .newsletter-form {
             display: flex;
             justify-content: center;
@@ -631,7 +668,7 @@
             max-width: 600px;
             margin: 0 auto;
         }
-        
+                
         .newsletter-form input[type="email"] {
             flex-grow: 1;
             padding: 15px;
@@ -640,19 +677,19 @@
             font-size: 1em;
             border-radius: 5px;
         }
-        
+                
         .newsletter-form input[type="email"]:focus {
             outline: none;
             border-color: var(--color-primary);
         }
-
+        
         /* --- Footer --- */
         .main-footer {
             background-color: var(--color-primary);
             color: var(--color-text-medium);
             padding: 80px 5%;
         }
-        
+                
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr repeat(3, 1fr);
@@ -660,32 +697,35 @@
             max-width: 1400px;
             margin: 0 auto 50px;
         }
-        
+                
         .footer-column h3 {
             font-family: var(--font-heading);
             color: var(--color-light);
             font-size: 1.3em;
             margin-bottom: 20px;
         }
-        
+                
         .footer-column p {
             font-size: 0.9em;
             line-height: 1.7;
             margin-bottom: 20px;
         }
-        
+                
         .footer-column ul { list-style: none; padding: 0; margin: 0; }
-        .footer-column li { margin-bottom: 12px; }
         
+        .footer-column li { margin-bottom: 12px; }
+                
         .footer-column a {
             color: var(--color-text-medium);
             font-size: 0.9em; font-weight: 300;
         }
-        
+                
         .footer-column a:hover { color: var(--color-light); padding-left: 5px; }
-        .social-icons a { color: var(--color-text-medium); font-size: 1.2em; margin-right: 15px; }
-        .social-icons a:hover { color: var(--color-light); }
         
+        .social-icons a { color: var(--color-text-medium); font-size: 1.2em; margin-right: 15px; }
+        
+        .social-icons a:hover { color: var(--color-light); }
+                
         .footer-bottom {
             border-top: 1px solid var(--color-primary-light);
             padding-top: 30px;
@@ -698,11 +738,13 @@
             justify-content: space-between;
             flex-wrap: wrap;
         }
-        
+                
         .footer-bottom p { margin: 5px 10px; }
+        
         .footer-bottom a { color: var(--color-text-light); margin: 0 5px; }
+        
         .footer-bottom a:hover { color: var(--color-light); }
-
+        
         /* --- Search Modal Styles --- */
         .search-modal {
             position: fixed;
@@ -713,11 +755,11 @@
             align-items: flex-start;
             justify-content: center;
         }
-        
+                
         .search-modal.active {
             display: flex;
         }
-        
+                
         .search-overlay {
             position: absolute;
             top: 0; left: 0;
@@ -728,11 +770,11 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        
+                
         .search-modal.active .search-overlay {
             opacity: 1;
         }
-
+        
         .search-content {
             position: relative;
             z-index: 2001;
@@ -743,12 +785,12 @@
             opacity: 0;
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
-
+        
         .search-modal.active .search-content {
             transform: translateY(0);
             opacity: 1;
         }
-
+        
         #search-input {
             width: 100%;
             padding: 20px 25px;
@@ -758,12 +800,12 @@
             font-family: var(--font-body);
             color: var(--color-text);
         }
-        
+                
         #search-input:focus {
             outline: none;
             border-color: var(--color-primary);
         }
-
+        
         .close-search {
             position: absolute;
             top: -30px;
@@ -773,11 +815,11 @@
             cursor: pointer;
             transition: transform 0.3s ease;
         }
-        
+                
         .close-search:hover {
             transform: rotate(90deg);
         }
-
+        
         #search-results-container {
             margin-top: 20px;
             max-height: 60vh;
@@ -786,7 +828,7 @@
             border-radius: 5px;
             padding: 10px;
         }
-        
+                
         .search-result-item {
             display: flex;
             align-items: center;
@@ -795,15 +837,15 @@
             margin-bottom: 10px;
             transition: background-color 0.2s ease;
         }
-
+        
         .search-result-item:last-child {
             margin-bottom: 0;
         }
-        
+                
         .search-result-item:hover {
             background-color: var(--color-grey);
         }
-        
+                
         .search-result-item img {
             width: 60px;
             height: 70px;
@@ -812,7 +854,7 @@
             margin-right: 15px;
             flex-shrink: 0;
         }
-        
+                
         .search-result-info h4 {
             font-family: var(--font-body);
             font-weight: 600;
@@ -820,13 +862,13 @@
             font-size: 1em;
             margin: 0 0 5px 0;
         }
-        
+                
         .search-result-info p {
             margin: 0;
             font-size: 0.9em;
             font-weight: 500;
         }
-
+        
         /* --- Responsive Media Queries --- */
         @media (max-width: 992px) {
             h1 { font-size: 3em; } h2 { font-size: 2.2em; }
@@ -849,11 +891,11 @@
             .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
             .features-grid { grid-template-columns: 1fr; }
         }
-        
+                
         @media (max-width: 768px) {
             .section-padding { padding: 60px 5%; }
-            .hero-section { height: 80vh; justify-content: center; }
-             .hero-overlay { background: linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.7) 0%, rgba(var(--color-primary-rgb), 0.5) 100%); }
+            .hero-section { height: 80vh; justify-content: center; } 
+            .hero-overlay { background: linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.7) 0%, rgba(var(--color-primary-rgb), 0.5) 100%); }
             .hero-content { text-align: center; padding-left: 0; max-width: 90%; }
             .hero-content p { margin-left: auto; margin-right: auto; }
             .hero-content h1 { font-size: 3.2em; }
@@ -867,7 +909,7 @@
             .footer-bottom { flex-direction: column; text-align: center; }
             .footer-bottom p { margin-bottom: 10px; }
         }
-        
+                
         @media (max-width: 480px) {
             .container { padding: 0 15px; }
             .hero-content h1 { font-size: 2.8em; }
@@ -877,6 +919,19 @@
             .footer-grid { grid-template-columns: 1fr; text-align: center; }
             .social-icons { text-align: center; }
             .footer-column a:hover { padding-left: 0; }
+            
+            /* --- Responsive fix for new button --- */
+            .product-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .product-price {
+                height: auto; /* Reset height */
+            }
+            .btn-add-to-cart {
+                width: 100%; /* Make button full width on mobile */
+            }
         }
     </style>
 </head>
@@ -887,7 +942,7 @@
             <div class="logo">
                 <a href="index.html">YOUR BRAND</a>
             </div>
-            
+                        
             <ul class="nav-links">
                 <li><a href="#">New Arrivals</a></li>
                 <li><a href="#">Shop</a></li>
@@ -895,10 +950,10 @@
                 <li><a href="#">Sale</a></li>
                 <li><a href="#">About Us</a></li>
             </ul>
-            
+                        
             <div class="nav-icons">
                 <a id="search-icon"><i class="fas fa-search"></i></a>
-                
+                                
                 <div class="profile-dropdown">
                     <a id="profile-icon"><i class="fas fa-user"></i></a>
                     <ul class="dropdown-menu">
@@ -907,18 +962,17 @@
                         <li><a href="#">Login</a></li>
                     </ul>
                 </div>
-                
+                                
                 <a href="#"><i class="fas fa-shopping-bag"></i><span class="cart-count">0</span></a>
             </div>
-            
+                        
             <div class="menu-toggle">
                 <i class="fas fa-bars"></i>
             </div>
         </nav>
     </header>
-
+    
     <main>
-        <!-- MODIFICATION: Hero Section updated for slideshow -->
         <section class="hero-section">
             <div id="hero-bg-slideshow"></div>
             <div class="hero-overlay"></div>
@@ -928,7 +982,7 @@
                 <a href="#" class="btn btn-primary">SHOP NOW</a>
             </div>
         </section>
-
+        
         <section class="featured-categories section-padding container">
             <div class="category-card large" style="background-image: url('https://images.pexels.com/photos/5693889/pexels-photo-5693889.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=2');">
                 <h3>Sustainable Denim</h3>
@@ -943,11 +997,12 @@
                 <a href="#" class="btn btn-secondary">Shop Accessories</a>
             </div>
         </section>
-
+        
         <section class="new-arrivals section-padding">
-            <div class="container">
+            <div class="">
                 <h2>New Arrivals</h2>
                 <div class="product-grid">
+                    
                     <div class="product-card">
                         <div class="product-image-wrapper">
                             <img src="https://images.pexels.com/photos/6045353/pexels-photo-6045353.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Ribbed Knit Top">
@@ -955,10 +1010,16 @@
                         <div class="product-info">
                             <p class="product-category">Tops</p>
                             <h3 class="product-title">Effortless Ribbed Top</h3>
-                            <p class="product-price">$55.00</p>
+                            <div class="product-footer">
+                                <p class="product-price">$55.00</p>
+                                <a href="#" class="btn-add-to-cart">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <span>Add to Cart</span>
+                                </a>
+                            </div>
                         </div>
-                        <a href="#" class="btn btn-quick-view">Quick View</a>
                     </div>
+                    
                     <div class="product-card">
                         <div class="product-image-wrapper">
                             <img src="https://images.pexels.com/photos/7679878/pexels-photo-7679878.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Wide Leg Trousers">
@@ -966,10 +1027,16 @@
                         <div class="product-info">
                             <p class="product-category">Bottoms</p>
                             <h3 class="product-title">Chic Wide Leg Trousers</h3>
-                            <p class="product-price">$78.00</p>
+                            <div class="product-footer">
+                                <p class="product-price">$78.00</p>
+                                <a href="#" class="btn-add-to-cart">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <span>Add to Cart</span>
+                                </a>
+                            </div>
                         </div>
-                        <a href="#" class="btn btn-quick-view">Quick View</a>
                     </div>
+                    
                     <div class="product-card">
                         <div class="product-image-wrapper">
                             <img src="https://images.pexels.com/photos/4937449/pexels-photo-4937449.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Flowy Summer Dress">
@@ -977,31 +1044,41 @@
                         <div class="product-info">
                             <p class="product-category">Dresses</p>
                             <h3 class="product-title">Flowy Midi Summer Dress</h3>
-                            <p class="product-price">$99.00</p>
+                            <div class="product-footer">
+                                <p class="product-price">$99.00</p>
+                                <a href="#" class="btn-add-to-cart">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <span>Add to Cart</span>
+                                </a>
+                            </div>
                         </div>
-                        <a href="#" class="btn btn-quick-view">Quick View</a>
                     </div>
-                     <div class="product-card">
+                    
+                    <div class="product-card">
                         <div class="product-image-wrapper">
                             <img src="https://images.pexels.com/photos/2613260/pexels-photo-2613260.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Structured Blazer">
                         </div>
                         <div class="product-info">
                             <p class="product-category">Outerwear</p>
                             <h3 class="product-title">Modern Structured Blazer</h3>
-                            <p class="product-price">$140.00</p>
+                            <div class="product-footer">
+                                <p class="product-price">$140.00</p>
+                                <a href="#" class="btn-add-to-cart">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <span>Add to Cart</span>
+                                </a>
+                            </div>
                         </div>
-                        <a href="#" class="btn btn-quick-view">Quick View</a>
                     </div>
                 </div>
                 <a href="#" class="btn btn-primary view-all-btn">VIEW ALL NEW ARRIVALS</a>
             </div>
         </section>
-        
+                
         <section class="all-products section-padding">
-            <div class="container">
+            <div class="">
                 <h2>All Products</h2>
                 <div class="product-grid">
-                    <!-- Row 1 -->
                     <div class="product-card">
                         <div class="product-image-wrapper">
                             <img src="https://images.pexels.com/photos/6045353/pexels-photo-6045353.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Ribbed Knit Top">
@@ -1009,10 +1086,16 @@
                         <div class="product-info">
                             <p class="product-category">Tops</p>
                             <h3 class="product-title">Effortless Ribbed Top</h3>
-                            <p class="product-price">$55.00</p>
+                            <div class="product-footer">
+                                <p class="product-price">$55.00</p>
+                                <a href="#" class="btn-add-to-cart">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <span>Add to Cart</span>
+                                </a>
+                            </div>
                         </div>
-                        <a href="#" class="btn btn-quick-view">Quick View</a>
                     </div>
+                    
                     <div class="product-card">
                         <div class="product-image-wrapper">
                             <img src="https://images.pexels.com/photos/7679878/pexels-photo-7679878.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Wide Leg Trousers">
@@ -1020,10 +1103,16 @@
                         <div class="product-info">
                             <p class="product-category">Bottoms</p>
                             <h3 class="product-title">Chic Wide Leg Trousers</h3>
-                            <p class="product-price">$78.00</p>
+                            <div class="product-footer">
+                                <p class="product-price">$78.00</p>
+                                <a href="#" class="btn-add-to-cart">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <span>Add to Cart</span>
+                                </a>
+                            </div>
                         </div>
-                        <a href="#" class="btn btn-quick-view">Quick View</a>
                     </div>
+                    
                     <div class="product-card">
                         <div class="product-image-wrapper">
                             <img src="https://images.pexels.com/photos/4937449/pexels-photo-4937449.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Flowy Summer Dress">
@@ -1031,34 +1120,50 @@
                         <div class="product-info">
                             <p class="product-category">Dresses</p>
                             <h3 class="product-title">Flowy Midi Summer Dress</h3>
-                            <p class="product-price">$99.00</p>
+                            <div class="product-footer">
+                                <p class="product-price">$99.00</p>
+                                <a href="#" class="btn-add-to-cart">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <span>Add to Cart</span>
+                                </a>
+                            </div>
                         </div>
-                        <a href="#" class="btn btn-quick-view">Quick View</a>
                     </div>
-                     <div class="product-card">
+                    
+                    <div class="product-card">
                         <div class="product-image-wrapper">
                             <img src="https://images.pexels.com/photos/2613260/pexels-photo-2613260.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Structured Blazer">
                         </div>
                         <div class="product-info">
                             <p class="product-category">Outerwear</p>
                             <h3 class="product-title">Modern Structured Blazer</h3>
-                            <p class="product-price">$140.00</p>
+                            <div class="product-footer">
+                                <p class="product-price">$140.00</p>
+                                <a href="#" class="btn-add-to-cart">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <span>Add to Cart</span>
+                                </a>
+                            </div>
                         </div>
-                        <a href="#" class="btn btn-quick-view">Quick View</a>
                     </div>
-                    
-                    <!-- Row 2: More Products -->
-                     <div class="product-card">
+                                        
+                    <div class="product-card">
                         <div class="product-image-wrapper">
                             <img src="https://images.pexels.com/photos/6311645/pexels-photo-6311645.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Crossbody Bag">
                         </div>
                         <div class="product-info">
                             <p class="product-category">Accessories</p>
                             <h3 class="product-title">Minimalist Crossbody Bag</h3>
-                            <p class="product-price">$85.00</p>
+                            <div class="product-footer">
+                                <p class="product-price">$85.00</p>
+                                <a href="#" class="btn-add-to-cart">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <span>Add to Cart</span>
+                                </a>
+                            </div>
                         </div>
-                        <a href="#" class="btn btn-quick-view">Quick View</a>
                     </div>
+                    
                     <div class="product-card">
                         <div class="product-image-wrapper">
                             <img src="https://images.pexels.com/photos/4041133/pexels-photo-4041133.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Knit Sweater">
@@ -1066,10 +1171,16 @@
                         <div class="product-info">
                             <p class="product-category">Tops</p>
                             <h3 class="product-title">Cozy Knit Sweater</h3>
-                            <p class="product-price">$110.00</p>
+                            <div class="product-footer">
+                                <p class="product-price">$110.00</p>
+                                <a href="#" class="btn-add-to-cart">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <span>Add to Cart</span>
+                                </a>
+                            </div>
                         </div>
-                        <a href="#" class="btn btn-quick-view">Quick View</a>
                     </div>
+                    
                     <div class="product-card">
                         <div class="product-image-wrapper">
                             <img src="https://images.pexels.com/photos/6770530/pexels-photo-6770530.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Straight Leg Jeans">
@@ -1077,25 +1188,36 @@
                         <div class="product-info">
                             <p class="product-category">Denim</p>
                             <h3 class="product-title">Classic Straight Jeans</h3>
-                            <p class="product-price">$125.00</p>
+                            <div class="product-footer">
+                                <p class="product-price">$125.00</p>
+                                <a href="#" class="btn-add-to-cart">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <span>Add to Cart</span>
+                                </a>
+                            </div>
                         </div>
-                        <a href="#" class="btn btn-quick-view">Quick View</a>
                     </div>
-                     <div class="product-card">
+                    
+                    <div class="product-card">
                         <div class="product-image-wrapper">
                             <img src="https://images.pexels.com/photos/3965545/pexels-photo-3965545.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=2" alt="Trench Coat">
                         </div>
                         <div class="product-info">
                             <p class="product-category">Outerwear</p>
                             <h3 class="product-title">Timeless Trench Coat</h3>
-                            <p class="product-price">$220.00</p>
+                            <div class="product-footer">
+                                <p class="product-price">$220.00</p>
+                                <a href="#" class="btn-add-to-cart">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <span>Add to Cart</span>
+                                </a>
+                            </div>
                         </div>
-                        <a href="#" class="btn btn-quick-view">Quick View</a>
                     </div>
                 </div>
             </div>
         </section>
-
+        
         <section class="features-section section-padding">
              <div class="container">
                 <div class="features-grid">
@@ -1117,12 +1239,12 @@
                 </div>
              </div>
         </section>
-
+        
         <section class="customer-reviews section-padding">
             <div class="container">
                 <h2>What Our Customers Say</h2>
                 <p class="section-intro">We value the feedback from our community. Here's what people are saying about their favorite pieces.</p>
-                
+                                
                 <div class="reviews-container">
                     <div class="reviews-wrapper">
                         <div class="review-card">
@@ -1137,7 +1259,7 @@
                             </div>
                             <p class="review-body">"I am absolutely in love with the Chic Wide Leg Trousers! The quality is amazing, and they are so comfortable yet stylish. I get compliments every time I wear them."</p>
                         </div>
-                        
+                                                
                         <div class="review-card">
                             <div class="review-header">
                                 <div class="avatar">M.D.</div>
@@ -1150,7 +1272,7 @@
                             </div>
                             <p class="review-body">"Great service and fast shipping. The Modern Structured Blazer fits perfectly. I docked one star because I wish it came in more colors. Would definitely buy again!"</p>
                         </div>
-
+                        
                         <div class="review-card">
                             <div class="review-header">
                                 <div class="avatar">AL</div>
@@ -1167,7 +1289,7 @@
                 </div>
             </div>
         </section>
-
+        
         <section class="comment-section section-padding">
             <div class="container">
                 <h3>Leave a Comment</h3>
@@ -1179,7 +1301,7 @@
                 </form>
             </div>
         </section>
-
+        
         <section class="newsletter-signup section-padding">
             <div class="container">
                 <h2>Stay in the Loop</h2>
@@ -1191,7 +1313,7 @@
             </div>
         </section>
     </main>
-
+    
     <footer class="main-footer">
         <div class="footer-grid">
             <div class="footer-column">
@@ -1242,8 +1364,7 @@
             </p>
         </div>
     </footer>
-
-    <!-- Search Modal HTML -->
+    
     <div id="search-modal" class="search-modal">
         <div class="search-overlay"></div>
         <div class="search-content">
@@ -1252,7 +1373,6 @@
             <div id="search-results-container"></div>
         </div>
     </div>
-
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -1275,7 +1395,9 @@
             const searchModal = document.getElementById('search-modal');
             const searchInput = document.getElementById('search-input');
             const searchResultsContainer = document.getElementById('search-results-container');
-            const allProductCards = document.querySelectorAll('.all-products .product-card');
+            
+            // Grabs ALL product cards from both "New Arrivals" and "All Products"
+            const allProductCards = document.querySelectorAll('.product-card');
 
             const openSearch = () => {
                 searchModal.classList.add('active');
@@ -1305,11 +1427,13 @@
                 allProductCards.forEach(card => {
                     const title = card.querySelector('.product-title').textContent.toLowerCase();
                     const category = card.querySelector('.product-category').textContent.toLowerCase();
-                    
+                                        
                     if (title.includes(searchTerm) || category.includes(searchTerm)) {
                         const price = card.querySelector('.product-price').textContent;
                         const imageSrc = card.querySelector('img').src;
-                        const linkHref = card.querySelector('.btn-quick-view').href;
+                        
+                        // This logic still works as it just needs the href
+                        const linkHref = card.querySelector('.btn-add-to-cart').href; 
                         const productTitle = card.querySelector('.product-title').textContent;
 
                         const resultItem = document.createElement('a');
@@ -1322,7 +1446,7 @@
                                 <p>${price}</p>
                             </div>
                         `;
-                        
+                                                
                         searchResultsContainer.appendChild(resultItem);
                     }
                 });
@@ -1331,7 +1455,7 @@
             // --- Profile Dropdown Logic ---
             const profileIcon = document.getElementById('profile-icon');
             const dropdownMenu = document.querySelector('.dropdown-menu');
-            
+                        
             profileIcon.addEventListener('click', (event) => {
                 event.preventDefault(); 
                 dropdownMenu.classList.toggle('active');
@@ -1372,7 +1496,6 @@
                 currentImageIndex = (currentImageIndex + 1) % heroImages.length;
                 slides[currentImageIndex].classList.add('active');
             }, 2000); // Change image every 2 seconds
-
         });
     </script>
 </body>
