@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Threads - End of Season Sale</title>
+    
+    <!-- Google Fonts: Montserrat for main text, Lora for accents -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,700&family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- General Setup & Variables --- */
+        :root {
+            --primary-color: #E11299; /* Vibrant Sale Pink */
+            --secondary-color: #FFEEEE;
+            --dark-color: #1a1a1a;
+            --bg-yellow:#FDF3EA;
+            --light-color: #ffffff;
+            --grey-color: #f5f5f5;
+            --text-color: #333;
+            --font-primary: 'Montserrat', sans-serif;
+            --font-secondary: 'Lora', serif;
+        }
+
+        /* ... [Keep all previous CSS from root down to the banner section] ... */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-primary); color: var(--text-color); line-height: 1.6; background-color: var(--light-color); }
+        body.no-scroll { overflow: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        h2 { font-size: 2.5rem; font-weight: 700; text-align: center; margin-bottom: 1rem; }
+        h2 span { color: var(--primary-color); }
+        .subtitle { text-align: center; max-width: 600px; margin: 0 auto 3rem auto; color: #666; }
+        a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
+        img { max-width: 100%; display: block; }
+        section { padding: 80px 0; }
+        .top-offer-bar { background-color: var(--dark-color); color: var(--light-color); text-align: center; padding: 10px 20px; font-size: 0.9rem; font-weight: 500; }
+        .top-offer-bar span { color: var(--primary-color); font-weight: 700; margin: 0 5px; }
+        .main-header { background-color: var(--light-color); box-shadow: 0 2px 4px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .nav-logo { font-size: 1.5rem; font-weight: 700; }
+        .nav-menu { display: flex; gap: 35px; list-style: none; }
+        .nav-link { font-weight: 500; position: relative; padding-bottom: 5px; }
+        .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: var(--primary-color); transform: scaleX(0); transform-origin: bottom right; transition: transform 0.3s ease; }
+        .nav-link:hover::after { transform: scaleX(1); transform-origin: bottom left; }
+        .nav-link.sale-link { color: var(--primary-color); font-weight: 700; }
+        .nav-link:hover { color: var(--primary-color); }
+        .nav-icons { display: flex; gap: 20px; font-size: 1.2rem; align-items: center; }
+        .nav-icon { cursor: pointer; }
+        .nav-icon svg { width: 24px; height: 24px; stroke-width: 2; }
+        .hamburger-menu { display: none; cursor: pointer; z-index: 1010; }
+        .hamburger-menu svg { width: 28px; height: 28px; }
+        .mobile-sidebar { position: fixed; top: 0; left: 0; width: 280px; height: 100%; background-color: var(--light-color); z-index: 2000; transform: translateX(-100%); transition: transform 0.4s ease-in-out; display: flex; flex-direction: column; padding: 20px; }
+        .sidebar-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; border-bottom: 1px solid var(--grey-color); }
+        .close-menu-btn { cursor: pointer; } .close-menu-btn svg { width: 24px; height: 24px; }
+        .mobile-nav-menu { list-style: none; padding-top: 20px; }
+        .mobile-nav-menu li { margin-bottom: 10px; }
+        .mobile-nav-menu .nav-link { display: block; padding: 10px 0; font-size: 1.2rem; }
+        .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1999; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
+        .sidebar-open .mobile-sidebar { transform: translateX(0); }
+        .sidebar-open .sidebar-overlay { opacity: 1; visibility: visible; }
+        .search-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .search-modal { position: relative; width: 90%; max-width: 600px; }
+        .search-modal input { width: 100%; padding: 20px 25px; font-size: 1.5rem; border: none; border-radius: 50px; outline: none; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        #close-search-btn { position: absolute; top: -40px; right: 0; color: white; cursor: pointer; }
+        #close-search-btn svg { width: 30px; height: 30px; }
+        .search-open .search-overlay { opacity: 1; visibility: visible; }
+
+        /* --- 2. Banner / Hero Section (IMPROVED) --- */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Aligns content to the left */
+            min-height: 90vh;
+            background-image: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0) 100%), url('https://images.unsplash.com/photo-1509319117193-57bab727e09d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            color: var(--light-color);
+            padding: 80px 0;
+        }
+
+        .hero-content {
+            text-align: left;
+            max-width: 600px; /* Constrains the width of the text block */
+        }
+        
+        /* Entrance animations for hero content */
+        .hero-content h1, .hero-content p, .hero-content .cta-button, .hero-content .highlight-item {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            line-height: 1.1;
+            animation-delay: 0.2s;
+        }
+
+        .hero-content h1 span {
+            font-family: var(--font-secondary);
+            font-style: italic;
+            color: var(--secondary-color);
+            display: block;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+            animation-delay: 0.4s;
+        }
+
+        .cta-button {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 5px 15px rgba(225, 18, 153, 0.4);
+            animation-delay: 0.6s;
+        }
+
+        .cta-button:hover {
+            background-color: #c80e85;
+            transform: translateY(-3px);
+        }
+
+        /* NEW: Hero Highlights Bar */
+        .hero-highlights {
+            margin-top: 3rem;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            animation-delay: 0.8s;
+        }
+
+        .highlight-item svg {
+            width: 24px;
+            height: 24px;
+            stroke-width: 2;
+            color: var(--secondary-color);
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* ... [All other CSS sections remain the same] ... */
+        .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; } .category-card { position: relative; overflow: hidden; border-radius: 10px; height: 350px; display: flex; align-items: center; justify-content: center; color: var(--light-color); text-align: center; } .category-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; position: absolute; z-index: -1; } .category-card::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.1)); transition: background 0.4s ease; } .category-card:hover img { transform: scale(1.1); } .category-card .category-name { font-weight: 700; font-size: 1.5rem; z-index: 1; padding: 10px 20px; border: 2px solid var(--light-color); border-radius: 5px; transition: background-color 0.3s ease; } .category-card:hover .category-name { background-color: rgba(255, 255, 255, 0.2); }
+        .top-sale-section, .trending-section { background-color: var(--secondary-color); }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
+        .product-card { background: var(--light-color); border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; } .product-card:hover { transform: translateY(-8px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); } .product-image-container { position: relative; overflow: hidden; } .product-image-container::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.4s ease; } .product-card:hover .product-image-container::after { opacity: 1; } .product-card img { width: 100%; height: 300px; object-fit: cover; transition: transform 0.4s ease; } .product-card:hover img { transform: scale(1.05); } .sale-badge { position: absolute; top: 15px; left: 15px; background-color: var(--primary-color); color: var(--light-color); padding: 5px 12px; font-size: 0.8rem; font-weight: 700; border-radius: 50px; z-index: 2; } .product-info { padding: 20px; text-align: center; } .product-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .product-pricing { display: flex; align-items: baseline; justify-content: center; gap: 10px; } .sale-price { font-size: 1.3rem; font-weight: 700; color: var(--primary-color); } .original-price { font-size: 1rem; color: #888; text-decoration: line-through; }
+        .product-actions { position: absolute; top: 15px; right: 15px; display: flex; flex-direction: column; gap: 10px; z-index: 3; } .product-actions a { background-color: var(--light-color); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transform: translateX(60px); opacity: 0; transition: all 0.3s ease; } .product-actions a:nth-child(1) { transition-delay: 0s; } .product-actions a:nth-child(2) { transition-delay: 0.1s; } .product-card:hover .product-actions a { transform: translateX(0); opacity: 1; } .product-actions a:hover { background-color: var(--primary-color); color: var(--light-color); } .product-actions svg { width: 20px; height: 20px; }
+        .add-to-cart-btn { position: absolute; bottom: 20px; left: 50%; transform: translate(-50%, 20px); opacity: 0; width: 80%; padding: 12px; background-color: var(--light-color); color: var(--dark-color); text-align: center; border: none; border-radius: 50px; font-weight: 700; cursor: pointer; transition: all 0.4s ease 0.1s; z-index: 3; } .product-card:hover .add-to-cart-btn { transform: translate(-50%, 0); opacity: 1; } .add-to-cart-btn:hover { background-color: var(--primary-color); color: var(--light-color); }
+        .how-it-works-section { background-color: var(--bg-yellow); } .steps-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 40px; } .step { text-align: center; padding: 20px; } .step-icon { background: var(--secondary-color); color: var(--primary-color); width: 80px; height: 80px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 20px; } .step-icon svg { width: 40px; height: 40px; } .step h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .testimonials-section { background-color: var(--grey-color); }
+        .scroller-container { overflow: hidden; position: relative; margin-top: 40px; -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent); mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent); }
+        .testimonials-scroller { display: flex; gap: 30px; width: max-content; animation: scrollAnimation 60s linear infinite; }
+        .scroller-container:hover .testimonials-scroller { animation-play-state: paused; }
+        @keyframes scrollAnimation { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .testimonial-card { background: var(--light-color); padding: 30px; border-radius: 15px; text-align: center; border: 1px solid #eee; position: relative; flex-shrink: 0; width: 350px; }
+        .testimonial-card::before { content: '“'; font-family: 'Times New Roman', Times, serif; font-size: 6rem; color: var(--grey-color); position: absolute; top: 10px; left: 20px; line-height: 1; z-index: 0; }
+        .testimonial-card > * { position: relative; z-index: 1; } .testimonial-card img { width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 15px; object-fit: cover; border: 3px solid var(--secondary-color); } .testimonial-card h4 { font-size: 1.2rem; margin-bottom: 10px; }
+        .main-footer { background-color: var(--dark-color); color: #ccc; padding-top: 60px; } .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 40px; } .footer-logo-area .nav-logo { color: var(--light-color); margin-bottom: 15px; display: inline-block; } .footer-logo-area p { margin-bottom: 20px; } .footer-socials { display: flex; gap: 15px; } .footer-socials a { color: var(--light-color); font-size: 1.2rem; } .footer-links h4 { color: var(--light-color); margin-bottom: 15px; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; } .footer-links ul { list-style: none; } .footer-links ul li { margin-bottom: 10px; } .footer-links ul li a { color: #ccc; } .footer-links ul li a:hover { color: var(--primary-color); } .footer-bottom { border-top: 1px solid #444; padding: 20px 0; display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; } .footer-bottom-links a { color: #ccc; margin-left: 15px; } .footer-bottom-links a:hover { color: var(--primary-color); }
+
+        /* Responsive Design */
+        @media (max-width: 992px) { h2 { font-size: 2.2rem; } .hero-content h1 { font-size: 3rem; } .footer-content { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 768px) { .nav-menu { display: none; } .hamburger-menu { display: flex; } .hero-section { justify-content: center; text-align: center; } .hero-content { text-align: center; } .hero-highlights { justify-content: center; } .footer-content { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; gap: 15px; text-align: center; } }
+        @media (max-width: 600px) { .product-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; } .product-name { font-size: 0.9rem; } .sale-price { font-size: 1.1rem; } .product-actions { display: none; } .hero-content h1 { font-size: 2.5rem; }}
+
+    </style>
+</head>
+<body>
+    
+    <!-- All other HTML before the banner remains the same -->
+    <div class="top-offer-bar">End of Season Sale! Use code <span>SALE30</span> for an extra 30% off selected items!</div>
+    <header class="main-header"> <div class="container"> <nav class="navbar"> <a href="#" class="nav-logo">Urban Threads</a> <ul class="nav-menu"> <li><a href="#" class="nav-link">Home</a></li> <li><a href="#" class="nav-link">New Arrivals</a></li> <li><a href="#" class="nav-link">Men</a></li> <li><a href="#" class="nav-link">Women</a></li> <li><a href="#" class="nav-link sale-link">SALE</a></li> </ul> <div class="nav-icons"> <a class="nav-icon" id="open-search-btn" aria-label="Search"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> </a> <a href="#" class="nav-icon" aria-label="Account"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> </a> <a href="#" class="nav-icon" aria-label="Shopping Cart"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> </a> </div> <div class="hamburger-menu" id="open-menu-btn"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg> </div> </nav> </div> </header>
+    <aside class="mobile-sidebar" id="mobile-sidebar"> <div class="sidebar-header"> <a href="#" class="nav-logo">Urban Threads</a> <div class="close-menu-btn" id="close-menu-btn"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> </div> </div> <ul class="mobile-nav-menu"> <li><a href="#" class="nav-link">Home</a></li> <li><a href="#" class="nav-link">New Arrivals</a></li> <li><a href="#" class="nav-link">Men</a></li> <li><a href="#" class="nav-link">Women</a></li> <li><a href="#" class="nav-link sale-link">SALE</a></li> </ul> </aside>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <div class="search-overlay" id="search-overlay"> <div class="search-modal"> <div id="close-search-btn" aria-label="Close search"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> </div> <input type="search" placeholder="Search for products..."> </div> </div>
+
+
+    <main>
+        <!-- 2. Banner (IMPROVED) -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>End of Season <span>Sale</span></h1>
+                    <p>Unbeatable deals on your favorite styles. Don't miss out on the best prices of the year!</p>
+                    <a href="#top-sale" class="cta-button">Shop The Sale</a>
+                    
+                    <!-- NEW Hero Highlights -->
+                    <div class="hero-highlights">
+                        <div class="highlight-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                            <span>Up to 70% Off</span>
+                        </div>
+                        <div class="highlight-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
+                             <span>New Styles Added</span>
+                        </div>
+                        <div class="highlight-item">
+                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 17.621a2 2 0 1 0-4 0V5.4a2 2 0 1 0-4 0v3.424a2 2 0 1 0 4 0V5.379a2 2 0 1 0 4 0v12.242z"></path><path d="M22 17.621a2 2 0 1 0-4 0V9.828a2 2 0 1 0-4 0v1.793a2 2 0 1 0 4 0V9.828a2 2 0 1 0 4 0v7.793z"></path><path d="M6 17.621a2 2 0 1 0-4 0V5.4a2 2 0 1 0-4 0v.172a2 2 0 1 0 4 0V5.4a2 2 0 1 0 4 0v12.221z"></path></svg>
+                            <span>Free Shipping Over $50</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- All other HTML sections after the banner remain the same -->
+        <section class="category-section"> <div class="container"> <h2>Shop By <span>Category</span></h2> <div class="category-grid"> <a href="#" class="category-card"> <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Dresses"> <div class="category-name">Dresses</div> </a> <a href="#" class="category-card"> <img src="https://images.unsplash.com/photo-1591047139829-d916b02ea94d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Jackets"> <div class="category-name">Jackets</div> </a> <a href="#" class="category-card"> <img src="https://images.unsplash.com/photo-1622470953794-3a0026845332?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="T-Shirts"> <div class="category-name">T-Shirts</div> </a> <a href="#" class="category-card"> <img src="https://images.unsplash.com/photo-1585960481542-b25355157ba9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Accessories"> <div class="category-name">Accessories</div> </a> </div> </div> </section>
+        <section id="top-sale" class="top-sale-section"> <div class="container"> <h2>Top <span>Sale</span> Picks</h2> <p class="subtitle">Don't miss out on these limited-time deals.</p> <div class="product-grid"> <div class="product-card"> <div class="product-image-container"> <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Vintage Leather Jacket"> <div class="sale-badge">50% OFF</div> <div class="product-actions"> <a href="#" aria-label="Add to Favorites"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></a> <a href="#" aria-label="Quick View"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></a> </div> <button class="add-to-cart-btn">Add to Cart</button> </div> <div class="product-info"> <h3 class="product-name">Vintage Leather Jacket</h3> <div class="product-pricing"> <span class="sale-price">$125.00</span> <span class="original-price">$250.00</span> </div> </div> </div> </div> </div> </section>
+        <section class="how-it-works-section"> <div class="container"> <h2>Easy <span>Shopping</span></h2> <div class="steps-container"> <div class="step"> <div class="step-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 15.5l-3.5-3.5l3.5-3.5l-3.5-3.5L5 8.5l3.5 3.5L5 15.5z"></path><path d="M19 8.5L12 1.5 5 8.5"></path><path d="M5 15.5l7 7l7-7"></path></svg> </div> <h3>Discover Deals</h3> <p>Explore our curated collections and find the best prices on top-quality styles.</p> </div> <div class="step"> <div class="step-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> </div> <h3>Secure Checkout</h3> <p>Our checkout process is simple, fast, and completely secure for your peace of mind.</p> </div> <div class="step"> <div class="step-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> </div> <h3>Fast Delivery</h3> <p>Get your new favorite outfits delivered right to your doorstep in just a few days.</p> </div> </div> </div> </section>
+        <section class="testimonials-section"> <div class="container"> <h2>Hear From Our <span>Happy Shoppers</span></h2> </div> <div class="scroller-container"> <div class="testimonials-scroller" id="testimonials-scroller"> <div class="testimonial-card"> <img src="https://i.pravatar.cc/150?img=1" alt="Customer photo"> <h4>Sarah L.</h4> <p>"The quality for the sale price is unbelievable! My order arrived in two days. I'm already planning my next purchase."</p> </div> <div class="testimonial-card"> <img src="https://i.pravatar.cc/150?img=32" alt="Customer photo"> <h4>Michael B.</h4> <p>"I snagged a leather jacket for 50% off and it's my new favorite piece. Amazing value and great service from Urban Threads."</p> </div> <div class="testimonial-card"> <img src="https://i.pravatar.cc/150?img=47" alt="Customer photo"> <h4>Jessica P.</h4> <p>"The website is so easy to navigate, and the sale section is full of gems. 10/10 shopping experience!"</p> </div> <div class="testimonial-card"> <img src="https://i.pravatar.cc/150?img=12" alt="Customer photo"> <h4>David Chen</h4> <p>"Fantastic customer service. I had a query about my order and they responded within an hour. Highly recommended."</p> </div> <div class="testimonial-card"> <img src="https://i.pravatar.cc/150?img=25" alt="Customer photo"> <h4>Emily R.</h4> <p>"The summer dress I bought is even more beautiful in person. The fabric is light and perfect for warm weather."</p> </div> </div> </div> </section>
+    </main>
+    <footer class="main-footer"> <div class="container"> <div class="footer-content"> <div class="footer-logo-area"> <a href="#" class="nav-logo">Urban Threads</a> <p>Style delivered to your doorstep.</p> <div class="footer-socials"> <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a> <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a> <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a> </div> </div> <div class="footer-links"> <h4>Shop</h4> <ul> <li><a href="#">New Arrivals</a></li> <li><a href="#">Sale</a></li> <li><a href="#">Men's</a></li> <li><a href="#">Women's</a></li> </ul> </div> <div class="footer-links"> <h4>Company</h4> <ul> <li><a href="#">About Us</a></li> <li><a href="#">Careers</a></li> <li><a href="#">Contact Us</a></li> </ul> </div> <div class="footer-links"> <h4>Support</h4> <ul> <li><a href="#">FAQ</a></li> <li><a href="#">Shipping</a></li> <li><a href="#">Returns</a></li> </ul> </div> </div> <div class="footer-bottom"> <p>&copy; 2025 Urban Threads. All rights reserved.</p> <div class="footer-bottom-links"> <a href="#">Terms & Conditions</a> <a href="#">Privacy Policy</a> </div> </div> </div> </footer>
+    
+    <!-- All JavaScript remains the same -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const openMenuBtn = document.getElementById('open-menu-btn');
+            const closeMenuBtn = document.getElementById('close-menu-btn');
+            const sidebarOverlay = document.getElementById('sidebar-overlay');
+            const body = document.body;
+            function toggleSidebar() { body.classList.toggle('sidebar-open'); body.classList.toggle('no-scroll'); }
+            openMenuBtn.addEventListener('click', toggleSidebar);
+            closeMenuBtn.addEventListener('click', toggleSidebar);
+            sidebarOverlay.addEventListener('click', toggleSidebar);
+            const openSearchBtn = document.getElementById('open-search-btn');
+            const closeSearchBtn = document.getElementById('close-search-btn');
+            function toggleSearch() { body.classList.toggle('search-open'); body.classList.toggle('no-scroll'); }
+            openSearchBtn.addEventListener('click', toggleSearch);
+            closeSearchBtn.addEventListener('click', toggleSearch);
+            const scroller = document.getElementById('testimonials-scroller');
+            if (scroller) {
+                const testimonials = Array.from(scroller.children);
+                testimonials.forEach(item => {
+                    const clone = item.cloneNode(true);
+                    clone.setAttribute('aria-hidden', true);
+                    scroller.appendChild(clone);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
