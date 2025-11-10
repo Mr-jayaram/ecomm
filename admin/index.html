@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary-color: #6a5af9;
+            --background-color: #f5f5f5;
+            --card-background: #ffffff;
+            --text-color: #343d4f;
+            --text-light: #a3a9b8;
+            --border-color: #e1e4ed;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        /* --- Left Sidebar --- */
+        .left-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 260px;
+            height: 100%;
+            background-color: var(--card-background);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .left-sidebar.show-sidebar {
+            transform: translateX(0);
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .logo { font-size: 24px; font-weight: 600; display: flex; align-items: center; }
+        .logo i { margin-right: 10px; color: var(--primary-color); }
+        .close-btn { font-size: 24px; cursor: pointer; color: var(--text-color); background: none; border: none; }
+
+        .nav-menu { list-style: none; flex-grow: 1; overflow-y: auto; }
+        .nav-menu li { margin-bottom: 5px; }
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .nav-menu a .menu-item-info { display: flex; align-items: center; }
+        .nav-menu a i { margin-right: 15px; width: 20px; text-align: center; }
+        .nav-menu a.active, .nav-menu a:hover { background-color: var(--primary-color); color: white; }
+        
+        /* Submenu Styles */
+        .nav-menu .arrow { font-size: 12px; transition: transform 0.3s ease; }
+        .has-submenu.active > a .arrow { transform: rotate(90deg); }
+        .submenu {
+            list-style: none;
+            padding-left: 35px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+        }
+        .submenu li a {
+            font-size: 14px;
+            padding: 10px 15px;
+            color: var(--text-light);
+        }
+        .submenu li a:hover { color: var(--text-color); }
+
+        .promo-card {
+            background-color: #e9e6ff; border-radius: 15px; padding: 20px;
+            text-align: center; margin-top: 20px; flex-shrink: 0;
+        }
+        .promo-card .icon {
+            background-color: var(--primary-color); color: white; width: 50px; height: 50px;
+            border-radius: 50%; display: inline-flex; justify-content: center; align-items: center;
+            font-size: 24px; margin-bottom: 15px;
+        }
+        .promo-card p { font-size: 14px; margin-bottom: 15px; }
+        .promo-btn {
+            background-color: var(--primary-color); color: white; border: none;
+            padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 500; width: 100%;
+        }
+        
+        /* Mobile Header & Overlay */
+        .mobile-header { display: flex; align-items: center; justify-content: space-between; background: var(--card-background); padding: 15px 20px; box-shadow: var(--shadow); border-radius: 10px; margin-bottom: 15px;}
+        .menu-toggle { font-size: 22px; cursor: pointer; background: none; border: none; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); z-index: 999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; }
+        .overlay.show-overlay { opacity: 1; visibility: visible; }
+
+        /* Main Content Area */
+        .main-content-area { padding: 15px; }
+        .main-header { margin-bottom: 30px; }
+        .main-header h1 { font-size: 28px; font-weight: 600; }
+        .main-header p { color: var(--text-light); }
+        .section-title { font-size: 20px; font-weight: 600; margin-bottom: 20px; }
+        .content-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+        .main-content, .right-sidebar .widget-card { background: var(--card-background); padding: 24px; border-radius: 20px; box-shadow: var(--shadow); }
+        .right-sidebar { display: grid; gap: 24px; }
+
+        .tabs { display: flex; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
+        .tabs a { text-decoration: none; color: var(--text-light); font-weight: 500; padding-bottom: 5px; border-bottom: 2px solid transparent; }
+        .tabs a.active { color: var(--text-color); border-bottom-color: var(--primary-color); }
+        
+        .products-container { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+        .product-card { border-radius: 15px; overflow: hidden; box-shadow: var(--shadow); background: white; }
+        .product-card img { width: 100%; height: 180px; object-fit: cover; }
+        .product-card .info { padding: 15px; }
+        .product-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 5px; }
+        .product-card .details { display: flex; justify-content: space-between; font-size: 14px; align-items: center; color: var(--text-light); }
+        .product-card .price { font-weight: 600; color: var(--primary-color); }
+
+        .analytics-and-orders-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
+        .analytics-card { border: 1px solid var(--border-color); padding: 20px; border-radius: 15px;}
+        .analytics-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .chart-placeholder { height: 150px; background: #f9f9f9; display: flex; justify-content: center; align-items: center; color: var(--text-light); border-radius: 10px; }
+        
+        .orders-container { display: grid; gap: 15px; }
+        .order-item { display: flex; align-items: center; gap: 15px; padding: 10px; border-radius: 10px; background: #fdfdfd; border: 1px solid var(--border-color); }
+        .order-item img { width: 50px; height: 50px; border-radius: 10px; object-fit: cover; }
+        .order-info { flex-grow: 1; }
+        .order-info h4 { font-weight: 600; font-size: 15px; }
+        .order-info p { font-size: 13px; color: var(--text-light); }
+        .order-price { font-weight: 600; }
+
+        /* Right sidebar widgets */
+        .user-profile-widget .user-details { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .user-profile-widget img { width: 50px; height: 50px; border-radius: 50%; }
+        .user-profile-widget .name { font-weight: 600; }
+        .user-profile-widget .role { font-size: 13px; color: var(--text-light); }
+
+        .search-bar { position: relative; }
+        .search-bar input { width: 100%; padding: 10px 15px 10px 40px; border: 1px solid var(--border-color); border-radius: 10px; background: #f9f9f9; }
+        .search-bar i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-light); }
+        
+        .widget-title { font-size: 16px; font-weight: 600; margin-bottom: 15px; }
+        
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; }
+        .stat-item { display: flex; align-items: center; gap: 12px; background-color: #fdfdfd; padding: 15px; border-radius: 10px; border: 1px solid var(--border-color); }
+        .stat-icon { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+        .stat-info h4 { font-size: 18px; font-weight: 600; margin: 0; line-height: 1.2; }
+        .stat-info p { font-size: 12px; color: var(--text-light); margin: 0; }
+
+        .customer-list { display: flex; align-items: center; }
+        .customer-list img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid white; margin-left: -15px; }
+        .add-customer { width: 40px; height: 40px; border-radius: 50%; background-color: var(--primary-color); color: white; display: flex; justify-content: center; align-items: center; margin-left: -15px; border: 2px solid white; cursor: pointer; }
+
+        .earnings-card { background: linear-gradient(45deg, #4d43e3, #8179f2); border-radius: 15px; padding: 20px; color: white; }
+        .earnings-card .balance-label { font-size: 14px; opacity: 0.8; }
+        .earnings-card .balance { font-size: 24px; font-weight: 600; margin: 5px 0 20px 0; }
+        .earnings-card .card-details { display: flex; justify-content: space-between; align-items: center; }
+
+        /* DESKTOP STYLES */
+        @media (min-width: 1024px) {
+            .mobile-header, .overlay, .sidebar-header .close-btn { display: none; }
+            .dashboard-layout { display: grid; grid-template-columns: 260px 1fr; gap: 24px; padding: 24px; }
+            .left-sidebar { position: static; transform: translateX(0); height: auto; box-shadow: var(--shadow); border-radius: 20px; }
+            .main-content-area { padding: 0; }
+            .content-grid { grid-template-columns: 1fr 300px; align-items: start; }
+            .main-content { grid-column: 1 / 2; }
+            .right-sidebar { grid-column: 2 / 3; position: sticky; top: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-layout">
+        <!-- Left Sidebar -->
+        <aside class="left-sidebar">
+            <div class="sidebar-header">
+                <div class="logo"><i class="fas fa-shopping-cart"></i> E-Shop</div>
+                <button class="close-btn" id="close-sidebar-btn">&times;</button>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" class="active"><div class="menu-item-info"><i class="fas fa-tachometer-alt"></i> Dashboard</div></a></li>
+                <li class="has-submenu">
+                    <a href="#">
+                        <div class="menu-item-info"><i class="fas fa-box-open"></i> Products</div>
+                        <i class="fas fa-chevron-right arrow"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="#">All Products</a></li>
+                        <li><a href="#">Add New</a></li>
+                        <li><a href="#">Categories</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><div class="menu-item-info"><i class="fas fa-receipt"></i> Orders</div></a></li>
+                <li><a href="#"><div class="menu-item-info"><i class="fas fa-users"></i> Customers</div></a></li>
+                <li class="has-submenu">
+                    <a href="#">
+                         <div class="menu-item-info"><i class="fas fa-chart-line"></i> Analytics</div>
+                         <i class="fas fa-chevron-right arrow"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="#">Sales Report</a></li>
+                        <li><a href="#">Revenue</a></li>
+                        <li><a href="#">Customer Stats</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><div class="menu-item-info"><i class="fas fa-cog"></i> Settings</div></a></li>
+            </ul>
+            <div class="promo-card">
+                <div class="icon"><i class="fas fa-gift"></i></div>
+                <p>Check out our new arrivals!</p>
+                <button class="promo-btn">Shop Now</button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-content-area">
+            <header class="mobile-header">
+                <button class="menu-toggle" id="menu-toggle-btn"><i class="fas fa-bars"></i></button>
+                <div class="logo"><i class="fas fa-shopping-cart"></i> E-Shop</div>
+                <div class="user-avatar">
+                   <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User Avatar" style="width: 40px; height: 40px; border-radius: 50%;">
+                </div>
+            </header>
+            
+            <div class="content-grid">
+                <!-- Main Content -->
+                <main class="main-content">
+                    <header class="main-header"><h1>Hello, Admin</h1><p>Here's what's happening with your store today.</p></header>
+                    <section class="products-section">
+                        <div style="display: flex; justify-content: space-between; align-items: center;"><h2 class="section-title">Featured Products</h2><a href="#" style="color: var(--text-light); text-decoration: none; font-size: 14px;">See all ></a></div>
+                        <div class="tabs"><a href="#" class="active">Best Sellers</a> <a href="#">New Arrivals</a> <a href="#">Top Rated</a></div>
+                        <div class="products-container">
+                            <div class="product-card"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400" alt="Product 1"><div class="info"><h3>Classic Wrist Watch</h3><div class="details"><span class="price">$150.00</span><span><i class="fas fa-star" style="color: #ffc107;"></i> 4.8</span></div></div></div>
+                            <div class="product-card"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400" alt="Product 2"><div class="info"><h3>Wireless Headphones</h3><div class="details"><span class="price">$89.99</span><span><i class="fas fa-star" style="color: #ffc107;"></i> 4.9</span></div></div></div>
+                            <div class="product-card"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="Product 3"><div class="info"><h3>Red Sport Shoes</h3><div class="details"><span class="price">$120.50</span><span><i class="fas fa-star" style="color: #ffc107;"></i> 4.7</span></div></div></div>
+                        </div>
+                    </section>
+                    <div class="analytics-and-orders-grid">
+                        <section class="sales-analytics"><h2 class="section-title">Sales Analytics</h2><div class="analytics-card"><div class="analytics-header"><span>January 2024</span><div><i class="fas fa-chevron-left"></i> <i class="fas fa-chevron-right"></i></div></div><div class="chart-placeholder">[ Sales Chart Placeholder ]</div></div></section>
+                        <section class="recent-orders"><h2 class="section-title">Recent Orders</h2><div class="orders-container"><div class="order-item"><img src="https://i.pravatar.cc/150?u=a042581f4e29026704a" alt="Customer 1"><div class="order-info"><h4>Alex Johnson</h4><p>Order #11235</p></div><span class="order-price">$150.00</span></div><div class="order-item"><img src="https://i.pravatar.cc/150?u=a042581f4e29026704b" alt="Customer 2"><div class="order-info"><h4>Maria Garcia</h4><p>Order #11236</p></div><span class="order-price">$89.99</span></div><div class="order-item"><img src="https://i.pravatar.cc/150?u=a042581f4e29026704c" alt="Customer 3"><div class="order-info"><h4>James Smith</h4><p>Order #11237</p></div><span class="order-price">$120.50</span></div></div></section>
+                    </div>
+                </main>
+
+                <!-- Right Sidebar -->
+                <aside class="right-sidebar">
+                    <div class="widget-card user-profile-widget"><div class="user-details"><img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User Avatar"><div><div class="name">Soumitro Sobuj</div><div class="role">Store Administrator</div></div></div><div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search orders, products..."></div></div>
+                    <div class="widget-card"><h3 class="widget-title">Today's Statistics</h3><div class="stats-grid"><div class="stat-item"><div class="stat-icon" style="background-color: #e9e6ff; color: #6a5af9;"><i class="fas fa-chart-line"></i></div><div class="stat-info"><h4>1,287</h4><p>Total Sale</p></div></div><div class="stat-item"><div class="stat-icon" style="background-color: #e0f8f0; color: #28a745;"><i class="fas fa-dollar-sign"></i></div><div class="stat-info"><h4>$35.4k</h4><p>Sale Amount</p></div></div><div class="stat-item"><div class="stat-icon" style="background-color: #fff4e0; color: #ff9800;"><i class="fas fa-box-open"></i></div><div class="stat-info"><h4>892</h4><p>Total Products</p></div></div><div class="stat-item"><div class="stat-icon" style="background-color: #e3f2fd; color: #2196f3;"><i class="fas fa-user-plus"></i></div><div class="stat-info"><h4>156</h4><p>New Customers</p></div></div></div></div>
+                    <!-- <div class="widget-card"><h3 class="widget-title">Top Customers</h3><div class="customer-list"><img src="https://i.pravatar.cc/150?u=a042581f4e29026704a" alt="customer 1"><img src="https://i.pravatar.cc/150?u=a042581f4e29026704b" alt="customer 2"><img src="https://i.pravatar.cc/150?u=a042581f4e29026704c" alt="customer 3"><img src="https://i.pravatar.cc/150?u=a042581f4e29026704e" alt="customer 4"><div class="add-customer"><i class="fas fa-plus"></i></div></div></div> -->
+                    <div class="widget-card"><h3 class="widget-title">Store Earnings</h3><div class="earnings-card"><div class="balance-label">This Month's Balance</div><div class="balance">$ 18,573.46</div><div class="card-details"><span>Status: Active</span><span>View Report</span></div></div></div>
+                </aside>
+            </div>
+        </div>
+    </div>
+    
+    <div class="overlay"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggleBtn = document.getElementById('menu-toggle-btn');
+            const closeSidebarBtn = document.getElementById('close-sidebar-btn');
+            const leftSidebar = document.querySelector('.left-sidebar');
+            const overlay = document.querySelector('.overlay');
+
+            function showSidebar() {
+                leftSidebar.classList.add('show-sidebar');
+                overlay.classList.add('show-overlay');
+            }
+
+            function hideSidebar() {
+                leftSidebar.classList.remove('show-sidebar');
+                overlay.classList.remove('show-overlay');
+            }
+
+            menuToggleBtn.addEventListener('click', showSidebar);
+            closeSidebarBtn.addEventListener('click', hideSidebar);
+            overlay.addEventListener('click', hideSidebar);
+
+            // Submenu Toggle Logic
+            const submenuToggles = document.querySelectorAll('.nav-menu .has-submenu > a');
+            submenuToggles.forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const parentLi = this.parentElement;
+                    const submenu = parentLi.querySelector('.submenu');
+
+                    // Close other open submenus
+                    document.querySelectorAll('.nav-menu .has-submenu').forEach(item => {
+                        if (item !== parentLi) {
+                            item.classList.remove('active');
+                            item.querySelector('.submenu').style.maxHeight = '0px';
+                        }
+                    });
+
+                    // Toggle the clicked submenu
+                    parentLi.classList.toggle('active');
+                    if (parentLi.classList.contains('active')) {
+                        submenu.style.maxHeight = submenu.scrollHeight + 'px';
+                    } else {
+                        submenu.style.maxHeight = '0px';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
